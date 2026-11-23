@@ -5,7 +5,9 @@
   secondchance verify      [--checkpoints quickstart|all|<id,id>]         restore every checkpoint and check it reproduces the recorded state
   secondchance run         --model M --api-base URL [--checkpoints quickstart|all|<id,id>] [--conditions U,N,L,PA] --out DIR
                            [--user-model M2 --user-api-base URL2]          tau2: the user simulator (default gpt-4.1-2025-04-14)
-  secondchance score       --runs DIR [--out scores.jsonl]                stage 1 of every run record in DIR
+  secondchance score       --runs DIR [--out scores.jsonl]                stage 1 of every run record in DIR (BFCL: final)
+                           [--judge-url URL --judge-model NAME]           + stage 2 for tau2/retail/airline candidates: the semantic review
+                                                                          by the pinned judge (reviews saved next to --out)
   secondchance scorecard   --scores scores.jsonl                          rates per condition, as in the paper's Table 3
   secondchance reproduce   [--source repo|hf:<dataset>]                    every table and Figure 2 of the paper from the shipped results"""
 from __future__ import annotations
@@ -88,7 +90,14 @@ def cmd_run(a):
 
 
 def cmd_score(a):
+    from secondchance.scoring import acceptance_rules as AR
     from secondchance.scoring import score as S
+    judge = None
+    if a.judge_url:
+        from secondchance.review import judge as J
+        judge = J.Judge(a.judge_url, a.judge_model or J.MODEL)
+        rdir = Path(a.out or "scores.jsonl").with_suffix(".reviews")
+        rdir.mkdir(parents=True, exist_ok=True)
     rows = []
     for f in sorted(Path(a.runs).glob("*.json")):
         rec = json.loads(f.read_text())
@@ -99,6 +108,18 @@ def cmd_score(a):
         else:
             out = S.score_bfcl(rec, ck) if ck.environment == "bfcl" else S.score_tau2(rec, ck)
             row.update({k: out.get(k) for k in ("corrected_end", "corrected_ever", "n_regressions", "protected_state_intact", "task_success", "stage1", "recovery_class")})
+            if ck.environment != "bfcl":
+                no_target = ck.environment in ("retail", "airline") and not ck.meta["scoring_inputs"]["effects"]
+                if no_target:
+                    row["recovery_class"] = "NOT_APPLICABLE"  # no field-level effect: correction is not scored
+                elif not str(out["stage1"]).startswith("CANDIDATE"):
+                    row["recovery_class"] = AR.decide(out["components"], None)[0]
+                elif judge is not None:
+                    from secondchance.review import pipeline as PL
+                    rv = PL.review(rec, ck, out, judge, run_key=f.stem, condition=rec["cond"])
+                    row.update(recovery_class=rv["complete_recovery_class"], recovery_class_consent_first=rv["consent_first_class"],
+                               recovery_class_strict=rv["strict_class"], review_id=rv["review_id"])
+                    (rdir / f"{f.stem}.review.json").write_text(json.dumps(rv, indent=1, default=str))
         rows.append(row)
     text = "".join(json.dumps(r) + "\n" for r in rows)
     if a.out:
@@ -113,15 +134,16 @@ def cmd_scorecard(a):
     for r in rows:
         by[r["condition"]].append(r)
     rate = lambda k, n: f"{k / n:.2f}".lstrip("0") if n else "--"  # noqa: E731
-    print("cond   n   corrected  task  complete(BFCL)  tau2 stage-1 candidates for complete recovery")
+    reviewed = any("review_id" in r for r in rows)
+    print("cond   n   corrected  task  complete  " + ("" if reviewed else "(tau2/retail/airline: stage-1 candidates, not reviewed)"))
     for c in ("U", "N", "L", "PA"):
         x = by.get(c, [])
         n = len(x)
         cor = sum(r.get("corrected_end") is True for r in x)
         task = sum(r.get("task_success") is True for r in x)
-        comp = sum(r.get("recovery_class") == "ACCEPTED_COMPLETE_REPAIR" for r in x if r["environment"] == "bfcl")
-        cand = sum(str(r.get("stage1")).startswith("CANDIDATE_COMPLETE") for r in x if r["environment"] != "bfcl")
-        print(f"{c:4s} {n:4d}   {rate(cor, n):>8s}  {rate(task, n):>5s}  {comp:>12d}  {cand:>10d}")
+        comp = sum(r.get("recovery_class") == "ACCEPTED_COMPLETE_REPAIR" for r in x)
+        cand = sum(str(r.get("stage1")).startswith("CANDIDATE_COMPLETE") and "review_id" not in r for r in x if r["environment"] != "bfcl")
+        print(f"{c:4s} {n:4d}   {rate(cor, n):>8s}  {rate(task, n):>5s}  {rate(comp, n):>8s}" + (f"  (+{cand} unreviewed candidates)" if cand else ""))
 
 
 def cmd_setup(a):
@@ -152,7 +174,9 @@ def main(argv=None):
     s.add_argument("--single-tool-call", action="store_true", help="BFCL: send one tool call per assistant message (Llama-3 chat templates)")
     s.add_argument("--replay", help="a JSON file of recorded runs to feed back instead of calling a model (tests/fixtures/recorded_runs.json)")
     s.add_argument("--out", required=True); s.set_defaults(f=cmd_run)
-    s = sub.add_parser("score"); s.add_argument("--runs", required=True); s.add_argument("--out"); s.set_defaults(f=cmd_score)
+    s = sub.add_parser("score"); s.add_argument("--runs", required=True); s.add_argument("--out")
+    s.add_argument("--judge-url", help="OpenAI-compatible endpoint serving the pinned judge (Qwen/Qwen3-235B-A22B-GPTQ-Int4): runs stage 2")
+    s.add_argument("--judge-model", help="the judge's served model name (default: the pinned model id)"); s.set_defaults(f=cmd_score)
     s = sub.add_parser("scorecard"); s.add_argument("--scores", required=True); s.set_defaults(f=cmd_scorecard)
     s = sub.add_parser("reproduce"); s.add_argument("--source", default="repo"); s.set_defaults(f=cmd_reproduce)
     s = sub.add_parser("setup"); s.add_argument("what", choices=["tau2"]); s.add_argument("--dir"); s.set_defaults(f=cmd_setup)

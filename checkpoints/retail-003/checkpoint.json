@@ -61,7 +61,8 @@
     "target": "\"cancelled\"",
     "target_rule": "gold final value"
    }
-  ]
+  ],
+  "review_label": "C-retail-87de35"
  },
  "fixability": {
   "label": "unknown",

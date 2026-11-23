@@ -61,7 +61,8 @@
     "target": "\"98187\"",
     "target_rule": "pre-error value"
    }
-  ]
+  ],
+  "review_label": "C-retail-434fc6"
  },
  "fixability": {
   "label": "demonstrated",

@@ -20,7 +20,8 @@
  },
  "scoring_inputs": {
   "cut_messages": 13,
-  "effects": []
+  "effects": [],
+  "review_label": "E059"
  },
  "fixability": {
   "label": "not_applicable",

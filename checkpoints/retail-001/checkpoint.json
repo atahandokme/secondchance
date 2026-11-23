@@ -45,7 +45,8 @@
     "target": "\"pending\"",
     "target_rule": "pre-error value"
    }
-  ]
+  ],
+  "review_label": "C-retail-1d74c0"
  },
  "fixability": {
   "label": "unknown",

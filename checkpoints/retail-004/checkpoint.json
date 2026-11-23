@@ -69,7 +69,8 @@
     "target": "\"10093\"",
     "target_rule": "gold final value"
    }
-  ]
+  ],
+  "review_label": "C-retail-9a9e36"
  },
  "fixability": {
   "label": "demonstrated",

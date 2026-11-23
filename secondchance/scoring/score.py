@@ -78,14 +78,36 @@ def full_evaluator_success(rec):
     return None if any(v is None for v in vals) else all(v == 1.0 for v in vals)
 
 
+def retail_airline_writes(rec):
+    """per-write policy acceptance of the agent's executed writes after the checkpoint (retail and airline): action authorization (identity
+    and consent clauses), policy compliance (the other clauses), acceptance ACCEPTED / REJECTED / UNRESOLVED, and the clauses left open."""
+    from secondchance.scoring import retail_airline_policy as AZ
+    from secondchance.scoring import tau2_common as C
+    from secondchance.scoring import tau2_trace as W
+    hist = rec.get("history") or []
+    msgs = C.messages(rec)
+    d = C.domain_of(rec)
+    snaps, rows = W.trace(d, C.task_of(rec), msgs)
+    nh = sum(1 for _ in C.tool_calls(hist))
+    writes = [{"msg": x["msg"], "name": x["name"], "arguments": x["arguments"], "pre_db": x["pre_db"], "error": x["error"]}
+              for x in rows[nh:] if x["requestor"] == "assistant" and x["mutating"]]
+    az = AZ.authorization(writes, msgs, d)
+    return [{"name": w["call"], "msg": w.get("msg"), "action_authorization": w.get("action_authorization"), "policy_compliance": w.get("policy_compliance"),
+             "acceptance": w.get("acceptance"), "unknown": w.get("acceptance_unknown_components"), "compliance_failures": w.get("compliance_failures"),
+             "why": w.get("why")} for w in az["writes"]]
+
+
 def score_tau2(rec, ck):
     """tau2 (telecom, banking) and retail/airline. ck: secondchance.data.Checkpoint."""
     si = ck.meta["scoring_inputs"]
     r = A.score_record(rec, si["cut_messages"], si["effects"])
     env = ck.environment if ck.environment in ("retail", "airline") else "tau2"
-    c = AC.components(r, env)
+    per_write = retail_airline_writes(rec) if env != "tau2" else None
+    c = AC.components(r, env, ra1_acceptance=[w["acceptance"] for w in per_write] if per_write is not None else None)
     out = _outcome(r, c)
     out["task_success"] = full_evaluator_success(rec) is True
+    if per_write is not None:
+        out["retail_airline_writes"] = per_write
     return out
 
 

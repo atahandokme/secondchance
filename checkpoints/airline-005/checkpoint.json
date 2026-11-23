@@ -173,7 +173,8 @@
     "target": "-686",
     "target_rule": "gold final value"
    }
-  ]
+  ],
+  "review_label": "C-airline-fc51ed"
  },
  "fixability": {
   "label": "demonstrated",

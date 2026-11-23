@@ -45,7 +45,8 @@
     "target": null,
     "target_rule": "gold final value"
    }
-  ]
+  ],
+  "review_label": "C-airline-92a98a"
  },
  "fixability": {
   "label": "unknown",

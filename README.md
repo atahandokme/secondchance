@@ -50,6 +50,11 @@ pip install -e ".[tau2]" && secondchance setup tau2
 secondchance run --model openai/<served-model-name> --api-base http://localhost:8000/v1 --out runs/my-model
 secondchance score --runs runs/my-model --out runs/my-model.jsonl && secondchance scorecard --scores runs/my-model.jsonl
 
+#    complete recovery in τ²-bench also needs the semantic review by the pinned judge (Qwen/Qwen3-235B-A22B-GPTQ-Int4, for example
+#    `vllm serve Qwen/Qwen3-235B-A22B-GPTQ-Int4 --revision dff138951f3898772fc0d795a4b5b30f417577f4`); add it to the scoring step:
+pip install -e ".[review]"
+secondchance score --runs runs/my-model --out runs/my-model.jsonl --judge-url http://localhost:8001/v1 --judge-model <served-judge-name>
+
 # 3. reproduce Table 3 (and every other table and Figure 2) from the shipped results
 python scripts/table3.py && python scripts/verify.py
 ```
@@ -65,8 +70,10 @@ python scripts/table3.py && python scripts/verify.py
 4. Run every checkpoint under every condition: `secondchance run --model openai/<name> --api-base <url> --checkpoints all --out runs/<name>`.
    BFCL needs no simulated user; τ²-bench uses tau2-bench's simulated user (`--user-model`, default `gpt-4.1-2025-04-14`; the paper's
    protocol). For chat templates that accept one tool call per message (Llama 3), add `--single-tool-call`.
-5. `secondchance score --runs runs/<name> --out runs/<name>.jsonl` and `secondchance scorecard --scores runs/<name>.jsonl`, and compare
-   with the 12 models of the paper in `baselines/main_study.jsonl`.
+5. `secondchance score --runs runs/<name> --out runs/<name>.jsonl --judge-url <judge url> --judge-model <judge name>` and
+   `secondchance scorecard --scores runs/<name>.jsonl`, and compare with the 12 models of the paper in `baselines/main_study.jsonl`.
+   Stage 1 (mechanical) decides BFCL; τ²-bench, retail and airline runs that pass it go to the semantic review by the pinned judge
+   ([docs/scoring.md](docs/scoring.md)). Without `--judge-url` the scorecard counts those runs as unreviewed candidates.
 
 Decoding in the paper: temperature 0 and seed 0 for open-weight models, at most 4,096 output tokens per call, 32,768-token context
 ([docs/pins.md](docs/pins.md)).
@@ -75,14 +82,14 @@ Decoding in the paper: temperature 0 and seed 0 for open-weight models, at most 
 
 | Path | Contents |
 |---|---|
-| `secondchance/` | The harness: restore and replay verification, the τ²-bench and BFCL runners, stage-1 scoring and the acceptance rule; CLI `secondchance` |
+| `secondchance/` | The harness: restore and replay verification, the τ²-bench and BFCL runners, stage-1 scoring, the semantic review (stage 2: packets, the judge's rubrics, reconciliation) and the acceptance rule; CLI `secondchance` |
 | `checkpoints/` | One folder per checkpoint: 129 main (38 τ²-bench, 37 BFCL, 54 AppWorld) and 24 retail and airline; history, restore data and hashes, state, evaluation record, fixability evidence. AppWorld: metadata only ([docs/licenses.md](docs/licenses.md)) |
 | `conditions/` | The frozen N, L and PA texts of every τ²-bench, BFCL, retail and airline checkpoint, with SHA-256 |
 | `results/` | Every continuation of the paper as JSONL: main study (5,760), repeated runs (3,360), three-sample hosted comparison (1,332), retail and airline (480), competence controls (360); and the 4,568 source episodes |
 | `scripts/` | `table1.py` to `table19.py`, `figure2.py`, `verify.py`, `build_hf_dataset.py` |
 | `baselines/` | The four conditions as baselines, per model, environment and condition |
 | `docs/` | [scoring](docs/scoring.md), [acceptance](docs/acceptance.md), [taxonomy](docs/taxonomy.md), [pins](docs/pins.md), [licenses](docs/licenses.md), [reproduction notes](docs/reproduction_notes.md) |
-| `tests/` | Table reproduction, data integrity, replay verification of every checkpoint, scoring of recorded runs |
+| `tests/` | Table reproduction, data integrity, replay verification of every checkpoint, scoring of recorded runs, the semantic review of recorded runs from the judge's recorded replies |
 
 ## Citation
 

@@ -57,8 +57,12 @@ def run(ck, condition, agent_model, agent_args=None, user_model="gpt-4.1-2025-04
     text = ck.assistance(condition)
     orig_prompt = LLMAgent.system_prompt
     orig_completion = LU.completion
-    if text:
-        LLMAgent.system_prompt = property(lambda self: orig_prompt.fget(self) + "\n\n" + text)
+    shown = {}
+
+    def system_prompt(self):  # the agent's prompt plus the condition's text; recorded, since the semantic review gives it to the judge as the policy
+        shown["prompt"] = orig_prompt.fget(self) + ("\n\n" + text if text else "")
+        return shown["prompt"]
+    LLMAgent.system_prompt = property(system_prompt)
     if completion is not None:
         LU.completion = completion
     from tau2.orchestrator.orchestrator import Orchestrator
@@ -85,7 +89,9 @@ def run(ck, condition, agent_model, agent_args=None, user_model="gpt-4.1-2025-04
             part = seen["trajectory"][len(hist):]
             return {"setting": f"tau2_{domain}", "task": ck.restore["task"], "checkpoint_id": ck.id, "cond": condition, "seed": seed, "status": kind,
                     "error": msg[:4000], "termination": {"reason": kind}, "history": ck.history, "continuation": [message_dict(m) for m in part],
-                    "restore": report, "checkpoint_db": ck_db, "agent_model": agent_model, "user_model": user_model}
+                    "restore": report, "checkpoint_db": ck_db, "agent_model": agent_model, "user_model": user_model,
+                    "assistance": {"condition": condition, "text": text, "placement": "agent system prompt (appended)" if text else "none"},
+                    "agent_system_prompt": shown.get("prompt")}
     finally:
         LLMAgent.system_prompt = orig_prompt
         LU.completion = orig_completion
@@ -113,7 +119,7 @@ def run(ck, condition, agent_model, agent_args=None, user_model="gpt-4.1-2025-04
             "n_new_tool_calls": len(new_calls), "new_mutating_calls": [[tc.name, tc.arguments] for tc in mutating],
             "checkpoint_db": ck_db, "end_db": json.loads(end_env.tools.db.model_dump_json()),
             "user_turns": sum(1 for m in cont if m.role == "user" and (m.content or "").strip()),
-            "history": [message_dict(m) for m in hist], "continuation": [message_dict(m) for m in cont]}
+            "history": [message_dict(m) for m in hist], "continuation": [message_dict(m) for m in cont], "agent_system_prompt": shown.get("prompt")}
 
 
 def replay_completion(record, agent_model, user_model):
