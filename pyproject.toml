@@ -25,7 +25,8 @@ dev = ["pytest>=8"]
 secondchance = "secondchance.cli:main"
 
 [project.urls]
-Dataset = "https://huggingface.co/datasets/SecondChance/SecondChance"
+Dataset = "https://huggingface.co/datasets/atahandokme/secondchance"
+Repository = "https://github.com/atahandokme/secondchance"
 
 [tool.setuptools.packages.find]
 include = ["secondchance*"]

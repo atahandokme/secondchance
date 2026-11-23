@@ -7,7 +7,7 @@ notified, localized, plan-assisted) and scores what it does next: whether it cor
 respects the policy and protected state, tells the user, and at what cost. Each error also carries what we could establish about fixing
 it: a demonstrated fix, a proof that none exists, or unknown.
 
-Paper: <ARXIV_URL> · Dataset: <HF_DATASET_URL> · DOI: <DOI>
+Paper: <ARXIV_URL> · Dataset: [atahandokme/secondchance](https://huggingface.co/datasets/atahandokme/secondchance) · DOI: <DOI>
 
 ![Observed recoverability with a plan on the 57 checkpoints with a demonstrated fix](docs/figure2.png)
 
@@ -42,7 +42,7 @@ scorecard.
 
 ```bash
 # 1. install (tau2-bench is installed from its pinned commit; it is not on PyPI)
-git clone <GITHUB_URL> && cd SecondChance
+git clone https://github.com/atahandokme/secondchance && cd secondchance
 pip install -e ".[tau2]" && secondchance setup tau2
 
 # 2. run a model on the ten-checkpoint quickstart and print its scorecard
@@ -60,7 +60,7 @@ python scripts/table3.py && python scripts/verify.py
 ```
 
 `scripts/verify.py` recomputes all 19 tables and Figure 2 from `results/` and checks every printed number against the paper
-(`SECONDCHANCE_DATA=hf:<HF_DATASET_ID> python scripts/verify.py` does the same from the Hugging Face dataset).
+(`SECONDCHANCE_DATA=hf:atahandokme/secondchance python scripts/verify.py` does the same from the Hugging Face dataset).
 
 ## How to add your model
 

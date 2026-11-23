@@ -11,5 +11,5 @@ authors:
 version: 1.0.0
 date-released: 2026-11-30
 license: Apache-2.0
-repository-code: "<GITHUB_URL>"
-url: "<HF_DATASET_URL>"
+repository-code: "https://github.com/atahandokme/secondchance"
+url: "https://huggingface.co/datasets/atahandokme/secondchance"
