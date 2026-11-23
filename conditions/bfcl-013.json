@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "bfcl-013",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call set_navigation(destination=\"nearest tire shop\") (message 14 of this conversation).",
+   "sha256": "c9b24b41667053c66e6bd906249f6e667022fac917874f188117a6f1491239c1",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call set_navigation(destination=\"nearest tire shop\") (message 14 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.\n1. The step to repair: you called set_navigation(destination=\"nearest tire shop\"), after the user wrote: \"Moreover, could you set up the GPS to guide me directly to the nearest shop if my tires aren't up to the mark, so I'm not wandering off course?\". It changed VehicleControlAPI.destination.\nAfter it, VehicleControlAPI.destination is not what the request calls for.\n2. No undo is needed. Then carry out the request's step again yourself, taking every value from the request or from function outputs; the analysis's redo used the task's reference calls, which are not given here. This route was executed offline by the analysis from this exact checkpoint and sets VehicleControlAPI.destination right; it has not been tried in this conversation.\n3. When a request lacks information you need, ask the user instead of guessing.\n4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.\n5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+   "sha256": "aca59bf50c965f5aa0218c42b2ac56848b5d53c098eb74bfb7cfef1662272923",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called set_navigation(destination=\"nearest tire shop\"), after the user wrote: \"Moreover, could you set up the GPS to guide me directly to the nearest shop if my tires aren't up to the mark, so I'm not wandering off course?\". It changed VehicleControlAPI.destination.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "After it, VehicleControlAPI.destination is not what the request calls for.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "2. No undo is needed. Then carry out the request's step again yourself, taking every value from the request or from function outputs; the analysis's redo used the task's reference calls, which are not given here. This route was executed offline by the analysis from this exact checkpoint and sets VehicleControlAPI.destination right; it has not been tried in this conversation.",
+     "source_class": "VERIFIED_ROUTE"
+    },
+    {
+     "clause": "3. When a request lacks information you need, ask the user instead of guessing.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

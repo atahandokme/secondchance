@@ -1,0 +1,38 @@
+[
+ {
+  "role": "user",
+  "content": "Before I start packing my bags for the upcoming trip, I need to double-check that all my personal information is up to date. Let's go over my full name and passport details to make sure everything's in order before I hit the road. For reference my birthdate is January 1st 1950 and the number on my passport is P followed by 12345678. My first name is Michael and  last name is Thompson"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-957fa33ce1314303a6f214bc1491a14c",
+    "name": "get_user_info",
+    "arguments": "{\"passport_number\": \"P12345678\", \"birthdate\": \"1950-01-01\", \"first_name\": \"Michael\", \"last_name\": \"Thompson\"}"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error during execution: function get_user_info not found",
+  "tool_call_id": "chatcmpl-tool-957fa33ce1314303a6f214bc1491a14c"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-baef900efefc4c57b9c8f58445f12bfd",
+    "name": "authenticate_travel",
+    "arguments": "{\"client_id\": \"your_client_id\", \"client_secret\": \"your_client_secret\", \"refresh_token\": \"your_refresh_token\", \"grant_type\": \"read_write\", \"user_first_name\": \"Michael\", \"user_last_name\": \"Thompson\"}"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"expires_in\": 2, \"access_token\": \"251675\", \"token_type\": \"Bearer\", \"scope\": \"read_write\"}",
+  "tool_call_id": "chatcmpl-tool-baef900efefc4c57b9c8f58445f12bfd"
+ }
+]

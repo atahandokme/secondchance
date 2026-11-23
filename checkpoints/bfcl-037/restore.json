@@ -1,0 +1,116 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_param_97",
+ "replayed_calls": 12,
+ "state_hash": "564ba91313e47c07e4787f05a66e41142193ad691e2e4a6c4df026eba7d74057",
+ "replay": [
+  {
+   "name": "get_zipcode_based_on_city",
+   "arguments": {
+    "city": "Rivermist"
+   },
+   "output": "{\"zipcode\": \"83214\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_zipcode_based_on_city",
+   "arguments": {
+    "city": "Stonebrook"
+   },
+   "output": "{\"zipcode\": \"74532\"}",
+   "turn": 0
+  },
+  {
+   "name": "estimate_distance",
+   "arguments": {
+    "cityA": "83214",
+    "cityB": "74532"
+   },
+   "output": "{\"distance\": 750.0}",
+   "turn": 0
+  },
+  {
+   "name": "displayCarStatus",
+   "arguments": {
+    "option": "fuel"
+   },
+   "output": "{\"fuelLevel\": 5.0}",
+   "turn": 3
+  },
+  {
+   "name": "fillFuelTank",
+   "arguments": {
+    "fuelAmount": 45.0
+   },
+   "output": "{\"fuelLevel\": 50.0}",
+   "turn": 3
+  },
+  {
+   "name": "startEngine",
+   "arguments": {
+    "ignitionMode": "START"
+   },
+   "output": "{\"error\": \"All doors must be locked before starting the engine. Here are the unlocked doors: driver, passenger, rear_left, rear_right\"}",
+   "turn": 4
+  },
+  {
+   "name": "lockDoors",
+   "arguments": {
+    "unlock": false,
+    "door": [
+     "driver",
+     "passenger",
+     "rear_left",
+     "rear_right"
+    ]
+   },
+   "output": "{\"lockStatus\": \"locked\", \"remainingUnlockedDoors\": 0}",
+   "turn": 4
+  },
+  {
+   "name": "startEngine",
+   "arguments": {
+    "ignitionMode": "START"
+   },
+   "output": "{\"error\": \"Brake pedal needs to be pressed when starting the engine.\"}",
+   "turn": 4
+  },
+  {
+   "name": "pressBrakePedal",
+   "arguments": {
+    "pedalPosition": 1.0
+   },
+   "output": "{\"brakePedalStatus\": \"pressed\", \"brakePedalForce\": 1000.0}",
+   "turn": 4
+  },
+  {
+   "name": "startEngine",
+   "arguments": {
+    "ignitionMode": "START"
+   },
+   "output": "{\"engineState\": \"running\", \"fuelLevel\": 50.0, \"batteryVoltage\": 12.6}",
+   "turn": 4
+  },
+  {
+   "name": "get_user_id",
+   "arguments": {
+    "user": "Michael"
+   },
+   "output": "{\"user_id\": \"BD732D1888B94DAA\"}",
+   "turn": 5
+  },
+  {
+   "name": "message_login",
+   "arguments": {
+    "user_id": "BD732D1888B94DAA"
+   },
+   "output": "{\"login_status\": true, \"message\": \"User 'BD732D1888B94DAA' logged in successfully.\"}",
+   "turn": 5
+  }
+ ],
+ "resume": {
+  "turn": 5,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

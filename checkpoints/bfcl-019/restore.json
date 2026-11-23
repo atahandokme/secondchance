@@ -1,0 +1,54 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_145",
+ "replayed_calls": 5,
+ "state_hash": "d25d01ff910bb13a518146f8baa35657b86d4ac61c1e33419f771f61a524fc7b",
+ "replay": [
+  {
+   "name": "get_symbol_by_name",
+   "arguments": {
+    "name": "Zeta Corp"
+   },
+   "output": "{\"symbol\": \"ZETA\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_stock_info",
+   "arguments": {
+    "symbol": "ZETA"
+   },
+   "output": "{\"price\": 22.09, \"percent_change\": -0.05, \"volume\": 0.789, \"MA(5)\": 22.12, \"MA(20)\": 22.34}",
+   "turn": 0
+  },
+  {
+   "name": "add_to_watchlist",
+   "arguments": {
+    "stock": "ZETA"
+   },
+   "output": "{\"watchlist\": [\"NVDA\", \"ZETA\"]}",
+   "turn": 1
+  },
+  {
+   "name": "get_order_history",
+   "arguments": {},
+   "output": "{\"history\": [12345, 12446]}",
+   "turn": 2
+  },
+  {
+   "name": "place_order",
+   "arguments": {
+    "order_type": "Buy",
+    "symbol": "ZETA",
+    "price": 22.09,
+    "amount": 100
+   },
+   "output": "{\"order_id\": 12446, \"order_type\": \"Buy\", \"status\": \"Pending\", \"price\": 22.09, \"amount\": 100}",
+   "turn": 2
+  }
+ ],
+ "resume": {
+  "turn": 2,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

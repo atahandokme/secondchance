@@ -1,0 +1,135 @@
+{
+ "id": "bfcl-023",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_miss_func_43",
+ "source_model": "qwen3-32b",
+ "cut": 26,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "add_contact"
+  ],
+  "call_index": [
+   8
+  ],
+  "turn": [
+   3
+  ],
+  "kind": "unwanted change elsewhere",
+  "mechanism": "P:unwanted_change_elsewhere",
+  "effect": [
+   "other state changed"
+  ],
+  "mechanical_evidence": "P:unwanted_change_elsewhere",
+  "why_an_error": "add_contact('USR001') was not requested (the request was to log in and relay a message)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "MessageAPI.user_count",
+    "MessageAPI.user_map"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "P",
+   "attributes": [
+    "MessageAPI.user_count",
+    "MessageAPI.user_map"
+   ],
+   "prefix_calls": 9,
+   "turn": 3,
+   "call": "add_contact",
+   "call_index": 8
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "proven_impossible",
+  "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE",
+  "by_target": {
+   "correction": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   },
+   "goal": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "complete": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   }
+  },
+  "demonstrated_routes": [
+   {
+    "target": "goal",
+    "route": "the remaining reference calls, with reference calls skipped",
+    "derived_from": [
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   }
+  ],
+  "certificates": [
+   {
+    "target": "correction",
+    "certificate": "inverse_catalog_rule",
+    "proof": "Every state reachable from the checkpoint by any sequence of calls to the methods of the task's BFCL backend classes (a superset of the functions the agent can call) satisfies the invariants below, and the target violates them, so no sequence of calls reaches the target. Each invariant was derived from the backend source. Assumptions: no state change outside the backend methods; equality is the backends' own.",
+    "invariants": [
+     {
+      "rule": "MSG_user_count",
+      "backend": "MessageAPI",
+      "attributes": [
+       "user_count"
+      ],
+      "statement": "user_count only increments (add_contact)"
+     },
+     {
+      "rule": "MSG_user_map",
+      "backend": "MessageAPI",
+      "attributes": [
+       "user_map"
+      ],
+      "statement": "user_map: keys only added, values never reassigned"
+     }
+    ]
+   },
+   {
+    "target": "complete",
+    "certificate": "inverse_catalog_rule",
+    "proof": "Every state reachable from the checkpoint by any sequence of calls to the methods of the task's BFCL backend classes (a superset of the functions the agent can call) satisfies the invariants below, and the target violates them, so no sequence of calls reaches the target. Each invariant was derived from the backend source. Assumptions: no state change outside the backend methods; equality is the backends' own.",
+    "invariants": [
+     {
+      "rule": "MSG_user_count",
+      "backend": "MessageAPI",
+      "attributes": [
+       "user_count"
+      ],
+      "statement": "user_count only increments (add_contact)"
+     },
+     {
+      "rule": "MSG_user_map",
+      "backend": "MessageAPI",
+      "attributes": [
+       "user_map"
+      ],
+      "statement": "user_map: keys only added, values never reassigned"
+     }
+    ]
+   }
+  ]
+ },
+ "competence_control": false
+}

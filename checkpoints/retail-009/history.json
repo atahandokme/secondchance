@@ -1,0 +1,31 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi, I was hoping you could help me check how much I paid for my most recent order. I’m not sure exactly when I placed it, but I’d like to see the total amount."
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-316453f13ed045f69ba160b5845c1197",
+    "name": "find_user_id_by_email",
+    "arguments": {
+     "email": "user@example.com"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: User not found",
+  "id": "chatcmpl-tool-316453f13ed045f69ba160b5845c1197",
+  "requestor": "assistant",
+  "error": true
+ }
+]

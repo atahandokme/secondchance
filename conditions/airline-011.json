@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "airline-011",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the message you sent to the user (message 14 of this conversation).",
+   "sha256": "50aa4953ad7d7f22d571fccfa59bb8151189e3fbe4c6958a1d8db435d165ea88",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the message you sent to the user (message 14 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you told the user that reservations IFOYYZ and NQNU5R were booked within the last 24 hours and so qualify for cancellation. That is false: the current time is 2024-05-15 15:00 EST, IFOYYZ was created 2024-05-12T00:14:30 and NQNU5R 2024-05-13T05:37:57. No write has been made.\n2. Before anything else, correct this plainly; do not act on your earlier summary even if the user says yes to it.\n3. NQNU5R: its flights were on 2024-05-13 and 2024-05-14, before the current time; check with get_flight_status, and if any portion has been flown you cannot cancel it and only a transfer to a human agent can help with it. IFOYYZ is basic economy with no travel insurance; unless the airline cancelled a flight in it (check with get_flight_status), none of the cancellation conditions holds, so you cannot cancel it. Tell the user what you find.\n4. M20IZO (economy, two passengers, HAT268 and HAT010 on 2024-05-22): a change to business cabin keeping the same flights is allowed if no flight in it has been flown, and the user pays the difference. Get the current business prices for those flights with your search tools, tell the user the total difference for both passengers, ask which payment method to use (never choose it for them), and get an explicit yes before update_reservation_flights.\n5. Make no write the user has not asked for and explicitly confirmed after you list the details. Do not offer compensation unless the user explicitly asks for it.\n6. Verify each write with get_reservation_details and report to the user only what the results show.",
+   "sha256": "275938634621b9e3cd85345b80ca5f00ceceece63338f6f5180bbd6f59c92447",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you told the user that reservations IFOYYZ and NQNU5R were booked within the last 24 hours and so qualify for cancellation. That is false: the current time is 2024-05-15 15:00 EST, IFOYYZ was created 2024-05-12T00:14:30 and NQNU5R 2024-05-13T05:37:57. No write has been made.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Before anything else, correct this plainly; do not act on your earlier summary even if the user says yes to it.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. NQNU5R: its flights were on 2024-05-13 and 2024-05-14, before the current time; check with get_flight_status, and if any portion has been flown you cannot cancel it and only a transfer to a human agent can help with it. IFOYYZ is basic economy with no travel insurance; unless the airline cancelled a flight in it (check with get_flight_status), none of the cancellation conditions holds, so you cannot cancel it. Tell the user what you find.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "4. M20IZO (economy, two passengers, HAT268 and HAT010 on 2024-05-22): a change to business cabin keeping the same flights is allowed if no flight in it has been flown, and the user pays the difference. Get the current business prices for those flights with your search tools, tell the user the total difference for both passengers, ask which payment method to use (never choose it for them), and get an explicit yes before update_reservation_flights.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Make no write the user has not asked for and explicitly confirmed after you list the details. Do not offer compensation unless the user explicitly asks for it.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "6. Verify each write with get_reservation_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

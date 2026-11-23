@@ -1,0 +1,168 @@
+{
+ "id": "tau2-028",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_023",
+ "source_model": "gpt-oss-120b",
+ "cut": 14,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "log_verification"
+  ],
+  "call_index": [
+   2
+  ],
+  "message_index": [
+   12
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "logged a verification with an invented time ('2026-10-25T00:00:00Z') and values the user had not confirmed (the user's email and phone differed)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.address",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"3421 Sakura Avenue, Portland, OR 97205\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.date_of_birth",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"05/12/1991\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.email",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"yuki.nakamura@simba.com\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.name",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Yuki Nakamura\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.phone_number",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"503-555-0842\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.time_verified",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"2026-10-25T00:00:00Z\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.224959b99e_20261025T000000Z.user_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"224959b99e\"",
+     "target": null,
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 14,
+  "effects": [
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.address",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"3421 Sakura Avenue, Portland, OR 97205\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.date_of_birth",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"05/12/1991\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.email",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"yuki.nakamura@simba.com\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.name",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Yuki Nakamura\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.phone_number",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"503-555-0842\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.time_verified",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"2026-10-25T00:00:00Z\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.224959b99e_20261025T000000Z.user_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"224959b99e\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

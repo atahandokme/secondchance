@@ -1,0 +1,31 @@
+{
+ "id": "airline-010",
+ "environment": "airline",
+ "split": "supplementary",
+ "task_id": "airline/8",
+ "source_model": "llama-3.3-70b",
+ "cut": 8,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "evidence": "two AI passes agree",
+  "kind": null
+ },
+ "evaluation": {
+  "correction_target": "NOT_APPLICABLE (no field-level mistake effect at the cut)",
+  "task_goal": "AVAILABLE",
+  "protected_state": "AVAILABLE",
+  "policy": "the airline domain's agent policy (tau2-bench)",
+  "consent": "predicates.consent lexical rule (domain-generic) available as evidence; per-policy consent rule UNKNOWN for airline"
+ },
+ "scoring_inputs": {
+  "cut_messages": 8,
+  "effects": []
+ },
+ "fixability": {
+  "label": "not_applicable",
+  "evidence_type": "NO_FIELD_LEVEL_EFFECT",
+  "complete_recovery": "not_applicable"
+ },
+ "competence_control": false
+}

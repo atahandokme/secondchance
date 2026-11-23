@@ -1,0 +1,12 @@
+{
+ "method": "fresh tau2-bench environment for the task, then replay of every tool call in the history (agent and user device)",
+ "domain": "retail",
+ "task": "62",
+ "history_messages": 24,
+ "replayed_calls": 7,
+ "expected_hashes": {
+  "agent_db_hash": "f3f45a7b8d5f66e0c5a9ef4eef45288aca70583480eeedf23de253e46fc8020a",
+  "user_db_hash": null
+ },
+ "replay_response_mismatches": 0
+}

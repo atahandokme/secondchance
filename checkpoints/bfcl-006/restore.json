@@ -1,0 +1,30 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_27",
+ "replayed_calls": 2,
+ "state_hash": "f104cf551b9727ac6a0eb4b49f6d243114cd1564a1bdd4197c5ff6c7b293ddbb",
+ "replay": [
+  {
+   "name": "mv",
+   "arguments": {
+    "source": "project_plan.md",
+    "destination": "project_overview.md"
+   },
+   "output": "{\"error\": \"mv: cannot move 'project_plan.md': No such file or directory\"}",
+   "turn": 0
+  },
+  {
+   "name": "touch",
+   "arguments": {
+    "file_name": "project_overview.md"
+   },
+   "output": "None",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

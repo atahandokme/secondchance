@@ -1,0 +1,12 @@
+{
+ "method": "fresh tau2-bench environment for the task, then replay of every tool call in the history (agent and user device)",
+ "domain": "airline",
+ "task": "37",
+ "history_messages": 15,
+ "replayed_calls": 4,
+ "expected_hashes": {
+  "agent_db_hash": "124e39a664b56402bcd09cb8a6a9cece6acb8462337c969799d5658e3250f263",
+  "user_db_hash": null
+ },
+ "replay_response_mismatches": 0
+}

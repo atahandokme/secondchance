@@ -1,0 +1,119 @@
+{
+ "id": "tau2-033",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_038",
+ "source_model": "gemma-4-31b",
+ "cut": 35,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "call_discoverable_agent_tool",
+   "call_discoverable_agent_tool",
+   "call_discoverable_agent_tool"
+  ],
+  "call_index": [
+   11,
+   12,
+   13
+  ],
+  "message_index": [
+   31,
+   31,
+   31
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "filed the dispute with card_last_4_digits 'Unknown' without asking, although the user had the card",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:transaction_disputes.data.dsp_f96435ed0614.card_last_4_digits",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Unknown\"",
+     "target": "\"5320\"",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_a86c2887d0f7.card_last_4_digits",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Unknown\"",
+     "target": "\"5320\"",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_a86c2887d0f7.dispute_reason",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"unauthorized_fraudulent_charge\"",
+     "target": "\"duplicate_charge\"",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_a86c2887d0f7.eligible_for_provisional_credit",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "true",
+     "target": "false",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_a86c2887d0f7.provisional_credit_given",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "true",
+     "target": "false",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1914b541697f.card_last_4_digits",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Unknown\"",
+     "target": "\"5320\"",
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 35,
+  "effects": [
+   {
+    "field": "a:transaction_disputes.data.dsp_f96435ed0614.card_last_4_digits",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Unknown\"",
+    "pre": null,
+    "target": "\"5320\"",
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

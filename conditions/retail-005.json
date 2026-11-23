@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "retail-005",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call find_user_id_by_name_zip(zip=\"85001\", first_name=\"Unknown\", last_name=\"Unknown\") (message 2 of this conversation).",
+   "sha256": "a4892961762ce0f66e5e9808f8dc1af75e5ce7d86634da9297a596798d525ae4",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call find_user_id_by_name_zip(zip=\"85001\", first_name=\"Unknown\", last_name=\"Unknown\") (message 2 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called find_user_id_by_name_zip with first name 'Unknown', last name 'Unknown' and zip 85001, values the user never gave. The tool returned 'User not found', so the user is not authenticated and nothing was changed.\n2. Tell the user plainly that you tried a value they never gave, and ask for their email address, or their first name, last name and zip code, to locate their user id. Do this even if the user gives a user id. Use only the details the user gives; if a lookup fails, tell the user and ask them to check the details, and never fill in a value yourself.\n3. Then the user's requests. First, they moved from Florida to Phoenix and want their address updated: ask for the new address (never invent or guess one; if the user tells you where it can be found, read it with your tools and show it to them), list it, and get an explicit yes before modify_user_address for the authenticated user.\n4. Second, they want the cheapest t-shirt and ask whether they can order it through you: find the T-Shirt product with list_all_product_types and get_product_details, give the cheapest available variant and its price from the tool result, and tell the user plainly that you cannot place new orders.\n5. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.\n6. Verify each write with get_order_details or get_user_details and report to the user only what the results show.",
+   "sha256": "f47e68cb558d07e6db80c6329dca2b192e6c2a63fe53ac614fbebbc5708f63db",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called find_user_id_by_name_zip with first name 'Unknown', last name 'Unknown' and zip 85001, values the user never gave. The tool returned 'User not found', so the user is not authenticated and nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that you tried a value they never gave, and ask for their email address, or their first name, last name and zip code, to locate their user id. Do this even if the user gives a user id. Use only the details the user gives; if a lookup fails, tell the user and ask them to check the details, and never fill in a value yourself.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Then the user's requests. First, they moved from Florida to Phoenix and want their address updated: ask for the new address (never invent or guess one; if the user tells you where it can be found, read it with your tools and show it to them), list it, and get an explicit yes before modify_user_address for the authenticated user.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Second, they want the cheapest t-shirt and ask whether they can order it through you: find the T-Shirt product with list_all_product_types and get_product_details, give the cheapest available variant and its price from the tool result, and tell the user plainly that you cannot place new orders.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "5. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "6. Verify each write with get_order_details or get_user_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

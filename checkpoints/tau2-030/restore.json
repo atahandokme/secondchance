@@ -1,0 +1,12 @@
+{
+ "method": "fresh tau2-bench environment for the task, then replay of every tool call in the history (agent and user device)",
+ "domain": "banking_knowledge",
+ "task": "task_031",
+ "history_messages": 26,
+ "replayed_calls": 10,
+ "expected_hashes": {
+  "agent_db_hash": "e75d2b63bc5fe34478dc78cb1120f1ddac9dbbbe860b07a57f0ed322a806ce84",
+  "user_db_hash": "e75d2b63bc5fe34478dc78cb1120f1ddac9dbbbe860b07a57f0ed322a806ce84"
+ },
+ "replay_response_mismatches": 0
+}

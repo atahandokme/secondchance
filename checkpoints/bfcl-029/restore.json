@@ -1,0 +1,63 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_param_184",
+ "replayed_calls": 5,
+ "state_hash": "28fc67fbc8879ea69bef4610a5b3d8babf366580b5dbd87153ff721d332c020d",
+ "replay": [
+  {
+   "name": "get_flight_cost",
+   "arguments": {
+    "travel_from": "JFK",
+    "travel_to": "LAX",
+    "travel_date": "2026-12-15",
+    "travel_class": "business"
+   },
+   "output": "{\"travel_cost_list\": [1140.0]}",
+   "turn": 0
+  },
+  {
+   "name": "book_flight",
+   "arguments": {
+    "access_token": "abc123xyz",
+    "card_id": "card_2108",
+    "travel_date": "2026-12-15",
+    "travel_from": "JFK",
+    "travel_to": "LAX",
+    "travel_class": "business"
+   },
+   "output": "{\"booking_id\": \"3426812\", \"transaction_id\": \"45451592\", \"booking_status\": true, \"booking_history\": {}}",
+   "turn": 0
+  },
+  {
+   "name": "retrieve_invoice",
+   "arguments": {
+    "access_token": "abc123xyz",
+    "booking_id": "3426812"
+   },
+   "output": "{\"invoice\": {\"booking_id\": \"3426812\", \"travel_date\": \"2026-12-15\", \"travel_from\": \"JFK\", \"travel_to\": \"LAX\", \"travel_class\": \"business\", \"travel_cost\": 1140.0, \"transaction_id\": \"45451592\"}}",
+   "turn": 1
+  },
+  {
+   "name": "cancel_booking",
+   "arguments": {
+    "access_token": "abc123xyz",
+    "booking_id": "3426812"
+   },
+   "output": "{\"cancel_status\": true}",
+   "turn": 3
+  },
+  {
+   "name": "message_login",
+   "arguments": {
+    "user_id": "USR006"
+   },
+   "output": "{\"login_status\": true, \"message\": \"User 'USR006' logged in successfully.\"}",
+   "turn": 4
+  }
+ ],
+ "resume": {
+  "turn": 4,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

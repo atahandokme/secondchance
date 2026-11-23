@@ -1,0 +1,27 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_125",
+ "replayed_calls": 2,
+ "state_hash": "d92c5bf41c933d10630f6447960c577b1151a098a5e5e7d00209e85b5ce6ad7d",
+ "replay": [
+  {
+   "name": "get_watchlist",
+   "arguments": {},
+   "output": "{\"watchlist\": [\"NVDA\"]}",
+   "turn": 0
+  },
+  {
+   "name": "add_to_watchlist",
+   "arguments": {
+    "stock": "ALPH"
+   },
+   "output": "{\"watchlist\": [\"NVDA\", \"ALPH\"]}",
+   "turn": 2
+  }
+ ],
+ "resume": {
+  "turn": 2,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

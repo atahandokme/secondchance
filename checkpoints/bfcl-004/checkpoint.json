@@ -1,0 +1,106 @@
+{
+ "id": "bfcl-004",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_base_153",
+ "source_model": "mistral-small-3.2",
+ "cut": 20,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "authenticate_travel"
+  ],
+  "call_index": [
+   5
+  ],
+  "turn": [
+   3
+  ],
+  "kind": "unwanted change elsewhere",
+  "mechanism": "P:unwanted_change_elsewhere",
+  "effect": [
+   "other state changed"
+  ],
+  "mechanical_evidence": "P:unwanted_change_elsewhere",
+  "why_an_error": null,
+  "review": "mechanical screen; the AI scan raised no flag"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "TravelAPI.access_token",
+    "TravelAPI.token_expires_in"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "P",
+   "attributes": [
+    "TravelAPI.access_token",
+    "TravelAPI.token_expires_in"
+   ],
+   "prefix_calls": 6,
+   "turn": 3,
+   "call": "authenticate_travel",
+   "call_index": 5
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "proven_impossible",
+  "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE",
+  "by_target": {
+   "correction": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   }
+  },
+  "certificates": [
+   {
+    "target": "correction",
+    "certificate": "inverse_catalog_rule",
+    "proof": "Every state reachable from the checkpoint by any sequence of calls to the methods of the task's BFCL backend classes (a superset of the functions the agent can call) satisfies the invariants below, and the target violates them, so no sequence of calls reaches the target. Each invariant was derived from the backend source. Assumptions: no state change outside the backend methods; equality is the backends' own.",
+    "invariants": [
+     {
+      "rule": "TV_token_expires_in",
+      "backend": "TravelAPI",
+      "attributes": [
+       "token_expires_in"
+      ],
+      "statement": "token_expires_in is only ever assigned the constant 2 (authenticate_travel)"
+     }
+    ]
+   },
+   {
+    "target": "complete",
+    "certificate": "inverse_catalog_rule",
+    "proof": "Every state reachable from the checkpoint by any sequence of calls to the methods of the task's BFCL backend classes (a superset of the functions the agent can call) satisfies the invariants below, and the target violates them, so no sequence of calls reaches the target. Each invariant was derived from the backend source. Assumptions: no state change outside the backend methods; equality is the backends' own.",
+    "invariants": [
+     {
+      "rule": "TV_token_expires_in",
+      "backend": "TravelAPI",
+      "attributes": [
+       "token_expires_in"
+      ],
+      "statement": "token_expires_in is only ever assigned the constant 2 (authenticate_travel)"
+     }
+    ]
+   }
+  ]
+ },
+ "competence_control": false
+}

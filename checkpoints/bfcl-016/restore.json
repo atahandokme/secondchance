@@ -1,0 +1,37 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_103",
+ "replayed_calls": 3,
+ "state_hash": "4977cd0a6781dd712656096239ac7a898256cfd723278ed71a9ce1ee94a24214",
+ "replay": [
+  {
+   "name": "get_symbol_by_name",
+   "arguments": {
+    "name": "Omega Industries"
+   },
+   "output": "{\"symbol\": \"OMEG\"}",
+   "turn": 0
+  },
+  {
+   "name": "add_to_watchlist",
+   "arguments": {
+    "stock": "AAPL"
+   },
+   "output": "{\"watchlist\": [\"NVDA\", \"OMEG\", \"AAPL\"]}",
+   "turn": 0
+  },
+  {
+   "name": "add_to_watchlist",
+   "arguments": {
+    "stock": "GOOG"
+   },
+   "output": "{\"watchlist\": [\"NVDA\", \"OMEG\", \"AAPL\", \"GOOG\"]}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

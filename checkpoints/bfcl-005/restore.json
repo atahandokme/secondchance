@@ -1,0 +1,82 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_189",
+ "replayed_calls": 7,
+ "state_hash": "58bbe991416f8a067c5903207a64d9d860ddc4b6ce8473e9e79fd348c30165aa",
+ "replay": [
+  {
+   "name": "get_flight_cost",
+   "arguments": {
+    "travel_date": "2026-12-24",
+    "travel_class": "first",
+    "travel_from": "NYC",
+    "travel_to": "Tokyo"
+   },
+   "output": "Error during execution: No available route for the given airports.",
+   "turn": 0
+  },
+  {
+   "name": "get_nearest_airport_by_city",
+   "arguments": {
+    "location": "New York"
+   },
+   "output": "{\"nearest_airport\": \"JFK\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_nearest_airport_by_city",
+   "arguments": {
+    "location": "Tokyo"
+   },
+   "output": "{\"nearest_airport\": \"HND\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_flight_cost",
+   "arguments": {
+    "travel_date": "2026-12-24",
+    "travel_class": "first",
+    "travel_from": "JFK",
+    "travel_to": "HND"
+   },
+   "output": "{\"travel_cost_list\": [4000.0]}",
+   "turn": 0
+  },
+  {
+   "name": "book_flight",
+   "arguments": {
+    "access_token": "abc123xyz",
+    "card_id": "card_5678",
+    "travel_date": "2026-12-24",
+    "travel_from": "JFK",
+    "travel_to": "HND",
+    "travel_class": "first"
+   },
+   "output": "{\"booking_id\": \"3426812\", \"transaction_id\": \"45451592\", \"booking_status\": true, \"booking_history\": {}}",
+   "turn": 0
+  },
+  {
+   "name": "get_credit_card_balance",
+   "arguments": {
+    "access_token": "abc123xyz",
+    "card_id": "card_5678"
+   },
+   "output": "{\"card_balance\": 46000.0}",
+   "turn": 0
+  },
+  {
+   "name": "set_budget_limit",
+   "arguments": {
+    "access_token": "abc123xyz",
+    "budget_limit": "42000"
+   },
+   "output": "{\"budget_limit\": 42000.0}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 7
+ }
+}

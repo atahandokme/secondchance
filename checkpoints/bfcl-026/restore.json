@@ -1,0 +1,73 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_param_150",
+ "replayed_calls": 6,
+ "state_hash": "47630b3e585e9b1518f64804a5df11bd81ef53efd1b5fa852187a911583743a9",
+ "replay": [
+  {
+   "name": "get_flight_cost",
+   "arguments": {
+    "travel_from": "Rivermist",
+    "travel_to": "Stonebrook",
+    "travel_date": "2026-10-06",
+    "travel_class": "economy"
+   },
+   "output": "Error during execution: No available route for the given airports.",
+   "turn": 0
+  },
+  {
+   "name": "get_nearest_airport_by_city",
+   "arguments": {
+    "location": "Rivermist"
+   },
+   "output": "{\"nearest_airport\": \"RMS\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_nearest_airport_by_city",
+   "arguments": {
+    "location": "Stonebrook"
+   },
+   "output": "{\"nearest_airport\": \"SBK\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_flight_cost",
+   "arguments": {
+    "travel_from": "RMS",
+    "travel_to": "SBK",
+    "travel_date": "2026-10-06",
+    "travel_class": "economy"
+   },
+   "output": "{\"travel_cost_list\": [220.0]}",
+   "turn": 0
+  },
+  {
+   "name": "set_budget_limit",
+   "arguments": {
+    "access_token": "access_token_here",
+    "budget_limit": "daily_spend_here"
+   },
+   "output": "{\"error\": \"Invalid access token\"}",
+   "turn": 1
+  },
+  {
+   "name": "authenticate_travel",
+   "arguments": {
+    "client_id": "client_id_here",
+    "client_secret": "client_secret_here",
+    "refresh_token": "refresh_token_here",
+    "grant_type": "read_write",
+    "user_first_name": "first_name_here",
+    "user_last_name": "last_name_here"
+   },
+   "output": "{\"expires_in\": 2, \"access_token\": \"251675\", \"token_type\": \"Bearer\", \"scope\": \"read_write\"}",
+   "turn": 1
+  }
+ ],
+ "resume": {
+  "turn": 1,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

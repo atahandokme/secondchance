@@ -1,0 +1,104 @@
+{
+ "id": "bfcl-020",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_miss_func_147",
+ "source_model": "llama-3.3-70b",
+ "cut": 21,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "post_tweet"
+  ],
+  "call_index": [
+   8
+  ],
+  "turn": [
+   1
+  ],
+  "kind": "wrong value",
+  "mechanism": "G:wrong_value",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "G:wrong_value",
+  "why_an_error": null,
+  "review": "mechanical screen; the AI scan raised no flag"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "TwitterAPI.tweets"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "G",
+   "attributes": [
+    "TwitterAPI.tweets"
+   ],
+   "prefix_calls": 9,
+   "turn": 1,
+   "call": "post_tweet",
+   "call_index": 8
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "proven_impossible",
+  "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE",
+  "by_target": {
+   "correction": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   },
+   "goal": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   },
+   "complete": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:INVERSE_CATALOG_RULE"
+   }
+  },
+  "certificates": [
+   {
+    "target": "correction",
+    "certificate": "inverse_catalog_rule",
+    "proof": "Every state reachable from the checkpoint by any sequence of calls to the methods of the task's BFCL backend classes (a superset of the functions the agent can call) satisfies the invariants below, and the target violates them, so no sequence of calls reaches the target. Each invariant was derived from the backend source. Assumptions: no state change outside the backend methods; equality is the backends' own.",
+    "invariants": [
+     {
+      "rule": "TW_tweets",
+      "backend": "TwitterAPI",
+      "attributes": [
+       "tweets"
+      ],
+      "statement": "tweets: keys only added (no del/pop); an existing tweet changes only by mention() extending its mentions list; so a tweet id absent from the target, a changed non-mention field, or mentions that are not a prefix of the target's are permanent"
+     }
+    ]
+   },
+   {
+    "target": "complete",
+    "certificate": "inverse_catalog_rule",
+    "proof": "Every state reachable from the checkpoint by any sequence of calls to the methods of the task's BFCL backend classes (a superset of the functions the agent can call) satisfies the invariants below, and the target violates them, so no sequence of calls reaches the target. Each invariant was derived from the backend source. Assumptions: no state change outside the backend methods; equality is the backends' own.",
+    "invariants": [
+     {
+      "rule": "TW_tweets",
+      "backend": "TwitterAPI",
+      "attributes": [
+       "tweets"
+      ],
+      "statement": "tweets: keys only added (no del/pop); an existing tweet changes only by mention() extending its mentions list; so a tweet id absent from the target, a changed non-mention field, or mentions that are not a prefix of the target's are permanent"
+     }
+    ]
+   }
+  ]
+ },
+ "competence_control": false
+}

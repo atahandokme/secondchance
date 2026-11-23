@@ -1,0 +1,37 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_153",
+ "replayed_calls": 2,
+ "state_hash": "57dfe48776b89501e6619790b7fa4a766883891be4205d6f971e7d8f175fa58a",
+ "replay": [
+  {
+   "name": "get_user_info",
+   "arguments": {
+    "passport_number": "P12345678",
+    "birthdate": "1950-01-01",
+    "first_name": "Michael",
+    "last_name": "Thompson"
+   },
+   "output": "Error during execution: function get_user_info not found",
+   "turn": 0
+  },
+  {
+   "name": "authenticate_travel",
+   "arguments": {
+    "client_id": "your_client_id",
+    "client_secret": "your_client_secret",
+    "refresh_token": "your_refresh_token",
+    "grant_type": "read_write",
+    "user_first_name": "Michael",
+    "user_last_name": "Thompson"
+   },
+   "output": "{\"expires_in\": 2, \"access_token\": \"251675\", \"token_type\": \"Bearer\", \"scope\": \"read_write\"}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

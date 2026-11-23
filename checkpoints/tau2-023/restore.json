@@ -1,0 +1,12 @@
+{
+ "method": "fresh tau2-bench environment for the task, then replay of every tool call in the history (agent and user device)",
+ "domain": "telecom",
+ "task": "[mobile_data_issue]airplane_mode_on|bad_network_preference|bad_vpn|user_abroad_roaming_disabled_on[PERSONA:Easy]",
+ "history_messages": 27,
+ "replayed_calls": 9,
+ "expected_hashes": {
+  "agent_db_hash": "98b7385cb0a6e5bebc1734b7e5b170494b57bb3981b7eb017edd11d34aa5ec79",
+  "user_db_hash": "dc9273fa43493ce5cc2190fe655a7dfeb5619545d620687468680966f7c47bbb"
+ },
+ "replay_response_mismatches": 0
+}

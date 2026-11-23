@@ -1,0 +1,138 @@
+{
+ "id": "tau2-034",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_047",
+ "source_model": "gpt-oss-120b",
+ "cut": 22,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "call_discoverable_agent_tool"
+  ],
+  "call_index": [
+   7
+  ],
+  "message_index": [
+   20
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "closed the Silver Zoom card without the KB retention protocol (no closure-history check, no logged reason, no offer)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:agent_discoverable_tools.data.a4315ea4df41af50.status",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"CALLED\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:agent_discoverable_tools.data.a4315ea4df41af50.tool_name",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"close_credit_card_account_7834\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:credit_card_accounts.data.cc_c7d8e9f0a1_szoom.closed_by",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"c7d8e9f0a1\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:credit_card_accounts.data.cc_c7d8e9f0a1_szoom.closed_date",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"11/14/2025\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:credit_card_accounts.data.cc_c7d8e9f0a1_szoom.status",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"CLOSED\"",
+     "target": null,
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 22,
+  "effects": [
+   {
+    "field": "a:agent_discoverable_tools.data.a4315ea4df41af50.status",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"CALLED\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:agent_discoverable_tools.data.a4315ea4df41af50.tool_name",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"close_credit_card_account_7834\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:credit_card_accounts.data.cc_c7d8e9f0a1_szoom.closed_by",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"c7d8e9f0a1\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:credit_card_accounts.data.cc_c7d8e9f0a1_szoom.closed_date",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"11/14/2025\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:credit_card_accounts.data.cc_c7d8e9f0a1_szoom.status",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"CLOSED\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

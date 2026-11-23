@@ -1,0 +1,136 @@
+{
+ "id": "tau2-018",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/[mms_issue]bad_wifi_calling|break_apn_mms_setting|break_app_sms_permission|data_mode_off|data_usage_exceeded|unseat_sim_card|user_abroad_roaming_disabled_on[PERSONA:Hard]",
+ "source_model": "qwen3-32b",
+ "cut": 110,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "refuel_data"
+  ],
+  "call_index": [
+   35
+  ],
+  "message_index": [
+   108
+  ],
+  "kind": "wrong entity",
+  "mechanism": "WRITE_TO_WRONG_ENTITY",
+  "effect": [
+   "other state changed",
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "effects on ['a:bills[bill_id=B1003]', 'a:lines[line_id=L1001]']; the reference changes ['a:bills[bill_id=B1003]', 'a:lines[line_id=L1002]', 'u:device', 'u:surroundings']",
+  "why_an_error": null,
+  "review": "mechanical screen; the AI scan raised no flag"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:bills[bill_id=B1003].line_items[0].amount",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "10",
+     "target": "4",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:bills[bill_id=B1003].line_items[0].description",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Data refueling: 2 GB at $5/GB\"",
+     "target": "\"Data refueling: 2 GB at $2/GB\"",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:bills[bill_id=B1003].total_due",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "10",
+     "target": "4",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:lines[line_id=L1001].data_refueling_gb",
+     "kind": "COLLATERAL",
+     "value_after_error": "2",
+     "target": "0",
+     "target_rule": "pre-error value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 110,
+  "effects": [
+   {
+    "field": "a:bills[bill_id=B1003].line_items[0].amount",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "10",
+    "pre": null,
+    "target": "4",
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:bills[bill_id=B1003].line_items[0].description",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Data refueling: 2 GB at $5/GB\"",
+    "pre": null,
+    "target": "\"Data refueling: 2 GB at $2/GB\"",
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:bills[bill_id=B1003].total_due",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "10",
+    "pre": "0",
+    "target": "4",
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:lines[line_id=L1001].data_refueling_gb",
+    "kind": "COLLATERAL",
+    "post": "2",
+    "pre": "0",
+    "target": "0",
+    "target_rule": "pre-error value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "proven_impossible",
+  "evidence_type": "CERTIFIED_CLOSED:CATALOG_TARGET_UNWRITABLE",
+  "by_target": {
+   "correction": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:CATALOG_TARGET_UNWRITABLE"
+   },
+   "goal": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_PROBED_NATIVE_SIMULATOR"
+   },
+   "complete": {
+    "label": "proven_impossible",
+    "evidence_type": "CERTIFIED_CLOSED:CATALOG_TARGET_UNWRITABLE"
+   }
+  },
+  "certificates": [
+   {
+    "target": "correction",
+    "certificate": "catalog_target_unwritable",
+    "proof": "No tool of the agent or of the user's device can write the target value: it is not among the values any tool can assign to this field (tau2-bench telecom tools), so no sequence of tool calls from the checkpoint reaches the target. Assumptions: only the two tool catalogs act on the database; a transfer to a human agent resolves nothing inside the episode; no database edits outside the tools."
+   },
+   {
+    "target": "complete",
+    "certificate": "catalog_target_unwritable",
+    "proof": "No tool of the agent or of the user's device can write the target value: it is not among the values any tool can assign to this field (tau2-bench telecom tools), so no sequence of tool calls from the checkpoint reaches the target. Assumptions: only the two tool catalogs act on the database; a transfer to a human agent resolves nothing inside the episode; no database edits outside the tools."
+   }
+  ]
+ },
+ "competence_control": false
+}

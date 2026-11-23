@@ -1,0 +1,122 @@
+{
+ "id": "bfcl-001",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_base_102",
+ "source_model": "qwen3-4b",
+ "cut": 20,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "ticket_login"
+  ],
+  "call_index": [
+   4
+  ],
+  "turn": [
+   4
+  ],
+  "kind": "unwanted change elsewhere",
+  "mechanism": "P:unwanted_change_elsewhere",
+  "effect": [
+   "other state changed"
+  ],
+  "mechanical_evidence": "P:unwanted_change_elsewhere",
+  "why_an_error": null,
+  "review": "mechanical screen; the AI scan raised no flag"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "TicketAPI.current_user"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "P",
+   "attributes": [
+    "TicketAPI.current_user"
+   ],
+   "prefix_calls": 5,
+   "turn": 4,
+   "call": "ticket_login",
+   "call_index": 4
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "demonstrated",
+  "evidence_type": "AVAILABLE_ROUTE_SCRIPTED",
+  "by_target": {
+   "correction": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "goal": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "complete": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   }
+  },
+  "demonstrated_routes": [
+   {
+    "target": "correction",
+    "route": "undo calls at history positions [4] + redo the reference calls from turn 4 without reference call 0 (2 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "correction",
+    "route": "undo calls at history positions [4] + nothing to redo (1 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "goal",
+    "route": "undo calls at history positions [4] + redo the reference calls from turn 4 without reference call 0 (2 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "complete",
+    "route": "undo calls at history positions [4] + redo the reference calls from turn 4 without reference call 0 (2 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   }
+  ]
+ },
+ "competence_control": true
+}

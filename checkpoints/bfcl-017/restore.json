@@ -1,0 +1,44 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_104",
+ "replayed_calls": 4,
+ "state_hash": "18f74c6cf8a0692f2ae4f33d186a3ee9cffe6350b2658436bb007506b10fe267",
+ "replay": [
+  {
+   "name": "get_symbol_by_name",
+   "arguments": {
+    "name": "Quasar Ltd."
+   },
+   "output": "{\"symbol\": \"QUAS\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_account_info",
+   "arguments": {},
+   "output": "{\"account_id\": 12345, \"balance\": 10000.0, \"binding_card\": 1974202140965533}",
+   "turn": 0
+  },
+  {
+   "name": "get_current_time",
+   "arguments": {},
+   "output": "{\"current_time\": \"10:30 AM\"}",
+   "turn": 0
+  },
+  {
+   "name": "place_order",
+   "arguments": {
+    "order_type": "Buy",
+    "symbol": "QUAS",
+    "price": 50.0,
+    "amount": 10
+   },
+   "output": "{\"order_id\": 12446, \"order_type\": \"Buy\", \"status\": \"Pending\", \"price\": 50.0, \"amount\": 10}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 4
+ }
+}

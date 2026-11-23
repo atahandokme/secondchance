@@ -1,0 +1,134 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_143",
+ "replayed_calls": 16,
+ "state_hash": "cdddb6c93a9b20fe017fd04def8d4a4854ae4a3a8b5993208dd64c5d90072d72",
+ "replay": [
+  {
+   "name": "add_to_watchlist",
+   "arguments": {
+    "stock": "Zeta Corp"
+   },
+   "output": "{\"watchlist\": [\"NVDA\", \"ZETA\"]}",
+   "turn": 0
+  },
+  {
+   "name": "get_order_details",
+   "arguments": {
+    "order_id": "1234"
+   },
+   "output": "{\"error\": \"Order with ID 1234 not found.Here is the list of orders_id: [12345, 12446]\"}",
+   "turn": 1
+  },
+  {
+   "name": "get_order_details",
+   "arguments": {
+    "order_id": "12345"
+   },
+   "output": "{\"error\": \"Order with ID 12345 not found.Here is the list of orders_id: [12345, 12446]\"}",
+   "turn": 1
+  },
+  {
+   "name": "get_order_details",
+   "arguments": {
+    "order_id": "12446"
+   },
+   "output": "{\"error\": \"Order with ID 12446 not found.Here is the list of orders_id: [12345, 12446]\"}",
+   "turn": 1
+  },
+  {
+   "name": "cancel_order",
+   "arguments": {
+    "order_id": "12446"
+   },
+   "output": "{\"error\": \"Order with ID 12446 not found.\"}",
+   "turn": 2
+  },
+  {
+   "name": "cancel_order",
+   "arguments": {
+    "order_id": "12345"
+   },
+   "output": "{\"error\": \"Order with ID 12345 not found.\"}",
+   "turn": 2
+  },
+  {
+   "name": "get_order_history",
+   "arguments": {},
+   "output": "{\"history\": [12345, 12446]}",
+   "turn": 2
+  },
+  {
+   "name": "cancel_order",
+   "arguments": {
+    "order_id": "12345"
+   },
+   "output": "{\"error\": \"Order with ID 12345 not found.\"}",
+   "turn": 2
+  },
+  {
+   "name": "cancel_order",
+   "arguments": {
+    "order_id": "12446"
+   },
+   "output": "{\"error\": \"Order with ID 12446 not found.\"}",
+   "turn": 2
+  },
+  {
+   "name": "get_order_history",
+   "arguments": {},
+   "output": "{\"history\": [12345, 12446]}",
+   "turn": 2
+  },
+  {
+   "name": "get_account_info",
+   "arguments": {},
+   "output": "{\"account_id\": 12345, \"balance\": 10000.0, \"binding_card\": 1974202140965533}",
+   "turn": 3
+  },
+  {
+   "name": "message_login",
+   "arguments": {
+    "user_id": "USR001"
+   },
+   "output": "{\"login_status\": true, \"message\": \"User 'USR001' logged in successfully.\"}",
+   "turn": 3
+  },
+  {
+   "name": "get_user_id",
+   "arguments": {
+    "user": "USR003"
+   },
+   "output": "{\"error\": \"User 'USR003' not found in the workspace.\"}",
+   "turn": 3
+  },
+  {
+   "name": "list_users",
+   "arguments": {},
+   "output": "{\"user_list\": [\"Alice\", \"Bob\", \"Catherine\", \"Daniel\"]}",
+   "turn": 3
+  },
+  {
+   "name": "get_user_id",
+   "arguments": {
+    "user": "Daniel"
+   },
+   "output": "{\"user_id\": \"USR004\"}",
+   "turn": 3
+  },
+  {
+   "name": "send_message",
+   "arguments": {
+    "receiver_id": "USR004",
+    "message": "My strategy is shifting due to recent market movements and the cancellation of a specific order. Current balance in my account is $10000."
+   },
+   "output": "{\"sent_status\": true, \"message_id\": {\"new_id\": 67410}, \"message\": \"Message sent to 'USR004' successfully.\"}",
+   "turn": 3
+  }
+ ],
+ "resume": {
+  "turn": 3,
+  "mid_turn": true,
+  "steps_done_in_turn": 6
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "checkpoint_id": "tau2-033",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", arguments=\"{\\\"transaction_id\\\": \\\"txn_e45e7acb56a0\\\", \\\"card_action\\\": \\\"cancel_and_reissue\\\", \\\"card_last_4_digits\\\": \\\"Unknown\\\", \\\"full_name\\\": \\\"Fatima Al-Hassan\\\", \\\"user_id\\\": \\\"890389b165\\\", \\\"phone\\\": \\\"313-555-0246\\\", \\\"email\\\": \\\"coffeelover_fati@protonmail.com\\\", \\\"address\\\": \\\"1923 Oak Park Boulevard, Detroit, MI 48226\\\", \\\"…) (message 31 of this conversation).",
+   "sha256": "2457f72936e9a71d26de6995077e12b9481ab18510f67e2942b3d45817804f27",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", arguments=\"{\\\"transaction_id\\\": \\\"txn_e45e7acb56a0\\\", \\\"card_action\\\": \\\"cancel_and_reissue\\\", \\\"card_last_4_digits\\\": \\\"Unknown\\\", \\\"full_name\\\": \\\"Fatima Al-Hassan\\\", \\\"user_id\\\": \\\"890389b165\\\", \\\"phone\\\": \\\"313-555-0246\\\", \\\"email\\\": \\\"coffeelover_fati@protonmail.com\\\", \\\"address\\\": \\\"1923 Oak Park Boulevard, Detroit, MI 48226\\\", \\\"…) (message 31 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: in one message you made these calls together: call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_e45e7acb56a0\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_2017c3b2b119\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_28cb62125078\"), after the user wrote: \"Yes, I still have my physical card with me. And yes, you can use this conversation as my written statement—that’s fine with me. \n\nI’d like to get the card cancelled and a new one sent out, please.\". Together they changed the account: it created an agent discoverable tool record (tool_name=\"file_credit_card_transaction_dispute_4829\", status=\"CALLED\"); it created transaction dispute dsp_1914b541697f (dispute_id=\"dsp_1914b541697f\", transaction_id=\"txn_28cb62125078\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"Unknown\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=true, purchase_date=\"10/08/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"goods_services_not_as_described\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=false, provisional_credit_given=false, submitted_at=\"11/14/2025\", status=\"SUBMITTED\"); it created transaction dispute dsp_a86c2887d0f7 (dispute_id=\"dsp_a86c2887d0f7\", transaction_id=\"txn_2017c3b2b119\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"Unknown\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"10/10/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\"); it created transaction dispute dsp_f96435ed0614 (dispute_id=\"dsp_f96435ed0614\", transaction_id=\"txn_e45e7acb56a0\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"Unknown\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"10/05/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\").\nWhat was wrong at the time: filed the dispute with card_last_4_digits 'Unknown' without asking, although the user had the card.\nEarlier steps in this conversation may also differ from what was asked; this plan concerns the step named here.\n2. Before anything else, tell the user plainly what you did and what it changed.\n3. Before these calls, an agent discoverable tool record did not exist; transaction dispute dsp_1914b541697f did not exist; transaction dispute dsp_a86c2887d0f7 did not exist; transaction dispute dsp_f96435ed0614 did not exist.\nNo way to set this right has been verified from this point. If you think a tool can do it, check what the tool does first; do not guess, and if you cannot undo it, tell the user so plainly.\n4. Then continue with what the user asked, checking first which of their requests are already done.\n5. Amounts, plans, which line or account, and whether to make any change are the user's decisions: ask and wait for the reply; never assume an answer. Values such as personal details must come from the user or from tool results.\n6. Your policy: do not make up information or actions (policy header, item 1); always use get_current_time for the current time (policy header, item 4); a user's identity is verified only when they correctly give two of date of birth, email, phone number and address (additional instructions). Change nothing the user has not asked for.\n7. After each change, read the record back with your tools and report to the user only what the results show.",
+   "sha256": "c4f4edea1549e98396859b6ff87af531346715d523ff953fc70adbfbfc67d9e0",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: in one message you made these calls together: call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_e45e7acb56a0\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_2017c3b2b119\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_28cb62125078\"), after the user wrote: \"Yes, I still have my physical card with me. And yes, you can use this conversation as my written statement—that’s fine with me. \n\nI’d like to get the card cancelled and a new one sent out, please.\". Together they changed the account: it created an agent discoverable tool record (tool_name=\"file_credit_card_transaction_dispute_4829\", status=\"CALLED\"); it created transaction dispute dsp_1914b541697f (dispute_id=\"dsp_1914b541697f\", transaction_id=\"txn_28cb62125078\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"Unknown\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=true, purchase_date=\"10/08/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"goods_services_not_as_described\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=false, provisional_credit_given=false, submitted_at=\"11/14/2025\", status=\"SUBMITTED\"); it created transaction dispute dsp_a86c2887d0f7 (dispute_id=\"dsp_a86c2887d0f7\", transaction_id=\"txn_2017c3b2b119\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"Unknown\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"10/10/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\"); it created transaction dispute dsp_f96435ed0614 (dispute_id=\"dsp_f96435ed0614\", transaction_id=\"txn_e45e7acb56a0\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"Unknown\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"10/05/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\").",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "What was wrong at the time: filed the dispute with card_last_4_digits 'Unknown' without asking, although the user had the card.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "Earlier steps in this conversation may also differ from what was asked; this plan concerns the step named here.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "2. Before anything else, tell the user plainly what you did and what it changed.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Before these calls, an agent discoverable tool record did not exist; transaction dispute dsp_1914b541697f did not exist; transaction dispute dsp_a86c2887d0f7 did not exist; transaction dispute dsp_f96435ed0614 did not exist.",
+     "source_class": "PRIOR_STATE"
+    },
+    {
+     "clause": "No way to set this right has been verified from this point. If you think a tool can do it, check what the tool does first; do not guess, and if you cannot undo it, tell the user so plainly.",
+     "source_class": "UNVERIFIED"
+    },
+    {
+     "clause": "4. Then continue with what the user asked, checking first which of their requests are already done.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. Amounts, plans, which line or account, and whether to make any change are the user's decisions: ask and wait for the reply; never assume an answer. Values such as personal details must come from the user or from tool results.",
+     "source_class": "USER_CHOICE"
+    },
+    {
+     "clause": "6. Your policy: do not make up information or actions (policy header, item 1); always use get_current_time for the current time (policy header, item 4); a user's identity is verified only when they correctly give two of date of birth, email, phone number and address (additional instructions). Change nothing the user has not asked for.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. After each change, read the record back with your tools and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

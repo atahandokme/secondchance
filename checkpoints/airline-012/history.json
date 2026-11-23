@@ -1,0 +1,38 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi! I need some help with my reservation and also want to book a new flight. First, I’d like to remove a passenger named Ethan from my reservation H9ZU1C. Can you assist with that?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-60a1002e16044a8397b7864b519f4f52",
+    "name": "update_reservation_passengers",
+    "arguments": {
+     "reservation_id": "H9ZU1C",
+     "passengers": [
+      {
+       "first_name": "Ethan",
+       "last_name": "",
+       "dob": ""
+      }
+     ]
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Number of passengers does not match",
+  "id": "chatcmpl-tool-60a1002e16044a8397b7864b519f4f52",
+  "requestor": "assistant",
+  "error": true
+ }
+]

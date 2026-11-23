@@ -1,0 +1,123 @@
+{
+ "id": "tau2-005",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/[mms_issue]airplane_mode_on|break_app_both_permissions|data_mode_off|data_usage_exceeded|unseat_sim_card[PERSONA:Hard]",
+ "source_model": "qwen3-235b",
+ "cut": 24,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "refuel_data"
+  ],
+  "call_index": [
+   8
+  ],
+  "message_index": [
+   22
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "refuelled before stating any price (telecom policy: refuel only after the price is confirmed)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:bills[bill_id=B1003].line_items[0].amount",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "2",
+     "target": "4",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:bills[bill_id=B1003].line_items[0].description",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Data refueling: 1 GB at $2/GB\"",
+     "target": "\"Data refueling: 2 GB at $2/GB\"",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:bills[bill_id=B1003].total_due",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "2",
+     "target": "4",
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:lines[line_id=L1002].data_refueling_gb",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "1",
+     "target": "2",
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 24,
+  "effects": [
+   {
+    "field": "a:bills[bill_id=B1003].line_items[0].amount",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "2",
+    "pre": null,
+    "target": "4",
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:bills[bill_id=B1003].line_items[0].description",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Data refueling: 1 GB at $2/GB\"",
+    "pre": null,
+    "target": "\"Data refueling: 2 GB at $2/GB\"",
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:bills[bill_id=B1003].total_due",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "2",
+    "pre": "0",
+    "target": "4",
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:lines[line_id=L1002].data_refueling_gb",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "1",
+    "pre": "0",
+    "target": "2",
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

@@ -1,0 +1,21 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_param_6",
+ "replayed_calls": 1,
+ "state_hash": "355bf2345f7d2d8a61c3117720ae0570a8fe9aa2cedb9841582d15c9514966e0",
+ "replay": [
+  {
+   "name": "touch",
+   "arguments": {
+    "file_name": "Annual_Report_2023.docx"
+   },
+   "output": "None",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

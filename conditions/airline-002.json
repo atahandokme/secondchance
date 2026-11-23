@@ -1,0 +1,56 @@
+{
+ "checkpoint_id": "airline-002",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call cancel_reservation(reservation_id=\"PEP4E0\") (message 10 of this conversation).",
+   "sha256": "6a9b8f91b378434084f93afe72128d22e742d444a163d7e542c9b47b3bb1b9dc",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call cancel_reservation(reservation_id=\"PEP4E0\") (message 10 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called cancel_reservation for PEP4E0. The reservation was created 2024-05-05T05:10:43, more than 24 hours before the current time 2024-05-15 15:00 EST; it is basic economy with no travel insurance, and both flights show 'available', so the airline had not cancelled them. None of the cancellation conditions held. The cancellation is done (the tool result: status cancelled, $128 refunded to credit_card_9302073).\n2. Tell the user plainly that you cancelled the reservation although the policy did not allow it, and give the refund the tool shows; it goes to the original payment method.\n3. Your tools cannot reinstate a cancelled reservation; do not claim otherwise and do not try other writes on PEP4E0. If the user asks for something you cannot do, say so plainly; transfer to a human agent (transfer_to_human_agents, then the transfer message) only if the user asks for a human, your policy says to transfer (for example, a flight portion already flown), or the request is within your policy and no tool can perform it after you have done the parts you can; deny a request your policy forbids.\n4. For any further request, check the policy rule for that action against the reservation before answering. Make no write the user has not asked for and explicitly confirmed after you list the details. Do not offer compensation unless the user explicitly asks for it.\n5. Report to the user only what tool results show.",
+   "sha256": "be2156ff15ec78b8101e747493a6d67326f82f8a3bb28f158b50ce66b903de03",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called cancel_reservation for PEP4E0. The reservation was created 2024-05-05T05:10:43, more than 24 hours before the current time 2024-05-15 15:00 EST; it is basic economy with no travel insurance, and both flights show 'available', so the airline had not cancelled them. None of the cancellation conditions held. The cancellation is done (the tool result: status cancelled, $128 refunded to credit_card_9302073).",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that you cancelled the reservation although the policy did not allow it, and give the refund the tool shows; it goes to the original payment method.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Your tools cannot reinstate a cancelled reservation; do not claim otherwise and do not try other writes on PEP4E0. If the user asks for something you cannot do, say so plainly; transfer to a human agent (transfer_to_human_agents, then the transfer message) only if the user asks for a human, your policy says to transfer (for example, a flight portion already flown), or the request is within your policy and no tool can perform it after you have done the parts you can; deny a request your policy forbids.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "4. For any further request, check the policy rule for that action against the reservation before answering. Make no write the user has not asked for and explicitly confirmed after you list the details. Do not offer compensation unless the user explicitly asks for it.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Report to the user only what tool results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

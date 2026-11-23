@@ -1,0 +1,101 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi, I’m having trouble sending MMS messages from my phone. It’s been happening for the past few hours, and I’m currently abroad in France. Can you help me get this fixed?"
+ },
+ {
+  "role": "assistant",
+  "content": "Sure, I can help you troubleshoot the MMS issue. Could you please provide the phone number associated with your account (including the country code)?"
+ },
+ {
+  "role": "user",
+  "content": "My phone number is 555-123-2002. Let me know what you need me to do next."
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9c1dafb0fd097168",
+    "name": "get_customer_by_phone",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+  "id": "chatcmpl-tool-9c1dafb0fd097168",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9d7e0ba9b01cc40d",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-9d7e0ba9b01cc40d",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-ab4091d8d7e50c59",
+    "name": "can_send_mms",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'can_send_mms' not found.",
+  "id": "chatcmpl-tool-ab4091d8d7e50c59",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9916b619d22a178a",
+    "name": "enable_roaming",
+    "arguments": {
+     "customer_id": "C1001",
+     "line_id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Roaming enabled successfully",
+  "id": "chatcmpl-tool-9916b619d22a178a",
+  "requestor": "assistant",
+  "error": false
+ }
+]

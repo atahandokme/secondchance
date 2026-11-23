@@ -1,0 +1,145 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi, I’m having trouble sending MMS messages from my phone. I’ve been trying for a few hours, but they just won’t go through. I’m currently in France, and I’d really like to get this fixed. Can you help me out?"
+ },
+ {
+  "role": "assistant",
+  "content": "I can help you troubleshoot the issue with sending MMS messages. Let's start by checking if your phone has proper cellular service and mobile data connectivity, which are essential for MMS to work. \n\nFirst, let me check the status of your line. I'll need your phone number to proceed."
+ },
+ {
+  "role": "user",
+  "content": "Sure, my phone number is 555-123-2002. Let me know what you find out!"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-3399942d010f44bbb1e45efa46b30848",
+    "name": "get_customer_by_phone",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+  "id": "chatcmpl-tool-3399942d010f44bbb1e45efa46b30848",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-a91db8dd967049f1b9ec7bc4cde81819",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-a91db8dd967049f1b9ec7bc4cde81819",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-d1f17460516942f9bc19dbc5d0751190",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "P1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"plan_id\": \"P1001\", \"name\": \"Basic Plan\", \"data_limit_gb\": 5.0, \"price_per_month\": 40.0, \"data_refueling_price_per_gb\": 5.0}",
+  "id": "chatcmpl-tool-d1f17460516942f9bc19dbc5d0751190",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-aa0e7ed8f0c9466bade718e2f9a28b1e",
+    "name": "check_status_bar",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'check_status_bar' not found.",
+  "id": "chatcmpl-tool-aa0e7ed8f0c9466bade718e2f9a28b1e",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I apologize for the confusion. Let me try a different approach to diagnose the issue with your MMS messages. \n\nFirst, let's check if your line is roaming enabled, since you mentioned you're in France. I'll check that right away.\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-fe235b3515794ce39db32c975798a502",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-fe235b3515794ce39db32c975798a502",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": "I see that data roaming is currently disabled on your line. Since you're in France, we need to enable roaming for your mobile data to work properly. Let me enable data roaming for you now.\n\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-eb29cdf96b2d4bfa9a507b5d48677b27",
+    "name": "enable_roaming",
+    "arguments": {
+     "customer_id": "C1001",
+     "line_id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Roaming enabled successfully",
+  "id": "chatcmpl-tool-eb29cdf96b2d4bfa9a507b5d48677b27",
+  "requestor": "assistant",
+  "error": false
+ }
+]

@@ -1,0 +1,64 @@
+{
+ "checkpoint_id": "retail-012",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call return_delivered_order_items(order_id=\"#W1845024\", item_ids=[\"1340995114\", \"8323284863\"], payment_method_id=\"paypal_3169710\") (message 18 of this conversation).",
+   "sha256": "97c9c35a5f02b6724139e504b1e106c1975fb1950fd212050279f6f788d25021",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call return_delivered_order_items(order_id=\"#W1845024\", item_ids=[\"1340995114\", \"8323284863\"], payment_method_id=\"paypal_3169710\") (message 18 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called return_delivered_order_items for order #W1845024 (items 1340995114 Mechanical Keyboard and 8323284863 Office Chair, refund to paypal_3169710) without listing the details, getting an explicit yes, or checking the order status. The order is pending, so the tool refused ('Non-delivered order cannot be returned') and nothing was changed.\n2. Tell the user plainly that the return was not made and why: only delivered orders can be returned, and #W1845024 is still pending.\n3. The user asked to return or cancel only the Mechanical Keyboard and the Office Chair, keep the Hiking Boots, know how much they would get back, and have the refund go to the original payment method. Your tools cannot cancel part of a pending order: cancelling changes the whole order to cancelled, and an item modification only changes an item to another option of the same product. Tell the user this plainly and ask how they want to proceed; do not decide for them.\n4. Cancel the whole order only if the user, told that all five items including the Hiking Boots would be cancelled, explicitly asks for it: then confirm the order id and a reason that is either 'no longer needed' or 'ordered by mistake', and get an explicit yes before cancel_pending_order.\n5. Give amounts only from tool results (the order and its payment history are in the conversation).\n6. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.\n7. Verify each write with get_order_details and report to the user only what the results show.",
+   "sha256": "f929804777680b330978e71d3c709c965475343a724a6a9e243c1194af166569",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called return_delivered_order_items for order #W1845024 (items 1340995114 Mechanical Keyboard and 8323284863 Office Chair, refund to paypal_3169710) without listing the details, getting an explicit yes, or checking the order status. The order is pending, so the tool refused ('Non-delivered order cannot be returned') and nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that the return was not made and why: only delivered orders can be returned, and #W1845024 is still pending.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. The user asked to return or cancel only the Mechanical Keyboard and the Office Chair, keep the Hiking Boots, know how much they would get back, and have the refund go to the original payment method. Your tools cannot cancel part of a pending order: cancelling changes the whole order to cancelled, and an item modification only changes an item to another option of the same product. Tell the user this plainly and ask how they want to proceed; do not decide for them.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Cancel the whole order only if the user, told that all five items including the Hiking Boots would be cancelled, explicitly asks for it: then confirm the order id and a reason that is either 'no longer needed' or 'ordered by mistake', and get an explicit yes before cancel_pending_order.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Give amounts only from tool results (the order and its payment history are in the conversation).",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "6. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. Verify each write with get_order_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

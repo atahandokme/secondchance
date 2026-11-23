@@ -1,0 +1,31 @@
+{
+ "id": "retail-008",
+ "environment": "retail",
+ "split": "supplementary",
+ "task_id": "retail/40",
+ "source_model": "qwen3-32b",
+ "cut": 17,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "evidence": "two AI passes agree",
+  "kind": null
+ },
+ "evaluation": {
+  "correction_target": "NOT_APPLICABLE (no field-level mistake effect at the cut)",
+  "task_goal": "AVAILABLE",
+  "protected_state": "AVAILABLE",
+  "policy": "the retail domain's agent policy (tau2-bench)",
+  "consent": "predicates.consent lexical rule (domain-generic) available as evidence; per-policy consent rule UNKNOWN for retail"
+ },
+ "scoring_inputs": {
+  "cut_messages": 17,
+  "effects": []
+ },
+ "fixability": {
+  "label": "not_applicable",
+  "evidence_type": "NO_FIELD_LEVEL_EFFECT",
+  "complete_recovery": "not_applicable"
+ },
+ "competence_control": false
+}

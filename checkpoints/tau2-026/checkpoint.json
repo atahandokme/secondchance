@@ -1,0 +1,168 @@
+{
+ "id": "tau2-026",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_017",
+ "source_model": "llama-3.3-70b",
+ "cut": 12,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "log_verification"
+  ],
+  "call_index": [
+   2
+  ],
+  "message_index": [
+   10
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "logged the verification with an invented time ('2024-02-20 14:30:00'; policy: use get_current_time)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.address",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"1847 Cherry Blossom Lane, Seattle, WA 98101\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.date_of_birth",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"07/22/1985\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.email",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"kenji.tanaka@outlook.com\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.name",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Kenji Tanaka\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.phone_number",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"206-555-0293\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.time_verified",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"2024-02-20 14:30:00\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.6680a37184_20240220_143000.user_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"6680a37184\"",
+     "target": null,
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 12,
+  "effects": [
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.address",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"1847 Cherry Blossom Lane, Seattle, WA 98101\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.date_of_birth",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"07/22/1985\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.email",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"kenji.tanaka@outlook.com\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.name",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Kenji Tanaka\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.phone_number",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"206-555-0293\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.time_verified",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"2024-02-20 14:30:00\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.6680a37184_20240220_143000.user_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"6680a37184\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

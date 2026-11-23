@@ -1,0 +1,80 @@
+{
+ "checkpoint_id": "tau2-019",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call enable_roaming(customer_id=\"C1001\", line_id=\"L1001\") (message 43 of this conversation).",
+   "sha256": "862f3821a0c380fec4680c991e4231dd78cbeef96615ccc9b358b2feb3ff7ba2",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call enable_roaming(customer_id=\"C1001\", line_id=\"L1001\") (message 43 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called enable_roaming(customer_id=\"C1001\", line_id=\"L1001\"), after the user wrote: \"I just removed and reinserted my SIM card. Now, the status bar shows excellent signal strength, 5G, and data is enabled. Should I try sending an MMS again, or is there anything else you’d like me to check first?\". On line L1001 it changed roaming_enabled from false to true.\nThis changed a record that is not the one the user's request concerns.\nEarlier steps in this conversation may also differ from what was asked; this plan concerns the step named here.\n2. Before anything else, tell the user plainly what you did and what it changed.\n3. Before your call, roaming_enabled of line L1001 was false.\nA correction that returns these to their earlier values was executed offline from this exact checkpoint by the analysis: disable_roaming(customer_id=\"C1001\", line_id=\"L1001\"). It has not been tried with you or the user in this conversation.\nExplain to the user what the correction would change and ask whether they want it; act only on their reply.\n4. Then continue with what the user asked, checking first which of their requests are already done.\n5. Amounts, plans, which line or account, and whether to make any change are the user's decisions: ask and wait for the reply; never assume an answer. Values such as personal details must come from the user or from tool results.\n6. Your policy: check that a bill is overdue before sending a payment request (L117); for a data refuel, ask how many GB to add and confirm the price first (L136-L137), at most 2 GB (L134). Change nothing the user has not asked for.\n7. After each change, read the record back with your tools and report to the user only what the results show.",
+   "sha256": "0092c2cf8f7319c97e0053bac328172d63c9919f7d1628e397787a88f1b42683",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called enable_roaming(customer_id=\"C1001\", line_id=\"L1001\"), after the user wrote: \"I just removed and reinserted my SIM card. Now, the status bar shows excellent signal strength, 5G, and data is enabled. Should I try sending an MMS again, or is there anything else you’d like me to check first?\". On line L1001 it changed roaming_enabled from false to true.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "This changed a record that is not the one the user's request concerns.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "Earlier steps in this conversation may also differ from what was asked; this plan concerns the step named here.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "2. Before anything else, tell the user plainly what you did and what it changed.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Before your call, roaming_enabled of line L1001 was false.",
+     "source_class": "PRIOR_STATE"
+    },
+    {
+     "clause": "A correction that returns these to their earlier values was executed offline from this exact checkpoint by the analysis: disable_roaming(customer_id=\"C1001\", line_id=\"L1001\"). It has not been tried with you or the user in this conversation.",
+     "source_class": "VERIFIED_ROUTE"
+    },
+    {
+     "clause": "Explain to the user what the correction would change and ask whether they want it; act only on their reply.",
+     "source_class": "USER_CHOICE"
+    },
+    {
+     "clause": "4. Then continue with what the user asked, checking first which of their requests are already done.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. Amounts, plans, which line or account, and whether to make any change are the user's decisions: ask and wait for the reply; never assume an answer. Values such as personal details must come from the user or from tool results.",
+     "source_class": "USER_CHOICE"
+    },
+    {
+     "clause": "6. Your policy: check that a bill is overdue before sending a payment request (L117); for a data refuel, ask how many GB to add and confirm the price first (L136-L137), at most 2 GB (L134). Change nothing the user has not asked for.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. After each change, read the record back with your tools and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

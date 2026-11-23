@@ -1,0 +1,270 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hello, I’m having trouble sending those picture messages—MMS, I think they’re called? It’s been a few hours now and they just won’t go through. I’m not very good with these things, so I’d really appreciate some help getting it working again."
+ },
+ {
+  "role": "assistant",
+  "content": "I'd be happy to help you with MMS issues. Let me check some details about your account first.\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-3b74f0bfb488450ea0e91920b89737c6",
+    "name": "get_customer_by_phone",
+    "arguments": {
+     "phone_number": "555-123-4567"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Customer with phone number 555-123-4567 not found",
+  "id": "chatcmpl-tool-3b74f0bfb488450ea0e91920b89737c6",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I couldn't find a customer with that phone number. Could you please provide your phone number again or share your full name and date of birth so I can look up your account?"
+ },
+ {
+  "role": "user",
+  "content": "Oh, sorry about that! My name is John Smith, and my phone number is 555-123-2002. Do you need my date of birth as well?"
+ },
+ {
+  "role": "assistant",
+  "content": "Thanks for providing your phone number. Let me try looking up your account again.\n\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-86bfcfce980348aa9cf05a7d9c1a3be2",
+    "name": "get_customer_by_phone",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+  "id": "chatcmpl-tool-86bfcfce980348aa9cf05a7d9c1a3be2",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": "I've found your account. Let me check the details of your lines to help diagnose the MMS issue.\n\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-4f61b26148ca4e8aa6fb4d261708847d",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-4f61b26148ca4e8aa6fb4d261708847d",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-214bb14fe4e84e9f82a6e70940aaecfd",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "P1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"plan_id\": \"P1001\", \"name\": \"Basic Plan\", \"data_limit_gb\": 5.0, \"price_per_month\": 40.0, \"data_refueling_price_per_gb\": 5.0}",
+  "id": "chatcmpl-tool-214bb14fe4e84e9f82a6e70940aaecfd",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-ab51489a353e4acc935c7bc91cd7e336",
+    "name": "check_status_bar",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'check_status_bar' not found.",
+  "id": "chatcmpl-tool-ab51489a353e4acc935c7bc91cd7e336",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I apologize for the confusion. Let me try a different approach to diagnose your MMS issue. I'll need to check some technical settings on your phone.\n\n\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-94647ee7beda474190301ebc9c1bfd57",
+    "name": "check_network_status",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'check_network_status' not found.",
+  "id": "chatcmpl-tool-94647ee7beda474190301ebc9c1bfd57",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I apologize for the technical limitations. Let me try another method to help you with your MMS issue. Let's check if your line is properly configured for MMS services.\n\n\n\n",
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-24f1fe41bc86497dbcfcb3f6c892c801",
+    "name": "check_apn_settings",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'check_apn_settings' not found.",
+  "id": "chatcmpl-tool-24f1fe41bc86497dbcfcb3f6c892c801",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I'm having some technical difficulties accessing your phone's settings directly. Let me provide you with some general troubleshooting steps for MMS issues:\n\n1. First, let's check if your line is roaming enabled, as this can affect MMS:\n   - Is your phone currently outside your home network area?\n   - Would you like me to check your roaming status?\n\n2. Let's verify if your data connection is working properly:\n   - Can you browse the internet on your phone?\n   - Have you noticed any data connectivity issues?\n\n3. We can check if your messaging app has the necessary permissions:\n   - Would you like me to check your messaging app permissions?\n\n4. We can verify if your network mode preference might be causing the issue:\n   - Would you like me to check your network mode settings?\n\nWhich of these would you like to try first?"
+ },
+ {
+  "role": "user",
+  "content": "I am currently outside my home network—I’m in France right now. I’m not sure about the roaming thing, though. Could you please check my roaming status first? I get a bit confused with all these settings."
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-5df940ce172a4e8a95b05f4f63317468",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-5df940ce172a4e8a95b05f4f63317468",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": "I see that your line is currently not enabled for roaming. Since you're in France (outside your home network), this is likely why you're having trouble with MMS.\n\nWould you like me to enable data roaming on your line? This should help with sending and receiving picture messages while you're abroad."
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_nFxwmX2xUKnmnxLuFZTKODLF",
+    "name": "toggle_roaming",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Data Roaming is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_nFxwmX2xUKnmnxLuFZTKODLF",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": "It looks like data roaming is currently turned off on my phone. Should I go ahead and turn it on? Will this help me send those picture messages? I just want to make sure I’m doing the right thing."
+ },
+ {
+  "role": "assistant",
+  "content": "Yes, you should turn on data roaming on your phone since you're outside your home network in France. This will allow your phone to connect to local networks and should enable you to send and receive MMS (picture messages).\n\nLet me guide you through the process of enabling data roaming on your phone."
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_1MtCE9eK4lTvyihntRongv5s",
+    "name": "toggle_roaming",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Data Roaming is now ON.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_1MtCE9eK4lTvyihntRongv5s",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": "Alright, I’ve turned on data roaming as you suggested. Is there anything else I need to do? I’m still a bit worried—will this let me send my picture messages now, or is there another step?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-d7ecd8b5f948477dad5d2e5891a6c550",
+    "name": "enable_roaming",
+    "arguments": {
+     "customer_id": "C1001",
+     "line_id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Roaming enabled successfully",
+  "id": "chatcmpl-tool-d7ecd8b5f948477dad5d2e5891a6c550",
+  "requestor": "assistant",
+  "error": false
+ }
+]

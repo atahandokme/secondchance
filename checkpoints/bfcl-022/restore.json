@@ -1,0 +1,135 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_183",
+ "replayed_calls": 11,
+ "state_hash": "22df730312e9174b4029ca78c50f434667abcc816160a8805b55822ebbaec59f",
+ "replay": [
+  {
+   "name": "verify_traveler_information",
+   "arguments": {
+    "date_of_birth": "1995-04-23",
+    "passport_number": "US9148817941",
+    "last_name": "Bradley",
+    "first_name": "Matt"
+   },
+   "output": "{\"verification_status\": true}",
+   "turn": 0
+  },
+  {
+   "name": "get_nearest_airport_by_city",
+   "arguments": {
+    "location": "Rivermist"
+   },
+   "output": "{\"nearest_airport\": \"RMS\"}",
+   "turn": 1
+  },
+  {
+   "name": "get_flight_cost",
+   "arguments": {
+    "travel_from": "RMS",
+    "travel_to": "LAX",
+    "travel_date": "2026-11-15",
+    "travel_class": "economy"
+   },
+   "output": "{\"travel_cost_list\": [660.0]}",
+   "turn": 1
+  },
+  {
+   "name": "book_flight",
+   "arguments": {
+    "access_token": "abc123xyz456",
+    "card_id": "card_2023",
+    "travel_date": "2026-11-15",
+    "travel_from": "RMS",
+    "travel_to": "LAX",
+    "travel_class": "economy"
+   },
+   "output": "{\"booking_id\": \"3426812\", \"transaction_id\": \"45451592\", \"booking_status\": true, \"booking_history\": {}}",
+   "turn": 1
+  },
+  {
+   "name": "retrieve_invoice",
+   "arguments": {
+    "access_token": "abc123xyz456",
+    "booking_id": "3426812"
+   },
+   "output": "{\"invoice\": {\"booking_id\": \"3426812\", \"travel_date\": \"2026-11-15\", \"travel_from\": \"RMS\", \"travel_to\": \"LAX\", \"travel_class\": \"economy\", \"travel_cost\": 660.0, \"transaction_id\": \"45451592\"}}",
+   "turn": 2
+  },
+  {
+   "name": "contact_customer_support",
+   "arguments": {
+    "booking_id": "3426812",
+    "message": "I have questions regarding my booking details and would like clarification."
+   },
+   "output": "{\"customer_support_message\": \"Thank you for contacting customer support. Your message has been received and we will get back to you shortly.\"}",
+   "turn": 3
+  },
+  {
+   "name": "cancel_booking",
+   "arguments": {
+    "access_token": "abc123xyz456",
+    "booking_id": "3426812"
+   },
+   "output": "{\"cancel_status\": true}",
+   "turn": 4
+  },
+  {
+   "name": "post_tweet",
+   "arguments": {
+    "content": "Just booked a flight to LA!",
+    "tags": [
+     "#TravelSuccess",
+     "#RivermistJourney"
+    ]
+   },
+   "output": "{\"error\": \"User not authenticated. Please authenticate before posting.\"}",
+   "turn": 5
+  },
+  {
+   "name": "authenticate_travel",
+   "arguments": {
+    "client_id": "your_client_id",
+    "client_secret": "your_client_secret",
+    "refresh_token": "your_refresh_token",
+    "grant_type": "read_write",
+    "user_first_name": "John",
+    "user_last_name": "Doe",
+    "username": "john",
+    "password": "john1234"
+   },
+   "output": "Error during execution: TravelAPI.authenticate_travel() got an unexpected keyword argument 'username'",
+   "turn": 5
+  },
+  {
+   "name": "post_tweet",
+   "arguments": {
+    "content": "Just booked a flight to LA!",
+    "tags": [
+     "#TravelSuccess",
+     "#RivermistJourney"
+    ]
+   },
+   "output": "{\"error\": \"User not authenticated. Please authenticate before posting.\"}",
+   "turn": 5
+  },
+  {
+   "name": "authenticate_travel",
+   "arguments": {
+    "client_id": "your_client_id",
+    "client_secret": "your_client_secret",
+    "refresh_token": "your_refresh_token",
+    "grant_type": "read_write",
+    "user_first_name": "John",
+    "user_last_name": "Doe"
+   },
+   "output": "{\"expires_in\": 2, \"access_token\": \"488941\", \"token_type\": \"Bearer\", \"scope\": \"read_write\"}",
+   "turn": 5
+  }
+ ],
+ "resume": {
+  "turn": 5,
+  "mid_turn": true,
+  "steps_done_in_turn": 4
+ }
+}

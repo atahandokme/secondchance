@@ -1,0 +1,64 @@
+{
+ "checkpoint_id": "retail-007",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call modify_pending_order_items(order_id=\"#W4219264\", item_ids=[\"8886009523\", \"6341716129\"], new_item_ids=[\"2407258246\", \"8302289002\"], payment_method_id=\"credit_card_1620755\") (message 32 of this conversation).",
+   "sha256": "9413301b6c5c98bd37e01047746673d58a993ad96d5a019be4e61dd9197e8dd0",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call modify_pending_order_items(order_id=\"#W4219264\", item_ids=[\"8886009523\", \"6341716129\"], new_item_ids=[\"2407258246\", \"8302289002\"], payment_method_id=\"credit_card_1620755\") (message 32 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called modify_pending_order_items for order #W4219264 with items 8886009523 and 6341716129. Item 6341716129 is the air purifier in delivered order #W3445693, not in #W4219264, so the tool refused ('6341716129 not found') and nothing was changed.\n2. Tell the user plainly that neither item change was made and why: the air purifier is in a different, delivered order and cannot be changed in the same call as the watch.\n3. The watch: the user wants the silicone-strap watch (8886009523) in pending order #W4219264 changed to a metal strap, white if available; your search found 2407258246 (metal strap, white dial, $1822.82, available). Tell the user the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item they want changed in this order, and get an explicit yes before modify_pending_order_items for #W4219264 only.\n4. The air purifier: the user wants the air purifier from the sneakers order changed to a large size with night mode and a HEPA filter. That order, #W3445693, is delivered, so this is an exchange (exchange_delivered_order_items), not a modification. Your search found 8302289002 (large, HEPA, night mode, $547.55, available); the current purifier 6341716129 cost $523.31. Tell the user the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item to be exchanged, and get an explicit yes before the exchange.\n5. The shipping address of #W4219264 was already changed (the tool result shows 144 Lakeview Drive, Suite 925, New York, NY 10228); do not change it again unless the user asks.\n6. Each order's items can be changed only once, so put all changes for one order into one call. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.\n7. Verify each write with get_order_details and report to the user only what the results show.",
+   "sha256": "af0debe7d7cb6c16ca46c2c83215575c9498bac77dc8bd7a719451678686797a",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called modify_pending_order_items for order #W4219264 with items 8886009523 and 6341716129. Item 6341716129 is the air purifier in delivered order #W3445693, not in #W4219264, so the tool refused ('6341716129 not found') and nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that neither item change was made and why: the air purifier is in a different, delivered order and cannot be changed in the same call as the watch.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. The watch: the user wants the silicone-strap watch (8886009523) in pending order #W4219264 changed to a metal strap, white if available; your search found 2407258246 (metal strap, white dial, $1822.82, available). Tell the user the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item they want changed in this order, and get an explicit yes before modify_pending_order_items for #W4219264 only.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. The air purifier: the user wants the air purifier from the sneakers order changed to a large size with night mode and a HEPA filter. That order, #W3445693, is delivered, so this is an exchange (exchange_delivered_order_items), not a modification. Your search found 8302289002 (large, HEPA, night mode, $547.55, available); the current purifier 6341716129 cost $523.31. Tell the user the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item to be exchanged, and get an explicit yes before the exchange.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "5. The shipping address of #W4219264 was already changed (the tool result shows 144 Lakeview Drive, Suite 925, New York, NY 10228); do not change it again unless the user asks.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "6. Each order's items can be changed only once, so put all changes for one order into one call. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. Verify each write with get_order_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

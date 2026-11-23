@@ -1,0 +1,31 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi! I recently ordered a perfume from you, and after trying it, I really love it. I was wondering if you could help me get the biggest size available for this fragrance."
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-464ea70f97d844bea86c79eaad2f766f",
+    "name": "find_user_id_by_email",
+    "arguments": {
+     "email": "user@example.com"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: User not found",
+  "id": "chatcmpl-tool-464ea70f97d844bea86c79eaad2f766f",
+  "requestor": "assistant",
+  "error": true
+ }
+]

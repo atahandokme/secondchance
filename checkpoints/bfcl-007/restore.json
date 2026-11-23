@@ -1,0 +1,73 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_52",
+ "replayed_calls": 8,
+ "state_hash": "3b41131a66ca9d5b1f65623a527a8b5a24a05649b5c1228ce61b208bba84e6e1",
+ "replay": [
+  {
+   "name": "startEngine",
+   "arguments": {
+    "ignitionMode": "START"
+   },
+   "output": "{\"error\": \"Brake pedal needs to be pressed when starting the engine.\"}",
+   "turn": 0
+  },
+  {
+   "name": "displayCarStatus",
+   "arguments": {
+    "option": "fuel"
+   },
+   "output": "{\"fuelLevel\": 15.5}",
+   "turn": 0
+  },
+  {
+   "name": "displayCarStatus",
+   "arguments": {
+    "option": "battery"
+   },
+   "output": "{\"batteryVoltage\": 12.8}",
+   "turn": 0
+  },
+  {
+   "name": "pressBrakePedal",
+   "arguments": {
+    "pedalPosition": 1
+   },
+   "output": "{\"brakePedalStatus\": \"pressed\", \"brakePedalForce\": 1000.0}",
+   "turn": 0
+  },
+  {
+   "name": "startEngine",
+   "arguments": {
+    "ignitionMode": "START"
+   },
+   "output": "{\"engineState\": \"running\", \"fuelLevel\": 15.5, \"batteryVoltage\": 12.8}",
+   "turn": 0
+  },
+  {
+   "name": "check_tire_pressure",
+   "arguments": {},
+   "output": "{\"frontLeftTirePressure\": 35.0, \"frontRightTirePressure\": 34.0, \"rearLeftTirePressure\": 33.0, \"rearRightTirePressure\": 32.0, \"healthy_tire_pressure\": true, \"car_info\": {}}",
+   "turn": 1
+  },
+  {
+   "name": "find_nearest_tire_shop",
+   "arguments": {},
+   "output": "{\"shopLocation\": \"456 Oakwood Avenue, Rivermist, 83214\"}",
+   "turn": 1
+  },
+  {
+   "name": "set_navigation",
+   "arguments": {
+    "destination": "456 Oakwood Avenue, Rivermist, 83214"
+   },
+   "output": "{\"status\": \"Navigating to 456 Oakwood Avenue, Rivermist, 83214\"}",
+   "turn": 1
+  }
+ ],
+ "resume": {
+  "turn": 1,
+  "mid_turn": true,
+  "steps_done_in_turn": 3
+ }
+}

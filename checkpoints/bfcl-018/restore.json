@@ -1,0 +1,32 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_139",
+ "replayed_calls": 2,
+ "state_hash": "46da4f33ef70071aa2a01f67f419be44c1d19efc92948511433e94f2327e544c",
+ "replay": [
+  {
+   "name": "get_symbol_by_name",
+   "arguments": {
+    "name": "Zeta Corp"
+   },
+   "output": "{\"symbol\": \"ZETA\"}",
+   "turn": 0
+  },
+  {
+   "name": "place_order",
+   "arguments": {
+    "order_type": "Buy",
+    "symbol": "ZETA",
+    "price": 100.0,
+    "amount": 1
+   },
+   "output": "{\"order_id\": 12446, \"order_type\": \"Buy\", \"status\": \"Pending\", \"price\": 100.0, \"amount\": 1}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

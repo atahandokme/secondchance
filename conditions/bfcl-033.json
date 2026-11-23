@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "bfcl-033",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call touch(file_name=\"Annual_Report_2023.docx\") (message 2 of this conversation).",
+   "sha256": "47fc340438ef2b2843dc0596ad79f095f85fc13e7fd332ce7d872fe29f67482e",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call touch(file_name=\"Annual_Report_2023.docx\") (message 2 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.\n1. The step to repair: you called touch(file_name=\"Annual_Report_2023.docx\"), after the user wrote: \"It's getting late here, and I'm wrapping up my notes for the day. Please initiate a file creation in our communal folder, labeling it as 'Annual_Report_2023.docx'.\". It changed GorillaFileSystem.root.\nWhat was wrong at the time: missing-parameter turn: the agent created the file 'in the current directory' instead of asking which communal folder (system prompt: ask instead of guessing).\n2. The analysis found offline, from this exact checkpoint, a sequence of available functions that sets GorillaFileSystem.root right; its steps are not given here. Work out the fix from the function descriptions; do not guess, and take every value from the request or from function outputs. It has not been tried in this conversation.\n3. When a request lacks information you need, ask the user instead of guessing.\n4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.\n5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+   "sha256": "a56c384ed8a655cc587af205c9aca8c6f7288286233734b74986ed74e20aaf37",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called touch(file_name=\"Annual_Report_2023.docx\"), after the user wrote: \"It's getting late here, and I'm wrapping up my notes for the day. Please initiate a file creation in our communal folder, labeling it as 'Annual_Report_2023.docx'.\". It changed GorillaFileSystem.root.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "What was wrong at the time: missing-parameter turn: the agent created the file 'in the current directory' instead of asking which communal folder (system prompt: ask instead of guessing).",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. The analysis found offline, from this exact checkpoint, a sequence of available functions that sets GorillaFileSystem.root right; its steps are not given here. Work out the fix from the function descriptions; do not guess, and take every value from the request or from function outputs. It has not been tried in this conversation.",
+     "source_class": "VERIFIED_ROUTE"
+    },
+    {
+     "clause": "3. When a request lacks information you need, ask the user instead of guessing.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

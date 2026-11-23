@@ -1,0 +1,33 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hey there! I just moved from the land of alligators and hurricanes (yep, Florida) to the land of cacti and sunshine—Phoenix! I need to update my address because I don’t want my next order to end up as a snack for a gator. Also, I’m on a quest for the cheapest t-shirt you’ve got—my wardrobe needs a fresh start! Can you help me out? And by the way, can I order it through you?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-fc3eb360b1f746a482230931b3374ff3",
+    "name": "find_user_id_by_name_zip",
+    "arguments": {
+     "zip": "85001",
+     "first_name": "Unknown",
+     "last_name": "Unknown"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: User not found",
+  "id": "chatcmpl-tool-fc3eb360b1f746a482230931b3374ff3",
+  "requestor": "assistant",
+  "error": true
+ }
+]

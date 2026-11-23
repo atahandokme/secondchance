@@ -1,0 +1,72 @@
+{
+ "id": "retail-003",
+ "environment": "retail",
+ "split": "supplementary",
+ "task_id": "retail/90",
+ "source_model": "qwen3-32b",
+ "cut": 26,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "evidence": "AI classification (blind) + one reconciliation pass; not human",
+  "kind": null
+ },
+ "evaluation": {
+  "correction_target": "AVAILABLE",
+  "task_goal": "AVAILABLE",
+  "protected_state": "AVAILABLE",
+  "policy": "the retail domain's agent policy (tau2-bench)",
+  "consent": "predicates.consent lexical rule (domain-generic) available as evidence; per-policy consent rule UNKNOWN for retail"
+ },
+ "scoring_inputs": {
+  "cut_messages": 26,
+  "effects": [
+   {
+    "field": "a:orders.#W9284598.items[product_id=8940227892].item_id",
+    "kind": "COLLATERAL",
+    "pre": "\"7195021808\"",
+    "post": "\"9228757377\"",
+    "target": "\"7195021808\"",
+    "target_rule": "pre-error value"
+   },
+   {
+    "field": "a:orders.#W9284598.items[product_id=8940227892].options.zoom",
+    "kind": "COLLATERAL",
+    "pre": "\"5x\"",
+    "post": "\"10x\"",
+    "target": "\"5x\"",
+    "target_rule": "pre-error value"
+   },
+   {
+    "field": "a:orders.#W9284598.items[product_id=8940227892].price",
+    "kind": "COLLATERAL",
+    "pre": "2909.87",
+    "post": "3066.23",
+    "target": "2909.87",
+    "target_rule": "pre-error value"
+   },
+   {
+    "field": "a:orders.#W9284598.payment_history[payment_method_id=credit_card_7239357].amount",
+    "kind": "COLLATERAL",
+    "pre": "3930.54",
+    "post": "156.36000000000013",
+    "target": "3930.54",
+    "target_rule": "pre-error value"
+   },
+   {
+    "field": "a:orders.#W9284598.status",
+    "kind": "WRONG_GOAL_VALUE",
+    "pre": "\"pending\"",
+    "post": "\"pending (item modified)\"",
+    "target": "\"cancelled\"",
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "complete_recovery": "unknown"
+ },
+ "competence_control": false
+}

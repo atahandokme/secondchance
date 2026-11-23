@@ -1,0 +1,12 @@
+{
+ "method": "fresh tau2-bench environment for the task, then replay of every tool call in the history (agent and user device)",
+ "domain": "telecom",
+ "task": "[mms_issue]break_app_both_permissions|unseat_sim_card|user_abroad_roaming_enabled_off[PERSONA:Hard]",
+ "history_messages": 18,
+ "replayed_calls": 6,
+ "expected_hashes": {
+  "agent_db_hash": "6fc5efcecf241d3b6fd6c3b1a26b456398fe0ed57b44adad59e5f79f8476715a",
+  "user_db_hash": "7538816c560cc9a61e907e1ed1e0b468c1d1ddd6271b5ca5d395ee3272d756dd"
+ },
+ "replay_response_mismatches": 0
+}

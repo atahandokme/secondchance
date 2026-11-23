@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "bfcl-029",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call message_login(user_id=\"USR006\") (message 18 of this conversation).",
+   "sha256": "f1c5de1230e9a0a7b72160a2a174a50f8b2db6c948821478c75b23f04e59fea5",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call message_login(user_id=\"USR006\") (message 18 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.\n1. The step to repair: you called message_login(user_id=\"USR006\"), after the user wrote: \"Subsequent to the cancellation, I have to inform my friend, Sam (id USR006), about the change in my plans. Please send him a concise message 'Hi Sam, my travel plans have changed. I'll update you soon'.'updating him.\". It changed MessageAPI.current_user.\nThe requests do not ask to change MessageAPI.current_user.\n2. Undo it with message_login(user_id=\"USR005\"). This route was executed offline by the analysis from this exact checkpoint and sets MessageAPI.current_user right; it has not been tried in this conversation.\n3. When a request lacks information you need, ask the user instead of guessing.\n4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.\n5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+   "sha256": "85cc289ac2a00076242739bf1c14d4c9c8f76146d3fdc89f6e4f804f4d8a2592",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called message_login(user_id=\"USR006\"), after the user wrote: \"Subsequent to the cancellation, I have to inform my friend, Sam (id USR006), about the change in my plans. Please send him a concise message 'Hi Sam, my travel plans have changed. I'll update you soon'.'updating him.\". It changed MessageAPI.current_user.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "The requests do not ask to change MessageAPI.current_user.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "2. Undo it with message_login(user_id=\"USR005\"). This route was executed offline by the analysis from this exact checkpoint and sets MessageAPI.current_user right; it has not been tried in this conversation.",
+     "source_class": "VERIFIED_ROUTE"
+    },
+    {
+     "clause": "3. When a request lacks information you need, ask the user instead of guessing.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use SecondChance, please cite it as below."
+title: "SecondChance: Benchmarking Reliable Error Recovery in AI Agents"
+authors:
+  - family-names: Dokme
+    given-names: Atahan
+  - family-names: Avsian
+    given-names: Adar
+  - family-names: Heck
+    given-names: Larry
+version: 1.0.0
+date-released: 2026-11-30
+license: Apache-2.0
+repository-code: "<GITHUB_URL>"
+url: "<HF_DATASET_URL>"

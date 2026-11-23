@@ -1,0 +1,76 @@
+{
+ "checkpoint_id": "tau2-031",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call call_discoverable_agent_tool(agent_tool_name=\"order_replacement_credit_card_7291\", arguments=\"{\\\"credit_card_account_id\\\": \\\"cc_890389b165_silver\\\", \\\"user_id\\\": \\\"890389b165\\\", \\\"shipping_address\\\": \\\"2500 Woodward Avenue, Suite 300, Detroit, MI 48201\\\", \\\"reason\\\": \\\"fraud_suspected\\\", \\\"expedited_shipping\\\": true}\") (message 26 of this conversation).",
+   "sha256": "82fe29d1304dee4732e0b1875c199aa5af3d1374f87f350dedebbde2a63d4778",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call call_discoverable_agent_tool(agent_tool_name=\"order_replacement_credit_card_7291\", arguments=\"{\\\"credit_card_account_id\\\": \\\"cc_890389b165_silver\\\", \\\"user_id\\\": \\\"890389b165\\\", \\\"shipping_address\\\": \\\"2500 Woodward Avenue, Suite 300, Detroit, MI 48201\\\", \\\"reason\\\": \\\"fraud_suspected\\\", \\\"expedited_shipping\\\": true}\") (message 26 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: in one message you made these calls together: call_discoverable_agent_tool(agent_tool_name=\"order_replacement_credit_card_7291\", credit_card_account_id=\"cc_890389b165_silver\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_d3b830f4a2a4\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_da8c64c97f95\"), after the user wrote: \"Thanks for explaining the next steps. Actually, I’d like the replacement card shipped to my work address instead—I’m at work during the day when packages come, and I’ve had issues with package theft at my apartment. My work address is 2500 Woodward Avenue, Suite 300, Detroit, MI 48201.\n\nFor shipping, I’d like expedited delivery, please. I want to get the new card as soon as possible.\n\nAs for the dispute details: I just noticed these charges today when I checked my statement. And no, I haven’t contacted the merchants—I’ve never shopped with them, so I wouldn’t even know how to start.\". Together they changed the account: it created an agent discoverable tool record (tool_name=\"order_replacement_credit_card_7291\", status=\"CALLED\"); it created an agent discoverable tool record (tool_name=\"file_credit_card_transaction_dispute_4829\", status=\"CALLED\"); on credit card account cc_890389b165_silver it set closed_date to \"11/14/2025\" (it had no closed_date before); set status to \"CLOSED\" (it had no status before); it created credit card order ccord_6ed1a491c036 (order_id=\"ccord_6ed1a491c036\", credit_card_account_id=\"cc_890389b165_silver\", user_id=\"890389b165\", shipping_address=\"2500 Woodward Avenue, Suite 300, Detroit, MI 48201\", reason=\"fraud_suspected\", expedited_shipping=true, order_date=\"11/14/2025\", status=\"ORDERED\", old_card_cancelled=true); it created transaction dispute dsp_bf5458b36e0c (dispute_id=\"dsp_bf5458b36e0c\", transaction_id=\"txn_d3b830f4a2a4\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"UNKNOWN\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"09/04/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\"); it created transaction dispute dsp_da5c861a1eb7 (dispute_id=\"dsp_da5c861a1eb7\", transaction_id=\"txn_da8c64c97f95\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"UNKNOWN\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"09/06/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\").\nWhat was wrong at the time: filed disputes with card_last_4_digits 'UNKNOWN' without asking the user for them (KB: the last 4 digits of the card are required).\nEarlier steps in this conversation may also differ from what was asked; this plan concerns the step named here.\n2. Before anything else, tell the user plainly what you did and what it changed.\n3. Before these calls, an agent discoverable tool record did not exist; an agent discoverable tool record did not exist; credit card account cc_890389b165_silver had no closed_date; credit card account cc_890389b165_silver had no status; credit card order ccord_6ed1a491c036 did not exist; transaction dispute dsp_bf5458b36e0c did not exist; transaction dispute dsp_da5c861a1eb7 did not exist.\nNo way to set this right has been verified from this point. If you think a tool can do it, check what the tool does first; do not guess, and if you cannot undo it, tell the user so plainly.\n4. Then continue with what the user asked, checking first which of their requests are already done.\n5. Amounts, plans, which line or account, and whether to make any change are the user's decisions: ask and wait for the reply; never assume an answer. Values such as personal details must come from the user or from tool results.\n6. Your policy: do not make up information or actions (policy header, item 1); always use get_current_time for the current time (policy header, item 4); a user's identity is verified only when they correctly give two of date of birth, email, phone number and address (additional instructions). Change nothing the user has not asked for.\n7. After each change, read the record back with your tools and report to the user only what the results show.",
+   "sha256": "7bda3f9599fe2c019a866393a70e83a1f51c1bb71ec5a7fcda3572c07c5cd1ce",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: in one message you made these calls together: call_discoverable_agent_tool(agent_tool_name=\"order_replacement_credit_card_7291\", credit_card_account_id=\"cc_890389b165_silver\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_d3b830f4a2a4\"); call_discoverable_agent_tool(agent_tool_name=\"file_credit_card_transaction_dispute_4829\", transaction_id=\"txn_da8c64c97f95\"), after the user wrote: \"Thanks for explaining the next steps. Actually, I’d like the replacement card shipped to my work address instead—I’m at work during the day when packages come, and I’ve had issues with package theft at my apartment. My work address is 2500 Woodward Avenue, Suite 300, Detroit, MI 48201.\n\nFor shipping, I’d like expedited delivery, please. I want to get the new card as soon as possible.\n\nAs for the dispute details: I just noticed these charges today when I checked my statement. And no, I haven’t contacted the merchants—I’ve never shopped with them, so I wouldn’t even know how to start.\". Together they changed the account: it created an agent discoverable tool record (tool_name=\"order_replacement_credit_card_7291\", status=\"CALLED\"); it created an agent discoverable tool record (tool_name=\"file_credit_card_transaction_dispute_4829\", status=\"CALLED\"); on credit card account cc_890389b165_silver it set closed_date to \"11/14/2025\" (it had no closed_date before); set status to \"CLOSED\" (it had no status before); it created credit card order ccord_6ed1a491c036 (order_id=\"ccord_6ed1a491c036\", credit_card_account_id=\"cc_890389b165_silver\", user_id=\"890389b165\", shipping_address=\"2500 Woodward Avenue, Suite 300, Detroit, MI 48201\", reason=\"fraud_suspected\", expedited_shipping=true, order_date=\"11/14/2025\", status=\"ORDERED\", old_card_cancelled=true); it created transaction dispute dsp_bf5458b36e0c (dispute_id=\"dsp_bf5458b36e0c\", transaction_id=\"txn_d3b830f4a2a4\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"UNKNOWN\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"09/04/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\"); it created transaction dispute dsp_da5c861a1eb7 (dispute_id=\"dsp_da5c861a1eb7\", transaction_id=\"txn_da8c64c97f95\", user_id=\"890389b165\", card_action=\"cancel_and_reissue\", card_last_4_digits=\"UNKNOWN\", full_name=\"Fatima Al-Hassan\", phone=\"313-555-0246\", email=\"coffeelover_fati@protonmail.com\", address=\"1923 Oak Park Boulevard, Detroit, MI 48226\", contacted_merchant=false, purchase_date=\"09/06/2025\", issue_noticed_date=\"11/14/2025\", dispute_reason=\"unauthorized_fraudulent_charge\", resolution_requested=\"full_refund\", partial_refund_amount=null, eligible_for_provisional_credit=true, provisional_credit_given=true, submitted_at=\"11/14/2025\", status=\"SUBMITTED\").",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "What was wrong at the time: filed disputes with card_last_4_digits 'UNKNOWN' without asking the user for them (KB: the last 4 digits of the card are required).",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "Earlier steps in this conversation may also differ from what was asked; this plan concerns the step named here.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "2. Before anything else, tell the user plainly what you did and what it changed.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Before these calls, an agent discoverable tool record did not exist; an agent discoverable tool record did not exist; credit card account cc_890389b165_silver had no closed_date; credit card account cc_890389b165_silver had no status; credit card order ccord_6ed1a491c036 did not exist; transaction dispute dsp_bf5458b36e0c did not exist; transaction dispute dsp_da5c861a1eb7 did not exist.",
+     "source_class": "PRIOR_STATE"
+    },
+    {
+     "clause": "No way to set this right has been verified from this point. If you think a tool can do it, check what the tool does first; do not guess, and if you cannot undo it, tell the user so plainly.",
+     "source_class": "UNVERIFIED"
+    },
+    {
+     "clause": "4. Then continue with what the user asked, checking first which of their requests are already done.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. Amounts, plans, which line or account, and whether to make any change are the user's decisions: ask and wait for the reply; never assume an answer. Values such as personal details must come from the user or from tool results.",
+     "source_class": "USER_CHOICE"
+    },
+    {
+     "clause": "6. Your policy: do not make up information or actions (policy header, item 1); always use get_current_time for the current time (policy header, item 4); a user's identity is verified only when they correctly give two of date of birth, email, phone number and address (additional instructions). Change nothing the user has not asked for.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. After each change, read the record back with your tools and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

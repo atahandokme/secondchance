@@ -1,0 +1,56 @@
+{
+ "checkpoint_id": "retail-006",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call exchange_delivered_order_items(order_id=\"#W7464385\", item_ids=[\"1810466394\"], new_item_ids=[\"6700049080\"], payment_method_id=\"paypal_1261484\") (message 28 of this conversation).",
+   "sha256": "27df998c4e6d65233f70e1d02bdf8252843e32c316021bceb9311d0105d2db02",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call exchange_delivered_order_items(order_id=\"#W7464385\", item_ids=[\"1810466394\"], new_item_ids=[\"6700049080\"], payment_method_id=\"paypal_1261484\") (message 28 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called exchange_delivered_order_items for order #W7464385 (Action Camera 1810466394 to 6700049080, refund to paypal_1261484) without listing the details or getting an explicit yes, although the order status you had read was pending (only delivered orders can be exchanged). The order is pending, so the tool refused ('Non-delivered order cannot be exchanged') and nothing was changed.\n2. Tell the user plainly that the exchange was not made and why: only delivered orders can be exchanged, and #W7464385 is still pending.\n3. If the user asks what can be done instead, explain the policy for a pending order: an item can be modified to another available option of the same product, after which the order can no longer be modified or cancelled. Act only on the user's explicit request: then tell them the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item they want changed, and get an explicit yes before modify_pending_order_items.\n4. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.\n5. Verify each write with get_order_details and report to the user only what the results show.",
+   "sha256": "4454a5ba06177160259b7d8e812291e50c852e18fc4a9e2409e02ab4bac3eeff",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called exchange_delivered_order_items for order #W7464385 (Action Camera 1810466394 to 6700049080, refund to paypal_1261484) without listing the details or getting an explicit yes, although the order status you had read was pending (only delivered orders can be exchanged). The order is pending, so the tool refused ('Non-delivered order cannot be exchanged') and nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that the exchange was not made and why: only delivered orders can be exchanged, and #W7464385 is still pending.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. If the user asks what can be done instead, explain the policy for a pending order: an item can be modified to another available option of the same product, after which the order can no longer be modified or cancelled. Act only on the user's explicit request: then tell them the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item they want changed, and get an explicit yes before modify_pending_order_items.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "4. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Verify each write with get_order_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

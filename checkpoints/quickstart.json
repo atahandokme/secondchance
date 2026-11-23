@@ -1,0 +1,15 @@
+{
+ "description": "ten tau2-bench telecom checkpoints with a demonstrated fix, one per task (the first ten by id)",
+ "checkpoints": [
+  "tau2-001",
+  "tau2-002",
+  "tau2-003",
+  "tau2-006",
+  "tau2-008",
+  "tau2-009",
+  "tau2-011",
+  "tau2-013",
+  "tau2-015",
+  "tau2-016"
+ ]
+}

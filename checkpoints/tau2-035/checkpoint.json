@@ -1,0 +1,168 @@
+{
+ "id": "tau2-035",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_074",
+ "source_model": "llama-3.3-70b",
+ "cut": 12,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "log_verification"
+  ],
+  "call_index": [
+   2
+  ],
+  "message_index": [
+   10
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "logged the verification with an invented time ('2024-02-20 14:30:00')",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.address",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"1245 Pioneer Road, Denver, CO 80203\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.date_of_birth",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"06/15/1989\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.email",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"ahmad.razali@gmail.com\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.name",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Ahmad Razali bin Mohd Yusof\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.phone_number",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"303-555-0821\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.time_verified",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"2024-02-20 14:30:00 EST\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.user_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"ar72c5d8e3\"",
+     "target": null,
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 12,
+  "effects": [
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.address",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"1245 Pioneer Road, Denver, CO 80203\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.date_of_birth",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"06/15/1989\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.email",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"ahmad.razali@gmail.com\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.name",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Ahmad Razali bin Mohd Yusof\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.phone_number",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"303-555-0821\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.time_verified",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"2024-02-20 14:30:00 EST\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.ar72c5d8e3_20240220_143000_EST.user_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"ar72c5d8e3\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

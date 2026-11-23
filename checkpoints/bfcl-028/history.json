@@ -1,0 +1,22 @@
+[
+ {
+  "role": "user",
+  "content": "In attempting to log into my travel account using both my established client id 'client_520', secret 'rise_to_sky' and refresh token 'token990125', I seem to be at a bit of an impasse, allow for read_write. "
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-ed9b16ea0ec341a1b005ec7d0e07782e",
+    "name": "authenticate_travel",
+    "arguments": "{\"client_id\": \"client_520\", \"client_secret\": \"rise_to_sky\", \"refresh_token\": \"token990125\", \"grant_type\": \"read_write\", \"user_first_name\": \"John\", \"user_last_name\": \"Doe\"}"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"expires_in\": 2, \"access_token\": \"251675\", \"token_type\": \"Bearer\", \"scope\": \"read_write\"}",
+  "tool_call_id": "chatcmpl-tool-ed9b16ea0ec341a1b005ec7d0e07782e"
+ }
+]

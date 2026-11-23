@@ -1,0 +1,72 @@
+{
+ "id": "bfcl-025",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_miss_func_95",
+ "source_model": "mistral-small-3.2",
+ "cut": 19,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "send_message"
+  ],
+  "call_index": [
+   4
+  ],
+  "turn": [
+   4
+  ],
+  "kind": "wrong value",
+  "mechanism": "G:wrong_value",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "G:wrong_value",
+  "why_an_error": null,
+  "review": "mechanical screen; the AI scan raised no flag"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "MessageAPI.inbox"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "G",
+   "attributes": [
+    "MessageAPI.inbox"
+   ],
+   "prefix_calls": 5,
+   "turn": 4,
+   "call": "send_message",
+   "call_index": 4
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

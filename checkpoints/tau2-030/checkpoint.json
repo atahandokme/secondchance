@@ -1,0 +1,348 @@
+{
+ "id": "tau2-030",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_031",
+ "source_model": "qwen3-32b",
+ "cut": 26,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "call_discoverable_agent_tool"
+  ],
+  "call_index": [
+   9
+  ],
+  "message_index": [
+   24
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "filed the dispute with transaction_id 'unknown' and card digits '0246' (the phone number's suffix), never asked for",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.address",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"1923 Oak Park Boulevard, Detroit, MI 48226\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.card_action",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"keep_active\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.card_last_4_digits",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"0246\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.contacted_merchant",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "true",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.dispute_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"dsp_1130514abf28\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.dispute_reason",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"goods_services_not_as_described\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.eligible_for_provisional_credit",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "true",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.email",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"coffeelover_fati@protonmail.com\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.full_name",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Fatima Al-Hassan\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.issue_noticed_date",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"11/14/2025\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.partial_refund_amount",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "null",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.phone",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"313-555-0246\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.provisional_credit_given",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "true",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.purchase_date",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"11/10/2025\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.resolution_requested",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"full_refund\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.status",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"SUBMITTED\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.submitted_at",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"11/14/2025\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.transaction_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"unknown\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:transaction_disputes.data.dsp_1130514abf28.user_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"890389b165\"",
+     "target": null,
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 26,
+  "effects": [
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.address",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"1923 Oak Park Boulevard, Detroit, MI 48226\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.card_action",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"keep_active\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.card_last_4_digits",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"0246\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.contacted_merchant",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "true",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.dispute_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"dsp_1130514abf28\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.dispute_reason",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"goods_services_not_as_described\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.eligible_for_provisional_credit",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "true",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.email",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"coffeelover_fati@protonmail.com\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.full_name",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Fatima Al-Hassan\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.issue_noticed_date",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"11/14/2025\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.partial_refund_amount",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "null",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.phone",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"313-555-0246\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.provisional_credit_given",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "true",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.purchase_date",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"11/10/2025\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.resolution_requested",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"full_refund\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.status",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"SUBMITTED\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.submitted_at",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"11/14/2025\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.transaction_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"unknown\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:transaction_disputes.data.dsp_1130514abf28.user_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"890389b165\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

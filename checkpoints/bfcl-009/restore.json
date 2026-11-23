@@ -1,0 +1,50 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_82",
+ "replayed_calls": 5,
+ "state_hash": "2dd380756d5c503ee4356b851fea9d03447a944300337f078306924f64b1638d",
+ "replay": [
+  {
+   "name": "check_tire_pressure",
+   "arguments": {},
+   "output": "{\"frontLeftTirePressure\": 30.0, \"frontRightTirePressure\": 30.0, \"rearLeftTirePressure\": 28.0, \"rearRightTirePressure\": 28.0, \"healthy_tire_pressure\": false, \"car_info\": {}}",
+   "turn": 0
+  },
+  {
+   "name": "lockDoors",
+   "arguments": {
+    "unlock": "False",
+    "door": "['driver', 'passenger', 'rear_left', 'rear_right']"
+   },
+   "output": "Error during execution: '['",
+   "turn": 0
+  },
+  {
+   "name": "find_nearest_tire_shop",
+   "arguments": {},
+   "output": "{\"shopLocation\": \"456 Oakwood Avenue, Rivermist, 83214\"}",
+   "turn": 0
+  },
+  {
+   "name": "setHeadlights",
+   "arguments": {
+    "mode": "auto"
+   },
+   "output": "{\"headlightStatus\": \"off\"}",
+   "turn": 0
+  },
+  {
+   "name": "set_navigation",
+   "arguments": {
+    "destination": "Main St, Rivermist, CO"
+   },
+   "output": "{\"status\": \"Navigating to Main St, Rivermist, CO\"}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 2
+ }
+}

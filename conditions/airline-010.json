@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "airline-010",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call get_user_details(user_id=\"user_id\") (message 6 of this conversation).",
+   "sha256": "347cd7b3d6e73d84ac5b73f9ca760bc8d0eebd0218c0ea57286fda0c8e7fa6b8",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call get_user_details(user_id=\"user_id\") (message 6 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: before obtaining the user's id you searched flights, including search_direct_flight from ORD to PHL on 2024-05-10, a date the user did not ask to book; then you called get_user_details with the literal text 'user_id', a placeholder. The tool returned 'User user_id not found'; nothing was changed.\n2. Tell the user plainly that the lookup used a placeholder, not their id, and ask for their user id; the user must provide their user id. Never fill in an id yourself.\n3. Then the user's request: a one-way booking from ORD to PHL on May 26 on exactly the same flight they took on May 10 from ORD to PHL. Find that flight in the user's own reservations with your tools rather than guessing, then check its availability on 2024-05-26, and tell the user what you find.\n4. Collect each passenger's first name, last name and date of birth (take details from the profile only when the user tells you to), ask about cabin, checked bags and travel insurance, list the flight, cabin, passengers, bags and total price, ask which payment method to use (never choose it for them; it must already be in the profile), and get an explicit yes before book_reservation.\n5. Make no write the user has not asked for and explicitly confirmed after you list the details.\n6. Verify each write with get_reservation_details and report to the user only what the results show.",
+   "sha256": "3351aa4fa0be8db35795fa845557286dd71450398f753c1f0e01205e391d4a79",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: before obtaining the user's id you searched flights, including search_direct_flight from ORD to PHL on 2024-05-10, a date the user did not ask to book; then you called get_user_details with the literal text 'user_id', a placeholder. The tool returned 'User user_id not found'; nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that the lookup used a placeholder, not their id, and ask for their user id; the user must provide their user id. Never fill in an id yourself.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Then the user's request: a one-way booking from ORD to PHL on May 26 on exactly the same flight they took on May 10 from ORD to PHL. Find that flight in the user's own reservations with your tools rather than guessing, then check its availability on 2024-05-26, and tell the user what you find.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Collect each passenger's first name, last name and date of birth (take details from the profile only when the user tells you to), ask about cabin, checked bags and travel insurance, list the flight, cabin, passengers, bags and total price, ask which payment method to use (never choose it for them; it must already be in the profile), and get an explicit yes before book_reservation.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Make no write the user has not asked for and explicitly confirmed after you list the details.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "6. Verify each write with get_reservation_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

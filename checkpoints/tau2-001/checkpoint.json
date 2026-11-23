@@ -1,0 +1,95 @@
+{
+ "id": "tau2-001",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/[mms_issue]airplane_mode_on|bad_network_preference|bad_wifi_calling|break_app_both_permissions|unseat_sim_card[PERSONA:None]",
+ "source_model": "qwen3-32b",
+ "cut": 52,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "enable_roaming"
+  ],
+  "call_index": [
+   16
+  ],
+  "message_index": [
+   50
+  ],
+  "kind": "unrequested change",
+  "mechanism": "UNREQUESTED_WRITE",
+  "effect": [
+   "other state changed"
+  ],
+  "mechanical_evidence": "protected field changed; no write of this kind in the reference",
+  "why_an_error": "enabled roaming on line L1001, not the user's line (555-123-2002), unrequested",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:lines[line_id=L1001].roaming_enabled",
+     "kind": "COLLATERAL",
+     "value_after_error": "true",
+     "target": "false",
+     "target_rule": "pre-error value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 52,
+  "effects": [
+   {
+    "field": "a:lines[line_id=L1001].roaming_enabled",
+    "kind": "COLLATERAL",
+    "post": "true",
+    "pre": "false",
+    "target": "false",
+    "target_rule": "pre-error value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "demonstrated",
+  "evidence_type": "AVAILABLE_ROUTE_SCRIPTED",
+  "by_target": {
+   "correction": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  },
+  "demonstrated_routes": [
+   {
+    "target": "correction",
+    "route": "inverse calls, then reference calls ['a:disable_roaming']",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference actions, skipping reference actions [0, 1, 2, 3, 4, 5]"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": true,
+    "user_cooperation": "not required (agent-only route; no confirmation rule covers these writes)",
+    "operations": [
+     "a:disable_roaming"
+    ]
+   }
+  ]
+ },
+ "competence_control": false
+}

@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "airline-007",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the message you sent to the user (message 18 of this conversation).",
+   "sha256": "ddb6e070c1f9ad2025271d852c357ae1770337700f029c5d6cfb59216ebf3efe",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the message you sent to the user (message 18 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you described flight durations as 'Not specified, but likely under 4 hours' and 'Likely over 4 hours' and said a business upgrade was 'Possible' for every reservation; none of this came from a tool result. You also listed WUNA5K as upcoming, but its flights were on 2024-05-10 and 2024-05-11, before the current time 2024-05-15 15:00 EST. No write has been made.\n2. Tell the user plainly that those durations and upgrade statements were guesses.\n3. Get each flight's scheduled departure and arrival times with your flight search tools and compute durations from those times only; tell the user the numbers and how you got them.\n4. Cancellation (the user wants future reservations with any flight longer than 4 hours cancelled): a reservation can be cancelled only if no portion has been flown and it was booked within 24 hours of the current time, the airline cancelled a flight, it is business, or the user has travel insurance and the reason is covered (health or weather). Check this against each reservation (created time, cabin, insurance), ask the user for the reason rather than assuming it, and get an explicit confirmation of which reservations to cancel.\n5. Upgrades (for the other reservations): a cabin change is possible only if no flight in the reservation has been flown, and the user pays the difference. Get the current business prices with your search tools, tell the user the total cost before any change, ask which payment method to use (never choose it for them), and get an explicit yes before each update_reservation_flights.\n6. Verify each write with get_reservation_details and report to the user only what the results show.",
+   "sha256": "ac7abaa790ab327d983e26150468230d9105965a5d7d320fe80fda5a217f53f4",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you described flight durations as 'Not specified, but likely under 4 hours' and 'Likely over 4 hours' and said a business upgrade was 'Possible' for every reservation; none of this came from a tool result. You also listed WUNA5K as upcoming, but its flights were on 2024-05-10 and 2024-05-11, before the current time 2024-05-15 15:00 EST. No write has been made.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that those durations and upgrade statements were guesses.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Get each flight's scheduled departure and arrival times with your flight search tools and compute durations from those times only; tell the user the numbers and how you got them.",
+     "source_class": "OBTAINABLE"
+    },
+    {
+     "clause": "4. Cancellation (the user wants future reservations with any flight longer than 4 hours cancelled): a reservation can be cancelled only if no portion has been flown and it was booked within 24 hours of the current time, the airline cancelled a flight, it is business, or the user has travel insurance and the reason is covered (health or weather). Check this against each reservation (created time, cabin, insurance), ask the user for the reason rather than assuming it, and get an explicit confirmation of which reservations to cancel.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Upgrades (for the other reservations): a cabin change is possible only if no flight in the reservation has been flown, and the user pays the difference. Get the current business prices with your search tools, tell the user the total cost before any change, ask which payment method to use (never choose it for them), and get an explicit yes before each update_reservation_flights.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "6. Verify each write with get_reservation_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "checkpoint_id": "retail-004",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call modify_pending_order_address(order_id=\"#W6750959\", address1=\"user’s NYC address1\", address2=\"user’s NYC address2\", city=\"user’s NYC city\", state=\"user’s NYC state\", country=\"user’s NYC country\", zip=\"user’s NYC zip\") (message 16 of this conversation).",
+   "sha256": "4943a58fee96cc379653e290ed87b0499b646ba004144d07943cf704064f4a72",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call modify_pending_order_address(order_id=\"#W6750959\", address1=\"user’s NYC address1\", address2=\"user’s NYC address2\", city=\"user’s NYC city\", state=\"user’s NYC state\", country=\"user’s NYC country\", zip=\"user’s NYC zip\") (message 16 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called modify_pending_order_address for order #W6750959 with placeholder text ('user’s NYC address1', 'user’s NYC city', 'user’s NYC zip' and so on) instead of a real address, without listing it or getting the user's explicit yes. Before your change the order was going to 909 Spruce Street, Suite 599, Los Angeles, CA, USA, 91148. Your earlier modify_pending_order_items call failed ('Error: [ not found') because item_ids and new_item_ids were passed as strings instead of lists; it changed nothing, and the user had not confirmed it.\n2. Tell the user plainly that the order's shipping address now holds placeholder text, not their New York address, and that the speaker change has not been made.\nThe user wants this order shipped to their NYC address, 'the one you have on file from my other order'; their other order is #W3407479. Read it with get_order_details, show the user that address and ask whether to use it; if the user gives another address, use that one.\n3. With the user's explicit yes to the exact address, call modify_pending_order_address(order_id=#W6750959, ...) with that address.\n4. Do the address step BEFORE any item change on this order: after modify_pending_order_items the order can no longer be modified or cancelled, and each order's items can be modified only once, so collect all item changes for an order into one call.\n5. Then the item request: the user wants the Bluetooth Speaker (item 3254583681) changed to the cheapest green version. The order is pending, so this is modify_pending_order_items, not an exchange. Take the cheapest available green variant from the get_product_details result, tell the user the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item they want changed, and get an explicit yes; pass item_ids and new_item_ids as lists.\n6. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.\n7. Verify each write with get_order_details and report to the user only what the results show.",
+   "sha256": "ddda2288efab903a66db15243049fd0d274a607c22fa36d1473ab6b3808677db",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called modify_pending_order_address for order #W6750959 with placeholder text ('user’s NYC address1', 'user’s NYC city', 'user’s NYC zip' and so on) instead of a real address, without listing it or getting the user's explicit yes. Before your change the order was going to 909 Spruce Street, Suite 599, Los Angeles, CA, USA, 91148. Your earlier modify_pending_order_items call failed ('Error: [ not found') because item_ids and new_item_ids were passed as strings instead of lists; it changed nothing, and the user had not confirmed it.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that the order's shipping address now holds placeholder text, not their New York address, and that the speaker change has not been made.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "The user wants this order shipped to their NYC address, 'the one you have on file from my other order'; their other order is #W3407479. Read it with get_order_details, show the user that address and ask whether to use it; if the user gives another address, use that one.",
+     "source_class": "OBTAINABLE"
+    },
+    {
+     "clause": "3. With the user's explicit yes to the exact address, call modify_pending_order_address(order_id=#W6750959, ...) with that address.",
+     "source_class": "WITNESS_INFORMED"
+    },
+    {
+     "clause": "4. Do the address step BEFORE any item change on this order: after modify_pending_order_items the order can no longer be modified or cancelled, and each order's items can be modified only once, so collect all item changes for an order into one call.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Then the item request: the user wants the Bluetooth Speaker (item 3254583681) changed to the cheapest green version. The order is pending, so this is modify_pending_order_items, not an exchange. Take the cheapest available green variant from the get_product_details result, tell the user the item and the price difference, ask which payment method to use (never choose it for them), remind them to confirm they have listed every item they want changed, and get an explicit yes; pass item_ids and new_item_ids as lists.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "6. Make no write the user has not asked for and explicitly confirmed, and change no order the user did not designate.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. Verify each write with get_order_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

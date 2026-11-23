@@ -1,0 +1,77 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi! I’d like to book a one-way flight from Chicago O’Hare (ORD) to Philadelphia (PHL) on May 26. I want the exact same flight I took on May 10 from ORD to PHL. Can you help me with that?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-6597180666a9488a996393e870d168bf",
+    "name": "search_onestop_flight",
+    "arguments": {
+     "origin": "ORD",
+     "destination": "PHL",
+     "date": "2024-05-26"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "[[{\"flight_number\": \"HAT118\", \"origin\": \"ORD\", \"destination\": \"DEN\", \"status\": \"available\", \"scheduled_departure_time_est\": \"04:00:00\", \"scheduled_arrival_time_est\": \"06:00:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 5, \"economy\": 0, \"business\": 17}, \"prices\": {\"basic_economy\": 71, \"economy\": 187, \"business\": 200}}, {\"flight_number\": \"HAT080\", \"origin\": \"DEN\", \"destination\": \"PHL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"10:30:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 13, \"economy\": 0, \"business\": 4}, \"prices\": {\"basic_economy\": 65, \"economy\": 169, \"business\": 479}}], [{\"flight_number\": \"HAT118\", \"origin\": \"ORD\", \"destination\": \"DEN\", \"status\": \"available\", \"scheduled_departure_time_est\": \"04:00:00\", \"scheduled_arrival_time_est\": \"06:00:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 5, \"economy\": 0, \"business\": 17}, \"prices\": {\"basic_economy\": 71, \"economy\": 187, \"business\": 200}}, {\"flight_number\": \"HAT158\", \"origin\": \"DEN\", \"destination\": \"PHL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"06:00:00\", \"scheduled_arrival_time_est\": \"09:30:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 12, \"economy\": 8, \"business\": 12}, \"prices\": {\"basic_economy\": 85, \"economy\": 127, \"business\": 293}}], [{\"flight_number\": \"HAT238\", \"origin\": \"ORD\", \"destination\": \"DEN\", \"status\": \"available\", \"scheduled_departure_time_est\": \"02:00:00\", \"scheduled_arrival_time_est\": \"04:00:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 7, \"economy\": 16, \"business\": 15}, \"prices\": {\"basic_economy\": 56, \"economy\": 198, \"business\": 261}}, {\"flight_number\": \"HAT080\", \"origin\": \"DEN\", \"destination\": \"PHL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"10:30:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 13, \"economy\": 0, \"business\": 4}, \"prices\": {\"basic_economy\": 65, \"economy\": 169, \"business\": 479}}], [{\"flight_number\": \"HAT238\", \"origin\": \"ORD\", \"destination\": \"DEN\", \"status\": \"available\", \"scheduled_departure_time_est\": \"02:00:00\", \"scheduled_arrival_time_est\": \"04:00:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 7, \"economy\": 16, \"business\": 15}, \"prices\": {\"basic_economy\": 56, \"economy\": 198, \"business\": 261}}, {\"flight_number\": \"HAT158\", \"origin\": \"DEN\", \"destination\": \"PHL\", \"status\": \"available\", \"scheduled_departure_time_est\": \"06:00:00\", \"scheduled_arrival_time_est\": \"09:30:00\", \"date\": \"2024-05-26\", \"available_seats\": {\"basic_economy\": 12, \"economy\": 8, \"business\": 12}, \"prices\": {\"basic_economy\": 85, \"economy\": 127, \"business\": 293}}]]",
+  "id": "chatcmpl-tool-6597180666a9488a996393e870d168bf",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-1d42e4e9021d4f249f268d0603e69dc8",
+    "name": "search_direct_flight",
+    "arguments": {
+     "origin": "ORD",
+     "destination": "PHL",
+     "date": "2024-05-10"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "[]",
+  "id": "chatcmpl-tool-1d42e4e9021d4f249f268d0603e69dc8",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-2dcd156d6a554264b9812e30d5a25b5f",
+    "name": "get_user_details",
+    "arguments": {
+     "user_id": "user_id"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: User user_id not found",
+  "id": "chatcmpl-tool-2dcd156d6a554264b9812e30d5a25b5f",
+  "requestor": "assistant",
+  "error": true
+ }
+]

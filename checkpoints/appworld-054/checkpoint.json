@@ -1,0 +1,16 @@
+{
+ "id": "appworld-054",
+ "environment": "appworld",
+ "split": "main",
+ "task_id": "appworld/d0b1f43_1",
+ "source_model": "llama-3.3-70b",
+ "cut": 15,
+ "cut_unit": "code_blocks",
+ "error_kind": "unwanted record elsewhere",
+ "mechanism": "write_to_model_outside_task",
+ "fixability": "unknown",
+ "fixability_evidence": "UNKNOWN:NO_WITNESS_FOUND",
+ "complete_recovery_route": "unknown",
+ "individually_reviewed": false,
+ "content": "not included: AppWorld requires that its task data and anything derived from it be redistributed only in encrypted form; the results of this checkpoint are in results/"
+}

@@ -1,0 +1,380 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi, I’m having trouble sending MMS messages from my phone. It’s been happening for a few hours now, and I’m currently in France. Can you help me get this fixed?"
+ },
+ {
+  "role": "assistant",
+  "content": "Sure, I can help you with that. Could you please provide the phone number associated with your account (or your customer ID) so I can look up your details?"
+ },
+ {
+  "role": "user",
+  "content": "My phone number is 555-123-2002."
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-983bb30796cefec6",
+    "name": "get_customer_by_phone",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+  "id": "chatcmpl-tool-983bb30796cefec6",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-88bbad86d9f3777b",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-88bbad86d9f3777b",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-83e0e70b75648ae0",
+    "name": "can_send_mms",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'can_send_mms' not found.",
+  "id": "chatcmpl-tool-83e0e70b75648ae0",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I’m sorry you’re having trouble with MMS while you’re in France. To diagnose the issue, could you please check a few things on your phone and let me know the results?\n\n1. **Status bar / network** – Do you see a cellular signal icon (e.g., 4G/5G) and the data icon in the top‑right corner?  \n2. **Data connection** – Is mobile data turned on? (You can check this in Settings → Mobile → Data.)  \n3. **Roaming** – Since you’re abroad, is data roaming enabled? (Settings → Mobile → Data Roaming.)  \n4. **APN settings** – Are the APN settings set to the default for our network? (Settings → Mobile → Access Point Names.)  \n5. **Wi‑Fi Calling** – Is Wi‑Fi Calling turned on? (Settings → Wi‑Fi Calling.)  \n\nIf you can run the appropriate checks (or let me know what you see on the status bar), I’ll guide you through the next steps to get MMS working again."
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_CZYHHvzNGKTE9SZ4wbg2Z8GD",
+    "name": "check_status_bar",
+    "arguments": {},
+    "requestor": "user"
+   },
+   {
+    "id": "call_dZUXuD22hDnZXvrpcV1U7O59",
+    "name": "check_network_status",
+    "arguments": {},
+    "requestor": "user"
+   },
+   {
+    "id": "call_ZBxRhZPSOHP9RJVtw1ABx5bS",
+    "name": "check_apn_settings",
+    "arguments": {},
+    "requestor": "user"
+   },
+   {
+    "id": "call_pgmTUGGP9VrthCjyQQ6sBIBA",
+    "name": "check_wifi_calling_status",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Status Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_CZYHHvzNGKTE9SZ4wbg2Z8GD",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "tool",
+  "content": "Airplane Mode: OFF\nSIM Card Status: missing\nCellular Connection: no_service\nCellular Signal: none\nCellular Network Type: none\nMobile Data Enabled: No\nData Roaming Enabled: No\nWi-Fi Radio: OFF\nWi-Fi Connected: No",
+  "id": "call_dZUXuD22hDnZXvrpcV1U7O59",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "tool",
+  "content": "Current APN Name: internet\nMMSC URL (for picture messages): http://mms.carrier.com/mms/wapenc\n(These are technical settings, usually best left unchanged.)",
+  "id": "call_ZBxRhZPSOHP9RJVtw1ABx5bS",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "tool",
+  "content": "Wi-Fi Calling is currently turned ON.",
+  "id": "call_pgmTUGGP9VrthCjyQQ6sBIBA",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": "Here’s what I found based on your questions:\n\n1. My status bar shows no signal and data is disabled.\n2. Mobile data is currently turned off.\n3. Data roaming is also turned off.\n4. My APN settings are set to “internet” with the default MMSC URL.\n5. Wi-Fi Calling is turned on.\n\nWhat should I do next?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9c7d434d4f1a1fb3",
+    "name": "toggle_data",
+    "arguments": {
+     "state": "on"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_data' not found.",
+  "id": "chatcmpl-tool-9c7d434d4f1a1fb3",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-a13849f969ed3123",
+    "name": "toggle_data",
+    "arguments": {
+     "state": "on"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_data' not found.",
+  "id": "chatcmpl-tool-a13849f969ed3123",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-b4a510899cddb16a",
+    "name": "toggle_data",
+    "arguments": {
+     "state": "on"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_data' not found.",
+  "id": "chatcmpl-tool-b4a510899cddb16a",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-8b3bdda717c8a17d",
+    "name": "toggle_data",
+    "arguments": {
+     "state": "on"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_data' not found.",
+  "id": "chatcmpl-tool-8b3bdda717c8a17d",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-8815c65405972b7d",
+    "name": "toggle_data",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_data' not found.",
+  "id": "chatcmpl-tool-8815c65405972b7d",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-b3efc697fa78e7ea",
+    "name": "toggle_data",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_data' not found.",
+  "id": "chatcmpl-tool-b3efc697fa78e7ea",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "Here’s what to do to get MMS working again:\n\n1. **Turn mobile data back on**  \n   - Open **Settings** → **Mobile** (or **Cellular**) → **Data** and switch it **ON**.  \n   - This will also bring the signal icon back in the status bar.\n\n2. **Enable data roaming** (since you’re in France)  \n   - In the same **Mobile** settings, find **Data Roaming** and turn it **ON**.  \n   - This lets your line use the local carrier’s network while you’re abroad.\n\n3. **Turn off Wi‑Fi Calling** (it can interfere with MMS on some devices)  \n   - Go to **Settings** → **Wi‑Fi Calling** and switch it **OFF**.\n\n4. **Verify the changes**  \n   - After enabling data and roaming, check the status bar: you should now see a signal strength icon (e.g., “4G” or “5G”) and the data icon.  \n   - You can also open a web browser or any app that uses the internet to confirm that mobile data is working.\n\n5. **Test MMS**  \n   - Open your messaging app, attach a picture or video, and send it to a contact.  \n   - If the message sends successfully, MMS is now working.\n\nIf after these steps you still can’t send MMS, let me know and we can look at the APN settings or other possible causes."
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_nkxatjQ4mq6IUvVKwiEpy3AQ",
+    "name": "toggle_data",
+    "arguments": {},
+    "requestor": "user"
+   },
+   {
+    "id": "call_ioCnOdPgIBf4LOzUP8GgQlvw",
+    "name": "toggle_roaming",
+    "arguments": {},
+    "requestor": "user"
+   },
+   {
+    "id": "call_LMh9FK9IXPtvaOrhW18cmatm",
+    "name": "toggle_wifi_calling",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Mobile Data is now ON.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_nkxatjQ4mq6IUvVKwiEpy3AQ",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "tool",
+  "content": "Data Roaming is now ON.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_ioCnOdPgIBf4LOzUP8GgQlvw",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "tool",
+  "content": "Wi-Fi Calling is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_LMh9FK9IXPtvaOrhW18cmatm",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_6rZ74Ic1sPSzrI4dbD75LZo5",
+    "name": "check_status_bar",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Status Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_6rZ74Ic1sPSzrI4dbD75LZo5",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": "I’ve turned on mobile data, enabled data roaming, and switched off Wi-Fi Calling as you suggested. However, my status bar still shows no signal and data is disabled. What should I try next?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-ac514d1c62a4fac6",
+    "name": "check_network_status",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'check_network_status' not found.",
+  "id": "chatcmpl-tool-ac514d1c62a4fac6",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9fb2afe33ab4ef85",
+    "name": "enable_roaming",
+    "arguments": {
+     "customer_id": "C1001",
+     "line_id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Roaming enabled successfully",
+  "id": "chatcmpl-tool-9fb2afe33ab4ef85",
+  "requestor": "assistant",
+  "error": false
+ }
+]

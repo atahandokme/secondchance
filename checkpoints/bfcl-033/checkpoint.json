@@ -1,0 +1,110 @@
+{
+ "id": "bfcl-033",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_miss_param_6",
+ "source_model": "qwen3-32b",
+ "cut": 4,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "touch"
+  ],
+  "call_index": [
+   0
+  ],
+  "turn": [
+   0
+  ],
+  "kind": "wrong value",
+  "mechanism": "G:wrong_value",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "G:wrong_value",
+  "why_an_error": "missing-parameter turn: the agent created the file 'in the current directory' instead of asking which communal folder (system prompt: ask instead of guessing)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "GorillaFileSystem.root"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "G",
+   "attributes": [
+    "GorillaFileSystem.root"
+   ],
+   "prefix_calls": 1,
+   "turn": 0,
+   "call": "touch",
+   "call_index": 0
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "demonstrated",
+  "evidence_type": "AVAILABLE_ROUTE_SCRIPTED",
+  "by_target": {
+   "correction": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "goal": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "complete": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   }
+  },
+  "demonstrated_routes": [
+   {
+    "target": "correction",
+    "route": "undo calls at history positions [0] + redo the reference calls from turn 0 without reference call 0 (12 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "goal",
+    "route": "undo calls at history positions [0] + redo the reference calls from turn 0 without reference call 0 (12 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "complete",
+    "route": "undo calls at history positions [0] + redo the reference calls from turn 0 without reference call 0 (12 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   }
+  ]
+ },
+ "competence_control": false
+}

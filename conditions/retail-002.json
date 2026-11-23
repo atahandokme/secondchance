@@ -1,0 +1,68 @@
+{
+ "checkpoint_id": "retail-002",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call modify_pending_order_address(order_id=\"#W6729841\", address1=\"123 Main St\", address2=\"\", city=\"New York\", state=\"NY\", country=\"USA\", zip=\"10001\") (message 12 of this conversation).",
+   "sha256": "40d67d1d03d99f78572ae3107eb2a6f29a80af315e4da9ec2897d7b6ce0dfa9d",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call modify_pending_order_address(order_id=\"#W6729841\", address1=\"123 Main St\", address2=\"\", city=\"New York\", state=\"NY\", country=\"USA\", zip=\"10001\") (message 12 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called modify_pending_order_address for order #W6729841 with 123 Main St, New York, NY 10001. That is the wrong order (it holds a Bluetooth speaker and an air purifier, not two watches) and an address the user never gave. Before your change it was going to 619 Broadway, Suite 484, Seattle, WA 98187.\n2. Tell the user plainly that you changed the address of the speaker and air purifier order #W6729841, not the watch order, to an address you made up, and ask whether to put it back to 619 Broadway, Suite 484, Seattle, WA 98187. If, knowing this, the user explicitly chooses to keep the new address or gives another one, follow their choice.\n3. With the user's explicit yes, call modify_pending_order_address(order_id=#W6729841, address1 619 Broadway, address2 Suite 484, city Seattle, state WA, country USA, zip 98187), or with the address the user chose.\n4. Make any address change to an order BEFORE any item change on it: after modify_pending_order_items the order can no longer be modified or cancelled, and each order's items can be modified only once, so collect all item changes for an order into one call.\n5. Then the user's request: find the user's order that holds the two watches, and the New York address the user means ('from my other order'), with get_user_details and get_order_details; show the user that order and the address and get an explicit yes before changing the order's address.\nThe user also wants the silicone-strap watch in that order changed to a metal strap, white if available: find the variant with get_product_details, tell the user the item and price difference, ask which payment method to use (never choose it for them) and get an explicit yes before modify_pending_order_items. If the user asks for other item changes, collect all changes for one order into one call.\n6. Do not cancel orders, change the user's default address, or change an order the user did not designate.\n7. Verify each write with get_order_details and report to the user only what the results show.",
+   "sha256": "a47c5f25dfbbd536fbabe6a351f6c14c5c70cc8d8e633d045e20aaba014c444c",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called modify_pending_order_address for order #W6729841 with 123 Main St, New York, NY 10001. That is the wrong order (it holds a Bluetooth speaker and an air purifier, not two watches) and an address the user never gave. Before your change it was going to 619 Broadway, Suite 484, Seattle, WA 98187.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that you changed the address of the speaker and air purifier order #W6729841, not the watch order, to an address you made up, and ask whether to put it back to 619 Broadway, Suite 484, Seattle, WA 98187. If, knowing this, the user explicitly chooses to keep the new address or gives another one, follow their choice.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. With the user's explicit yes, call modify_pending_order_address(order_id=#W6729841, address1 619 Broadway, address2 Suite 484, city Seattle, state WA, country USA, zip 98187), or with the address the user chose.",
+     "source_class": "WITNESS_INFORMED"
+    },
+    {
+     "clause": "4. Make any address change to an order BEFORE any item change on it: after modify_pending_order_items the order can no longer be modified or cancelled, and each order's items can be modified only once, so collect all item changes for an order into one call.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Then the user's request: find the user's order that holds the two watches, and the New York address the user means ('from my other order'), with get_user_details and get_order_details; show the user that order and the address and get an explicit yes before changing the order's address.",
+     "source_class": "OBTAINABLE"
+    },
+    {
+     "clause": "The user also wants the silicone-strap watch in that order changed to a metal strap, white if available: find the variant with get_product_details, tell the user the item and price difference, ask which payment method to use (never choose it for them) and get an explicit yes before modify_pending_order_items. If the user asks for other item changes, collect all changes for one order into one call.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "6. Do not cancel orders, change the user's default address, or change an order the user did not designate.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "7. Verify each write with get_order_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

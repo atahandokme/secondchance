@@ -1,0 +1,26 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_param_161",
+ "replayed_calls": 1,
+ "state_hash": "cb6e9ab7d426cca2d844a1a658cf5cc5d887660b4339d1d8cabbbe10c0ff09b5",
+ "replay": [
+  {
+   "name": "authenticate_travel",
+   "arguments": {
+    "client_id": "client_520",
+    "client_secret": "rise_to_sky",
+    "refresh_token": "token990125",
+    "grant_type": "read_write",
+    "user_first_name": "your_first_name",
+    "user_last_name": "your_last_name"
+   },
+   "output": "{\"expires_in\": 2, \"access_token\": \"251675\", \"token_type\": \"Bearer\", \"scope\": \"read_write\"}",
+   "turn": 0
+  }
+ ],
+ "resume": {
+  "turn": 0,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

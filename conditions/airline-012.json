@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "airline-012",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call update_reservation_passengers(reservation_id=\"H9ZU1C\", passengers=[{\"first_name\": \"Ethan\", \"last_name\": \"\", \"dob\": \"\"}]) (message 2 of this conversation).",
+   "sha256": "8fc193a8685a8352fc0fd23a0f25ddebdfbb4a02469289b7089fc01d0a31dcbe",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call update_reservation_passengers(reservation_id=\"H9ZU1C\", passengers=[{\"first_name\": \"Ethan\", \"last_name\": \"\", \"dob\": \"\"}]) (message 2 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called update_reservation_passengers for reservation H9ZU1C with a single passenger entry (first name Ethan, empty last name and date of birth), before obtaining the user's id, reading the reservation, or listing the change and getting an explicit yes. The tool refused ('Number of passengers does not match'); nothing was changed.\n2. Tell the user plainly that the attempt failed and should not have been made: the number of passengers in a reservation cannot be changed, not even by a human agent, so a passenger cannot be removed; passengers' details can be changed.\n3. Ask for the user's id before anything else; the user must provide it. Then read the reservation with get_reservation_details.\n4. The user also wants to book a new flight: ask for the details, collect each passenger's first name, last name and date of birth, and follow the booking rules (one cabin, at most five passengers, payment methods already in the profile, the travel insurance question, the checked-bag allowance by membership and cabin), and ask which payment method to use (never choose it for them).\n5. For any other request, check the policy rule for that action against the reservation and profile before saying whether it is possible; list the details, ask which payment method to use (never choose it for them), and get an explicit yes before every write. Do not offer compensation unless the user explicitly asks for it.\n6. Verify each write with get_reservation_details and report to the user only what the results show.",
+   "sha256": "3414012315c1ead08e138dc37dd0b466d419b76bf7a030e4be66b55b12b90cea",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called update_reservation_passengers for reservation H9ZU1C with a single passenger entry (first name Ethan, empty last name and date of birth), before obtaining the user's id, reading the reservation, or listing the change and getting an explicit yes. The tool refused ('Number of passengers does not match'); nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that the attempt failed and should not have been made: the number of passengers in a reservation cannot be changed, not even by a human agent, so a passenger cannot be removed; passengers' details can be changed.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Ask for the user's id before anything else; the user must provide it. Then read the reservation with get_reservation_details.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "4. The user also wants to book a new flight: ask for the details, collect each passenger's first name, last name and date of birth, and follow the booking rules (one cabin, at most five passengers, payment methods already in the profile, the travel insurance question, the checked-bag allowance by membership and cabin), and ask which payment method to use (never choose it for them).",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "5. For any other request, check the policy rule for that action against the reservation and profile before saying whether it is possible; list the details, ask which payment method to use (never choose it for them), and get an explicit yes before every write. Do not offer compensation unless the user explicitly asks for it.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "6. Verify each write with get_reservation_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

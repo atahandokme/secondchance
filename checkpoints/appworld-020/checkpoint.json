@@ -1,0 +1,16 @@
+{
+ "id": "appworld-020",
+ "environment": "appworld",
+ "split": "main",
+ "task_id": "appworld/60d0b5b_1",
+ "source_model": "gemma-4-31b",
+ "cut": 13,
+ "cut_unit": "code_blocks",
+ "error_kind": "unwanted record in a task table",
+ "mechanism": "wrong_or_duplicate_write",
+ "fixability": "unknown",
+ "fixability_evidence": "UNKNOWN:NO_WITNESS_FOUND",
+ "complete_recovery_route": "unknown",
+ "individually_reviewed": false,
+ "content": "not included: AppWorld requires that its task data and anything derived from it be redistributed only in encrypted form; the results of this checkpoint are in results/"
+}

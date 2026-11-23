@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "bfcl-025",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call send_message(receiver_id=\"USR008\", message=\"The estimated distance from Rivermist to San Francisco is 720 miles.\") (message 17 of this conversation).",
+   "sha256": "e72443d900d5e70e3148f86745627e16fa24cd350f20a26242b520680c30f46e",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call send_message(receiver_id=\"USR008\", message=\"The estimated distance from Rivermist to San Francisco is 720 miles.\") (message 17 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.\n1. The step to repair: you called send_message(receiver_id=\"USR008\", message=\"The estimated distance from Rivermist to San Francisco is 720 miles.\"), after the user wrote: \"Please relay the estimated distance from Rivermist to San Francisco to my colleague Emma. If it helps, my id is 'USR005'. The message should be in the format 'The estimated distance from Rivermist to San Francisco is X miles.', where X is replaced by the actual integer value you computed earlier.\". It changed MessageAPI.generated_ids, MessageAPI.inbox, MessageAPI.message_count.\nAfter it, MessageAPI.inbox is not what the request calls for.\n2. No way to undo the change to MessageAPI.inbox has been verified from this point. If you think a function can do it, check its description first; do not guess.\n3. When a request lacks information you need, ask the user instead of guessing.\n4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.\n5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+   "sha256": "0be73588953c4a1fe958124e5220767cd7866b3062d4c79ed45013874db4a039",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next step. The user's decisions are their own: never assume an answer or a later request; where the plan needs a decision from the user, ask.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called send_message(receiver_id=\"USR008\", message=\"The estimated distance from Rivermist to San Francisco is 720 miles.\"), after the user wrote: \"Please relay the estimated distance from Rivermist to San Francisco to my colleague Emma. If it helps, my id is 'USR005'. The message should be in the format 'The estimated distance from Rivermist to San Francisco is X miles.', where X is replaced by the actual integer value you computed earlier.\". It changed MessageAPI.generated_ids, MessageAPI.inbox, MessageAPI.message_count.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "After it, MessageAPI.inbox is not what the request calls for.",
+     "source_class": "REFERENCE_DERIVED"
+    },
+    {
+     "clause": "2. No way to undo the change to MessageAPI.inbox has been verified from this point. If you think a function can do it, check its description first; do not guess.",
+     "source_class": "UNVERIFIED"
+    },
+    {
+     "clause": "3. When a request lacks information you need, ask the user instead of guessing.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Change nothing else that the requests do not ask for, and check what is already done before repeating a request.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "5. In your reply, tell the user plainly what went wrong and what you did about it; claim only what function outputs show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

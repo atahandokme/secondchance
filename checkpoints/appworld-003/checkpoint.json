@@ -1,0 +1,16 @@
+{
+ "id": "appworld-003",
+ "environment": "appworld",
+ "split": "main",
+ "task_id": "appworld/229360a_2",
+ "source_model": "qwen3-4b",
+ "cut": 7,
+ "cut_unit": "code_blocks",
+ "error_kind": "record removed",
+ "mechanism": "deleted_preexisting_row",
+ "fixability": "demonstrated",
+ "fixability_evidence": "AVAILABLE_ROUTE_SCRIPTED",
+ "complete_recovery_route": "unknown",
+ "individually_reviewed": true,
+ "content": "not included: AppWorld requires that its task data and anything derived from it be redistributed only in encrypted form; the results of this checkpoint are in results/"
+}

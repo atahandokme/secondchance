@@ -1,0 +1,88 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_147",
+ "replayed_calls": 9,
+ "state_hash": "2ea7f6b6b6bd38a538268b9b82a0d6e08e36b1e3d6856786e085ad90da43ff33",
+ "replay": [
+  {
+   "name": "search_tweets",
+   "arguments": {
+    "keyword": "Omega Industries stock price"
+   },
+   "output": "[]",
+   "turn": 0
+  },
+  {
+   "name": "get_stock_info",
+   "arguments": {
+    "symbol": "Omega Industries"
+   },
+   "output": "{\"error\": \"Stock with symbol 'Omega Industries' not found.\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_symbol_by_name",
+   "arguments": {
+    "name": "Omega Industries"
+   },
+   "output": "{\"symbol\": \"OMEG\"}",
+   "turn": 0
+  },
+  {
+   "name": "get_stock_info",
+   "arguments": {
+    "symbol": "OMEG"
+   },
+   "output": "{\"price\": 457.23, \"percent_change\": 0.12, \"volume\": 2.345, \"MA(5)\": 456.78, \"MA(20)\": 458.12}",
+   "turn": 0
+  },
+  {
+   "name": "mention",
+   "arguments": {
+    "tweet_id": "1234567890",
+    "mentioned_usernames": "[\"@industryexperts\"]"
+   },
+   "output": "{\"error\": \"Tweet with ID 1234567890 not found.\"}",
+   "turn": 0
+  },
+  {
+   "name": "search_tweets",
+   "arguments": {
+    "keyword": "Omega Industries"
+   },
+   "output": "[]",
+   "turn": 0
+  },
+  {
+   "name": "post_tweet",
+   "arguments": {
+    "tweet_content": "Omega Industries is skyrocketing at $457.23 per share! The tech industry evolution is electrifying, and we are just getting started. #TechBoom @industryexperts"
+   },
+   "output": "Error during execution: TwitterAPI.post_tweet() got an unexpected keyword argument 'tweet_content'",
+   "turn": 0
+  },
+  {
+   "name": "post_tweet",
+   "arguments": {
+    "tweet": "Omega Industries is skyrocketing at $457.23 per share! The tech industry evolution is electrifying, and we are just getting started. #TechBoom @industryexperts"
+   },
+   "output": "Error during execution: TwitterAPI.post_tweet() got an unexpected keyword argument 'tweet'",
+   "turn": 0
+  },
+  {
+   "name": "post_tweet",
+   "arguments": {
+    "content": "Omega Industries is skyrocketing at $457.23 per share! The tech industry evolution is electrifying, and we are just getting started.",
+    "tags": "[\"#TechBoom\"]",
+    "mentions": "[\"@industryexperts\"]"
+   },
+   "output": "{\"id\": 1, \"username\": \"michael_smith\", \"content\": \"Omega Industries is skyrocketing at $457.23 per share! The tech industry evolution is electrifying, and we are just getting started.\", \"tags\": \"[\\\"#TechBoom\\\"]\", \"mentions\": \"[\\\"@industryexperts\\\"]\"}",
+   "turn": 1
+  }
+ ],
+ "resume": {
+  "turn": 1,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_miss_func_43",
+ "replayed_calls": 9,
+ "state_hash": "76139f42633b59883e54f06fe755b513d8a6647667963993b3984132d4dc8eca",
+ "replay": [
+  {
+   "name": "ls",
+   "arguments": {
+    "a": true
+   },
+   "output": "{\"current_directory_content\": [\"Documents\", \"Reports\"]}",
+   "turn": 0
+  },
+  {
+   "name": "find",
+   "arguments": {
+    "name": "annual_report.txt"
+   },
+   "output": "{\"matches\": [\"./Documents/annual_report.txt\"]}",
+   "turn": 1
+  },
+  {
+   "name": "cat",
+   "arguments": {
+    "file_name": "annual_report.txt"
+   },
+   "output": "{\"error\": \"cat: 'annual_report.txt': No such file or directory\"}",
+   "turn": 2
+  },
+  {
+   "name": "cat",
+   "arguments": {
+    "file_name": "Documents/annual_report.txt"
+   },
+   "output": "{\"error\": \"cat: 'Documents/annual_report.txt': Invalid character\"}",
+   "turn": 2
+  },
+  {
+   "name": "message_get_login_status",
+   "arguments": {},
+   "output": "{\"login_status\": false}",
+   "turn": 3
+  },
+  {
+   "name": "send_message",
+   "arguments": {
+    "receiver_id": "USR002",
+    "message": "It appears there was an issue retrieving the contents of annual_report.txt. The file might be inaccessible or corrupted. Let me know if you'd like to try another action."
+   },
+   "output": "{\"error\": \"No user is currently logged in.\"}",
+   "turn": 3
+  },
+  {
+   "name": "send_message",
+   "arguments": {
+    "receiver_id": "USR002",
+    "message": "It appears there was an issue retrieving the contents of annual_report.txt. The file might be inaccessible or corrupted. Let me know if you'd like to try another action."
+   },
+   "output": "{\"error\": \"No user is currently logged in.\"}",
+   "turn": 3
+  },
+  {
+   "name": "message_get_login_status",
+   "arguments": {},
+   "output": "{\"login_status\": false}",
+   "turn": 3
+  },
+  {
+   "name": "add_contact",
+   "arguments": {
+    "user_name": "USR001"
+   },
+   "output": "{\"added_status\": true, \"user_id\": \"USR005\", \"message\": \"Contact 'USR001' added successfully.\"}",
+   "turn": 3
+  }
+ ],
+ "resume": {
+  "turn": 3,
+  "mid_turn": true,
+  "steps_done_in_turn": 5
+ }
+}

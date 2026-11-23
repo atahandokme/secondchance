@@ -1,0 +1,16 @@
+{
+ "id": "appworld-016",
+ "environment": "appworld",
+ "split": "main",
+ "task_id": "appworld/3c13f5a_3",
+ "source_model": "gpt-oss-120b",
+ "cut": 24,
+ "cut_unit": "code_blocks",
+ "error_kind": "several effects",
+ "mechanism": "modified_preexisting_row_outside_task+write_to_model_outside_task+wrong_or_duplicate_write",
+ "fixability": "unknown",
+ "fixability_evidence": "UNKNOWN:NO_WITNESS_FOUND",
+ "complete_recovery_route": "unknown",
+ "individually_reviewed": false,
+ "content": "not included: AppWorld requires that its task data and anything derived from it be redistributed only in encrypted form; the results of this checkpoint are in results/"
+}

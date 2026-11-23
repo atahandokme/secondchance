@@ -1,0 +1,24 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_long_context_125",
+ "replayed_calls": 1,
+ "state_hash": "f21a85b80950474b6d6990bbd40cecd86279c4daaa3c980b13cfdac963278e37",
+ "replay": [
+  {
+   "name": "place_order",
+   "arguments": {
+    "order_type": "Buy",
+    "symbol": "ALPH",
+    "price": 150.5,
+    "amount": 100
+   },
+   "output": "{\"order_id\": 12446, \"order_type\": \"Buy\", \"status\": \"Pending\", \"price\": 150.5, \"amount\": 100}",
+   "turn": 1
+  }
+ ],
+ "resume": {
+  "turn": 1,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

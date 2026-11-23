@@ -1,0 +1,31 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi, I need some help with my upcoming flight. I thought I added insurance to my booking, but when I check online, it’s not showing up. I’m flying with my family and everyone else has insurance, so I really want to make sure I have it too. Can you help me sort this out?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-810cefd57bce437bb88918296bd3b3a8",
+    "name": "get_user_details",
+    "arguments": {
+     "user_id": "<user_id>"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: User <user_id> not found",
+  "id": "chatcmpl-tool-810cefd57bce437bb88918296bd3b3a8",
+  "requestor": "assistant",
+  "error": true
+ }
+]

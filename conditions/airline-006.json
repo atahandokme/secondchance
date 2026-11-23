@@ -1,0 +1,60 @@
+{
+ "checkpoint_id": "airline-006",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call get_user_details(user_id=\"user_id\") (message 2 of this conversation).",
+   "sha256": "872004b9a69e9d398b0dd8256436ef608f618bed3b66a95ee328df94ed42068b",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call get_user_details(user_id=\"user_id\") (message 2 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called get_user_details with the literal text 'user_id', a placeholder, not the user's id. The tool returned 'User user_id not found'; nothing was changed.\n2. Tell the user plainly that the lookup used a placeholder, not their id, and ask for their user id; the user must provide their user id. Never fill in an id yourself.\n3. Then the user's request: changes to their upcoming flights. Ask which reservation and what changes they want; if they do not know the reservation id, find it with get_user_details and get_reservation_details.\n4. Before telling the user whether something is possible, check the policy rule against the reservation: basic economy flights cannot be changed; a flight change keeps origin, destination and trip type; a cabin change is not possible after any flight has been flown; bags can be added, not removed; the number of passengers is fixed. Check every rule against the reservation and the current time (2024-05-15 15:00 EST) before you answer.\n5. For each update, list the details and the price, ask which payment method to use (never choose it for them), and get an explicit yes before the call. Do not offer compensation unless the user explicitly asks for it.\n6. Verify each write with get_reservation_details and report to the user only what the results show.",
+   "sha256": "2d551fbf126da8d81c532efbdad6327e18b3c66d33220560bba5451cbcf24709",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called get_user_details with the literal text 'user_id', a placeholder, not the user's id. The tool returned 'User user_id not found'; nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that the lookup used a placeholder, not their id, and ask for their user id; the user must provide their user id. Never fill in an id yourself.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Then the user's request: changes to their upcoming flights. Ask which reservation and what changes they want; if they do not know the reservation id, find it with get_user_details and get_reservation_details.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Before telling the user whether something is possible, check the policy rule against the reservation: basic economy flights cannot be changed; a flight change keeps origin, destination and trip type; a cabin change is not possible after any flight has been flown; bags can be added, not removed; the number of passengers is fixed. Check every rule against the reservation and the current time (2024-05-15 15:00 EST) before you answer.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. For each update, list the details and the price, ask which payment method to use (never choose it for them), and get an explicit yes before the call. Do not offer compensation unless the user explicitly asks for it.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "6. Verify each write with get_reservation_details and report to the user only what the results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

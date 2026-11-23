@@ -1,0 +1,168 @@
+{
+ "id": "tau2-036",
+ "environment": "tau2",
+ "split": "main",
+ "task_id": "tau2/task_075",
+ "source_model": "gpt-oss-120b",
+ "cut": 14,
+ "cut_unit": "messages",
+ "source": "tau2-bench (sierra-research/tau2-bench, commit 5bfa7e3)",
+ "error": {
+  "unit": "agent write",
+  "call": [
+   "log_verification"
+  ],
+  "call_index": [
+   2
+  ],
+  "message_index": [
+   12
+  ],
+  "kind": "wrong value",
+  "mechanism": "WRONG_VALUE_ON_GOAL_FIELD",
+  "effect": [
+   "task state has a wrong value"
+  ],
+  "mechanical_evidence": "goal field set to a value the reference never takes",
+  "why_an_error": "logged the verification with an invented time ('2026-10-25T00:00:00Z'; policy: use get_current_time)",
+  "review": "individual evidence-based review"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every affected field at its target: the reference's final value for a task field, the pre-mistake value for a protected field",
+   "fields": [
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.address",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"2847 South Lamar Boulevard, Austin, TX 78704\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.date_of_birth",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"08/22/1993\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.email",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"marco.vitiello@gmail.com\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.name",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"Marco Vitiello\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.phone_number",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"512-555-0847\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.time_verified",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"2026-10-25T00:00:00Z\"",
+     "target": null,
+     "target_rule": "gold final value"
+    },
+    {
+     "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.user_id",
+     "kind": "WRONG_GOAL_VALUE",
+     "value_after_error": "\"mv93f8a7b2\"",
+     "target": null,
+     "target_rule": "gold final value"
+    }
+   ]
+  },
+  "protected_state": "every field the reference never changes keeps its checkpoint value, unless the user requested and authorized the change",
+  "policy": "the domain's agent policy; writes with a policy prerequisite or required confirmation are listed in"
+ },
+ "scoring_inputs": {
+  "cut_messages": 14,
+  "effects": [
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.address",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"2847 South Lamar Boulevard, Austin, TX 78704\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.date_of_birth",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"08/22/1993\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.email",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"marco.vitiello@gmail.com\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.name",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"Marco Vitiello\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.phone_number",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"512-555-0847\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.time_verified",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"2026-10-25T00:00:00Z\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   },
+   {
+    "field": "a:verification_history.data.mv93f8a7b2_20261025T000000Z.user_id",
+    "kind": "WRONG_GOAL_VALUE",
+    "post": "\"mv93f8a7b2\"",
+    "pre": null,
+    "target": null,
+    "target_rule": "gold final value"
+   }
+  ]
+ },
+ "fixability": {
+  "label": "unknown",
+  "evidence_type": "UNKNOWN:NO_WITNESS_FOUND",
+  "by_target": {
+   "correction": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "goal": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   },
+   "complete": {
+    "label": "unknown",
+    "evidence_type": "UNKNOWN:NO_WITNESS_FOUND"
+   }
+  }
+ },
+ "competence_control": false
+}

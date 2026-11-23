@@ -1,0 +1,136 @@
+{
+ "id": "bfcl-016",
+ "environment": "bfcl",
+ "split": "main",
+ "task_id": "bfcl/multi_turn_miss_func_103",
+ "source_model": "llama-3.1-8b",
+ "cut": 6,
+ "cut_unit": "message_index",
+ "source": "BFCL multi-turn (ShishirPatil/gorilla, commit 6ea5797)",
+ "error": {
+  "unit": "executed call",
+  "call": [
+   "add_to_watchlist",
+   "add_to_watchlist"
+  ],
+  "call_index": [
+   1,
+   2
+  ],
+  "turn": [
+   0,
+   0
+  ],
+  "kind": "unwanted change elsewhere",
+  "mechanism": "P:unwanted_change_elsewhere",
+  "effect": [
+   "other state changed"
+  ],
+  "mechanical_evidence": "P:unwanted_change_elsewhere",
+  "why_an_error": null,
+  "review": "mechanical screen; the AI scan raised no flag"
+ },
+ "evaluation": {
+  "correction_target": {
+   "rule": "every target attribute at its target: the reference's end-of-task value for a task attribute; for an unwanted change, every protected attribute at its initial value",
+   "attributes": [
+    "TradingBot.watch_list"
+   ]
+  },
+  "protected_state": "every attribute the reference never changes is at its initial value at termination",
+  "policy": "none (scripted requests, no user policy)"
+ },
+ "scoring_inputs": {
+  "divergence": {
+   "type": "P",
+   "attributes": [
+    "TradingBot.watch_list"
+   ],
+   "prefix_calls": 3,
+   "turn": 0,
+   "call": "add_to_watchlist",
+   "call_index": 1
+  },
+  "restated_target": []
+ },
+ "fixability": {
+  "label": "demonstrated",
+  "evidence_type": "AVAILABLE_ROUTE_SCRIPTED",
+  "by_target": {
+   "correction": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "goal": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   },
+   "complete": {
+    "label": "demonstrated",
+    "evidence_type": "AVAILABLE_ROUTE_SCRIPTED"
+   }
+  },
+  "demonstrated_routes": [
+   {
+    "target": "correction",
+    "route": "undo calls at history positions [2, 1] + nothing to redo (2 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "correction",
+    "route": "undo calls at history positions [2, 1] + redo the reference calls from turn 0 without reference call 0 (8 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "goal",
+    "route": "the remaining reference calls, with reference calls skipped",
+    "derived_from": [
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "goal",
+    "route": "undo calls at history positions [2, 1] + redo the reference calls from turn 0 without reference call 0 (8 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   },
+   {
+    "target": "complete",
+    "route": "undo calls at history positions [2, 1] + redo the reference calls from turn 0 without reference call 0 (8 calls)",
+    "derived_from": [
+     "the inverse of the erroneous call",
+     "the task's reference calls (BFCL possible_answer)"
+    ],
+    "executed_on_restored_checkpoint": true,
+    "who_can_act": "AGENT_ACCESSIBLE_ONLY",
+    "policy_legal": "not_applicable",
+    "user_cooperation": "not applicable (scripted user turns)"
+   }
+  ]
+ },
+ "competence_control": true
+}

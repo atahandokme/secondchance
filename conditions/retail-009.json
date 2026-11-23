@@ -1,0 +1,56 @@
+{
+ "checkpoint_id": "retail-009",
+ "conditions": {
+  "U": null,
+  "N": {
+   "text": "Note: an earlier action taken in this conversation was a mistake.",
+   "sha256": "5aaecd67a5dc601254267631b4e1bd0b1704ad916b147bae7d6e0bca9b1daf6f",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  },
+  "L": {
+   "text": "Note: an earlier action taken in this conversation was a mistake: the tool call find_user_id_by_email(email=\"user@example.com\") (message 2 of this conversation).",
+   "sha256": "f8ed530e29d7c58d9157a9a0de436323d08955948dd266dbc838d8e9b1f1b31d",
+   "clauses": [
+    {
+     "clause": "Note: an earlier action taken in this conversation was a mistake: the tool call find_user_id_by_email(email=\"user@example.com\") (message 2 of this conversation).",
+     "source_class": "OBSERVED"
+    }
+   ]
+  },
+  "PA": {
+   "text": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.\n1. The step to repair: you called find_user_id_by_email with user@example.com, an email the user never gave. The tool returned 'User not found', so the user is not authenticated and nothing was changed.\n2. Tell the user plainly that you tried a value they never gave, and ask for their email address, or their first name, last name and zip code, to locate their user id. Do this even if the user gives a user id. Use only the details the user gives; if a lookup fails, tell the user and ask them to check the details, and never fill in a value yourself.\n3. Then the user's request: how much they paid for their most recent order. After authentication, read the account with get_user_details and the orders with get_order_details; if it is not clear which order is the most recent, show the user what each order contains and ask which one they mean.\n4. Give the amount exactly as the order's payment history shows it. This request needs no change to the account: make no write unless the user asks for one and explicitly confirms it after you list the details.\n5. Report to the user only what tool results show.",
+   "sha256": "2ec064acb8401f710dfa95a5756d53abd9d62615a0362c2b3c4af89e07e116c3",
+   "clauses": [
+    {
+     "clause": "PLAN_ASSISTED REPAIR PLAN. Follow this plan from your next turn. The user's choices and consent are live: never assume an answer; ask and wait for the user's reply wherever the plan says so.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "1. The step to repair: you called find_user_id_by_email with user@example.com, an email the user never gave. The tool returned 'User not found', so the user is not authenticated and nothing was changed.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "2. Tell the user plainly that you tried a value they never gave, and ask for their email address, or their first name, last name and zip code, to locate their user id. Do this even if the user gives a user id. Use only the details the user gives; if a lookup fails, tell the user and ask them to check the details, and never fill in a value yourself.",
+     "source_class": "PROCEDURE"
+    },
+    {
+     "clause": "3. Then the user's request: how much they paid for their most recent order. After authentication, read the account with get_user_details and the orders with get_order_details; if it is not clear which order is the most recent, show the user what each order contains and ask which one they mean.",
+     "source_class": "OBSERVED"
+    },
+    {
+     "clause": "4. Give the amount exactly as the order's payment history shows it. This request needs no change to the account: make no write unless the user asks for one and explicitly confirms it after you list the details.",
+     "source_class": "POLICY"
+    },
+    {
+     "clause": "5. Report to the user only what tool results show.",
+     "source_class": "PROCEDURE"
+    }
+   ]
+  }
+ }
+}

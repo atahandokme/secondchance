@@ -1,0 +1,55 @@
+{
+ "method": "fresh BFCL backends for the task's initial configuration, then replay of every call executed in the history; the history follows the harness's own system prompt",
+ "task": "multi_turn_base_102",
+ "replayed_calls": 5,
+ "state_hash": "ec280bdd9fa13e293d791cace6da0149cc61ea1c458ef5b49c4f57b2338507ea",
+ "replay": [
+  {
+   "name": "place_order",
+   "arguments": {
+    "order_type": "Buy",
+    "symbol": "TSLA",
+    "price": 700,
+    "amount": 100
+   },
+   "output": "{\"order_id\": 12446, \"order_type\": \"Buy\", \"status\": \"Pending\", \"price\": 700.0, \"amount\": 100}",
+   "turn": 0
+  },
+  {
+   "name": "get_order_details",
+   "arguments": {
+    "order_id": 12446
+   },
+   "output": "{\"id\": 12446, \"order_type\": \"Buy\", \"symbol\": \"TSLA\", \"price\": 700.0, \"amount\": 100, \"status\": \"Open\"}",
+   "turn": 1
+  },
+  {
+   "name": "cancel_order",
+   "arguments": {
+    "order_id": 12446
+   },
+   "output": "{\"order_id\": 12446, \"status\": \"Cancelled\"}",
+   "turn": 2
+  },
+  {
+   "name": "get_account_info",
+   "arguments": {},
+   "output": "{\"account_id\": 98765, \"balance\": 75000.0, \"binding_card\": 1987654321098765}",
+   "turn": 3
+  },
+  {
+   "name": "ticket_login",
+   "arguments": {
+    "username": "user",
+    "password": "password"
+   },
+   "output": "{\"success\": true}",
+   "turn": 4
+  }
+ ],
+ "resume": {
+  "turn": 4,
+  "mid_turn": true,
+  "steps_done_in_turn": 1
+ }
+}

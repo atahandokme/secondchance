@@ -1,0 +1,271 @@
+[
+ {
+  "role": "assistant",
+  "content": "Hi! How can I help you today?"
+ },
+ {
+  "role": "user",
+  "content": "Hi, I’m having trouble sending MMS messages from my phone. I’ve been trying for a few hours, but they just won’t go through. I’m currently in France, and I’d really like to get this fixed. Can you help me out?"
+ },
+ {
+  "role": "assistant",
+  "content": "Sure, I can help you troubleshoot MMS issues. To get started, could you please provide either the phone number associated with your line or your full name together with your date of birth? This will let me look up your account details."
+ },
+ {
+  "role": "user",
+  "content": "My name is John Smith, and my phone number is 555-123-2002. Let me know if you need any more information!"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9d4454d2fd50c9c1",
+    "name": "get_customer_by_phone",
+    "arguments": {
+     "phone_number": "555-123-2002"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+  "id": "chatcmpl-tool-9d4454d2fd50c9c1",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9c5718fa2e67ecea",
+    "name": "get_details_by_id",
+    "arguments": {
+     "id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "{\"line_id\": \"L1001\", \"phone_number\": \"555-123-2001\", \"status\": \"Active\", \"plan_id\": \"P1001\", \"device_id\": \"D1001\", \"data_used_gb\": 3.2, \"data_refueling_gb\": 0.0, \"roaming_enabled\": false, \"contract_end_date\": \"2026-12-31\", \"last_plan_change_date\": \"2025-01-10\", \"last_sim_replacement_date\": null, \"suspension_start_date\": null}",
+  "id": "chatcmpl-tool-9c5718fa2e67ecea",
+  "requestor": "assistant",
+  "error": false
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-85f90956779a05dd",
+    "name": "can_send_mms",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'can_send_mms' not found.",
+  "id": "chatcmpl-tool-85f90956779a05dd",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "I’m sorry you’re having trouble with MMS while you’re in France. Let’s walk through the most common reasons MMS can fail and see if we can resolve it together.\n\n### 1. Verify Basic Connectivity\n1. **Cellular service** – Make sure you have a signal (you should see a network icon such as 4G/5G at the top of the screen).  \n2. **Mobile data** – MMS requires mobile data to be turned on.  \n3. **Airplane mode** – Ensure Airplane Mode is **off**.\n\n### 2. Check the status bar (you can do this on your phone)\n- Look at the top of the screen for the following icons:  \n  - 📶 Signal strength (should be at least one bar)  \n  - 📱 Data Enabled (usually a “4G/5G” or “LTE” icon)  \n  - ✈️ Airplane Mode (should **not** be shown)  \n\nIf any of those are missing or show that data is disabled, let me know and I’ll guide you on how to turn them on.\n\n### 3. Confirm the SIM is active\n- Open your phone’s Settings → **SIM cards & mobile networks** (or similar).  \n- Verify the SIM status is **Active**. If it says “Missing” or “Locked,” we’ll need to reseat the SIM or address the lock.\n\n### 4. Ensure the line is roaming‑enabled\nBecause you’re in France, you need roaming enabled for data (and therefore MMS) to work abroad.\n\n1. Go to **Settings → Mobile network → Roaming**.  \n2. Make sure **Data Roaming** is turned **ON**.  \n\nIf the toggle is missing or you can’t turn it on, let me know and I can enable roaming for your line from my side.\n\n### 5. Check APN settings\nIncorrect APN settings can block MMS.\n\n1. Open **Settings → Mobile network → Access Point Names (APN)**.  \n2. Verify that the APN name matches the one provided by us (usually something like “carrier.apn”).  \n3. If you see anything different, tap **Reset to default** (or “Reset APN”) and then **reboot** the phone.\n\n### 6. Verify MMS‑specific settings\n- **Network type**: MMS requires at least a 3G/4G connection. If you’re on a 2G network, switch the network mode to “4G/5G preferred” in **Settings → Mobile network → Preferred network type**.  \n- **Wi‑Fi Calling**: Some carriers disable MMS when Wi‑Fi Calling is on. If you have Wi‑Fi Calling enabled, try turning it **off** in **Settings → Wi‑Fi Calling**.\n\n### 7. App permissions\nThe messaging app must have permission to use storage and SMS.\n\n1. Go to **Settings → Apps → Messaging (or your default messaging app)** → **Permissions**.  \n2. Ensure **Storage** and **SMS** are granted.\n\n### 8. Test MMS again\nAfter you’ve checked/adjusted the items above, try sending a picture or video via MMS once more.\n\n---\n\n**What to do next**\n\nPlease go through the steps above and let me know:\n\n- Which step (if any) shows a problem (e.g., Airplane Mode on, Data off, roaming disabled, APN mismatch, etc.).  \n- If everything looks correct, tell me the result of the test (does the MMS still fail? Do you get an error message?).\n\nIf we discover that roaming is not enabled on your line, I can enable it for you right away. Just let me know what you find!"
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_35DzZBYaaRPmLc4V7EWSypBV",
+    "name": "check_status_bar",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Status Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_35DzZBYaaRPmLc4V7EWSypBV",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": "I checked my status bar, and it looks like I have no signal and mobile data is disabled. What should I do next?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-9cd5c75098de8bea",
+    "name": "toggle_airplane_mode",
+    "arguments": {
+     "on": false
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'toggle_airplane_mode' not found.",
+  "id": "chatcmpl-tool-9cd5c75098de8bea",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": "It looks like your phone is currently in a state where it can’t connect to the network, which is why you have no signal and mobile data is off. Let’s get those settings fixed:\n\n### 1. Turn **Airplane Mode** off\n1. Pull down the quick‑settings shade (swipe down from the top of the screen).  \n2. Look for the **Airplane Mode** icon (usually a little airplane).  \n3. If the icon is highlighted/active, tap it to turn Airplane Mode **off**.  \n   - You should see the airplane icon disappear.\n\n### 2. Enable **Mobile Data**\n1. After Airplane Mode is off, stay in the quick‑settings shade.  \n2. Find the **Mobile Data** or **Cellular Data** toggle (often shown as “4G/5G”, “LTE”, or “Data”).  \n3. Tap the toggle to turn it **on**.  \n   - The icon should change to show the network type (e.g., 4G, 5G, LTE).\n\n### 3. Verify signal\n- Once both steps are done, you should see a signal‑strength icon (bars) appear at the top of the screen.  \n- You may also see a “4G/5G” or “LTE” indicator, confirming that the phone is connected to the carrier’s network.\n\n### 4. Test MMS again\n- Open your messaging app, attach a picture or video, and try sending the MMS.\n\nIf after turning off Airplane Mode and enabling Mobile Data you still see **no signal**, it could be due to:\n\n- **SIM card not seated properly** – we can reseat it remotely.  \n- **Network coverage issues** in your exact location (try moving to a different spot or near a window).  \n- **Roaming not enabled** for use abroad (we can enable roaming for your line).\n\nPlease try the steps above and let me know what you see on the status bar afterward (signal bars, data icon, etc.). If there’s still no signal, we’ll move on to the next troubleshooting step."
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_4sfcpkKCWqV4TtfWp6ghWqix",
+    "name": "toggle_airplane_mode",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Airplane Mode is now ON.\nStatus Bar: ✈️ Airplane Mode | 🔋 80%",
+  "id": "call_4sfcpkKCWqV4TtfWp6ghWqix",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_qrXBPOz0PjfooQsi2cw1HuCX",
+    "name": "toggle_airplane_mode",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Airplane Mode is now OFF.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_qrXBPOz0PjfooQsi2cw1HuCX",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_EG5erqkAF9Y5lKBhAmhTlB4e",
+    "name": "toggle_data",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Mobile Data is now ON.\nStatus Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_EG5erqkAF9Y5lKBhAmhTlB4e",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_sAK7ejbgPFYjaozqVi5PEMyh",
+    "name": "check_status_bar",
+    "arguments": {},
+    "requestor": "user"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Status Bar: 📵 No Signal | 📵 Data Disabled | 🔋 80%",
+  "id": "call_sAK7ejbgPFYjaozqVi5PEMyh",
+  "requestor": "user",
+  "error": false
+ },
+ {
+  "role": "user",
+  "content": "I turned off Airplane Mode and tried to enable mobile data, but I still see no signal and data is disabled in the status bar. What should I do next?"
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-884a333900758155",
+    "name": "check_sim_status",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'check_sim_status' not found.",
+  "id": "chatcmpl-tool-884a333900758155",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-8934333bf68f4ffe",
+    "name": "reseat_sim_card",
+    "arguments": {},
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Error: Tool 'reseat_sim_card' not found.",
+  "id": "chatcmpl-tool-8934333bf68f4ffe",
+  "requestor": "assistant",
+  "error": true
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "chatcmpl-tool-876e6d1589a1c133",
+    "name": "enable_roaming",
+    "arguments": {
+     "customer_id": "C1001",
+     "line_id": "L1001"
+    },
+    "requestor": "assistant"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "content": "Roaming enabled successfully",
+  "id": "chatcmpl-tool-876e6d1589a1c133",
+  "requestor": "assistant",
+  "error": false
+ }
+]
