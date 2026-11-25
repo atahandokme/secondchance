@@ -25,6 +25,7 @@ dev = ["pytest>=8"]
 secondchance = "secondchance.cli:main"
 
 [project.urls]
+Paper = "https://arxiv.org/abs/2611.31586"
 Dataset = "https://huggingface.co/datasets/atahandokme/secondchance"
 Repository = "https://github.com/atahandokme/secondchance"
 

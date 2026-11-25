@@ -7,12 +7,13 @@ notified, localized, plan-assisted) and scores what it does next: whether it cor
 respects the policy and protected state, tells the user, and at what cost. Each error also carries what we could establish about fixing
 it: a demonstrated fix, a proof that none exists, or unknown.
 
-Paper: <ARXIV_URL> · Dataset: [atahandokme/secondchance](https://huggingface.co/datasets/atahandokme/secondchance) · DOI: <DOI>
+Paper: [arXiv:2611.31586](https://arxiv.org/abs/2611.31586) · Dataset: [atahandokme/secondchance](https://huggingface.co/datasets/atahandokme/secondchance) · DOI: [10.48550/arXiv.2611.31586](https://doi.org/10.48550/arXiv.2611.31586)
 
-![Observed recoverability with a plan on the 57 checkpoints with a demonstrated fix](docs/figure2.png)
+![SecondChance through one checkpoint: the four assistance conditions, a shared τ²-bench checkpoint after an agent enabled roaming on the wrong line, and five recorded continuations from it with their outcomes](docs/figure1.png)
 
-*Figure 2 of the paper: with a repair plan, which model corrects (light) or completely recovers from (dark) each of the 57 errors with a
-demonstrated fix. An empty cell is a missed fix that is known to exist.*
+*Figure 1 of the paper: SecondChance through one checkpoint. Top: the four assistance conditions, each adding information to the
+previous one. Left: the shared checkpoint, with what the agent sees and the annotations that only the evaluator sees. Right: five
+recorded continuations from this checkpoint, each scored on separate measures. Quoted text is from the records, shortened.*
 
 ## Main results (Table 3)
 
@@ -34,6 +35,11 @@ recoveries; n: runs per condition. U unaided, N notified, L localized, PA plan-a
 | Llama-3.1-8B | 129 | .00 | .00 | .01 | .01 | .00 | .00 | .02 | **.00** |
 | Qwen3-32B | 129 | .01 | .01 | .00 | .00 | .01 | .01 | .02 | **.00** |
 | All models | 1,437 | .02 | .02 | .02 | .02 | .02 | .02 | .11 | **.05** |
+
+![Observed recoverability with a plan on the 57 checkpoints with a demonstrated fix](docs/figure2.png)
+
+*Figure 2 of the paper: with a repair plan, which model corrects (light) or completely recovers from (dark) each of the 57 errors with a
+demonstrated fix. An empty cell is a missed fix that is known to exist.*
 
 ## Quickstart
 
@@ -95,10 +101,14 @@ Decoding in the paper: temperature 0 and seed 0 for open-weight models, at most 
 
 ```bibtex
 @misc{secondchance2026,
-  title  = {SecondChance: Benchmarking Reliable Error Recovery in AI Agents},
-  author = {Dokme, Atahan and Avsian, Adar and Heck, Larry},
-  year   = {2026},
-  note   = {<ARXIV_ID>}
+  title         = {SecondChance: Benchmarking Reliable Error Recovery in AI Agents},
+  author        = {Dokme, Atahan and Avsian, Adar and Heck, Larry},
+  year          = {2026},
+  eprint        = {2611.31586},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  doi           = {10.48550/arXiv.2611.31586},
+  url           = {https://arxiv.org/abs/2611.31586}
 }
 ```
 

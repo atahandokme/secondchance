@@ -13,3 +13,17 @@ date-released: 2026-11-30
 license: Apache-2.0
 repository-code: "https://github.com/atahandokme/secondchance"
 url: "https://huggingface.co/datasets/atahandokme/secondchance"
+preferred-citation:
+  type: article
+  title: "SecondChance: Benchmarking Reliable Error Recovery in AI Agents"
+  authors:
+    - family-names: Dokme
+      given-names: Atahan
+    - family-names: Avsian
+      given-names: Adar
+    - family-names: Heck
+      given-names: Larry
+  journal: "arXiv preprint arXiv:2611.31586"
+  year: 2026
+  doi: 10.48550/arXiv.2611.31586
+  url: "https://arxiv.org/abs/2611.31586"
